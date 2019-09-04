@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
         
         if HomeViewController.goalsArr.isEmpty {
             useEmptyStateView()
+            
         }
     }
     
