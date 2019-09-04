@@ -8,65 +8,65 @@
 
 /* Begin PBXBuildFile section */
 		5D08638C232054FE00CD58F5 /* NoGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08638B232054FE00CD58F5 /* NoGoalsView.swift */; };
+		5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */; };
+		5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */; };
 		5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73501231DFDF400F53E30 /* AppDelegate.swift */; };
 		5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73503231DFDF400F53E30 /* HomeViewController.swift */; };
-		5DB7350A231DFDF400F53E30 /* _00HoursDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73508231DFDF400F53E30 /* _00HoursDev.xcdatamodeld */; };
+		5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */; };
 		5DB7350C231DFDF600F53E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350B231DFDF600F53E30 /* Assets.xcassets */; };
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
-		5DB7351A231DFDF600F53E30 /* _00HoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73519231DFDF600F53E30 /* _00HoursDevTests.swift */; };
-		5DB73525231DFDF700F53E30 /* _00HoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73524231DFDF700F53E30 /* _00HoursDevUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5DB73516231DFDF600F53E30 /* PBXContainerItemProxy */ = {
+		5D0863B2232084EB00CD58F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5DB734F6231DFDF400F53E30 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5DB734FD231DFDF400F53E30;
-			remoteInfo = 100HoursDev;
+			remoteInfo = HundredHoursDev;
 		};
-		5DB73521231DFDF700F53E30 /* PBXContainerItemProxy */ = {
+		5D0863C02320852600CD58F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5DB734F6231DFDF400F53E30 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5DB734FD231DFDF400F53E30;
-			remoteInfo = 100HoursDev;
+			remoteInfo = HundredHoursDev;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5D08638B232054FE00CD58F5 /* NoGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGoalsView.swift; sourceTree = "<group>"; };
-		5DB734FE231DFDF400F53E30 /* 100HoursDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 100HoursDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0863AD232084EB00CD58F5 /* HundredHoursDevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HundredHoursDevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredHoursDevTests.swift; sourceTree = "<group>"; };
+		5D0863B1232084EB00CD58F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D0863BB2320852600CD58F5 /* HundredHoursDevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HundredHoursDevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredHoursDevUITests.swift; sourceTree = "<group>"; };
+		5D0863BF2320852600CD58F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DB734FE231DFDF400F53E30 /* HundredHoursDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HundredHoursDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB73501231DFDF400F53E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DB73503231DFDF400F53E30 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5DB73509231DFDF400F53E30 /* _00HoursDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _00HoursDev.xcdatamodel; sourceTree = "<group>"; };
 		5DB7350B231DFDF600F53E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DB7350E231DFDF600F53E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DB73515231DFDF600F53E30 /* 100HoursDevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 100HoursDevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DB73519231DFDF600F53E30 /* _00HoursDevTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _00HoursDevTests.swift; sourceTree = "<group>"; };
-		5DB7351B231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DB73520231DFDF700F53E30 /* 100HoursDevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 100HoursDevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DB73524231DFDF700F53E30 /* _00HoursDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _00HoursDevUITests.swift; sourceTree = "<group>"; };
-		5DB73526231DFDF700F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D0863AA232084EB00CD58F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D0863B82320852600CD58F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DB734FB231DFDF400F53E30 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DB73512231DFDF600F53E30 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DB7351D231DFDF700F53E30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,12 +76,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D0863AE232084EB00CD58F5 /* HundredHoursDevTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */,
+				5D0863B1232084EB00CD58F5 /* Info.plist */,
+			);
+			path = HundredHoursDevTests;
+			sourceTree = "<group>";
+		};
+		5D0863BC2320852600CD58F5 /* HundredHoursDevUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */,
+				5D0863BF2320852600CD58F5 /* Info.plist */,
+			);
+			path = HundredHoursDevUITests;
+			sourceTree = "<group>";
+		};
 		5DB734F5231DFDF400F53E30 = {
 			isa = PBXGroup;
 			children = (
-				5DB73500231DFDF400F53E30 /* 100HoursDev */,
-				5DB73518231DFDF600F53E30 /* 100HoursDevTests */,
-				5DB73523231DFDF700F53E30 /* 100HoursDevUITests */,
+				5DB73500231DFDF400F53E30 /* HundredHoursDev */,
+				5D0863AE232084EB00CD58F5 /* HundredHoursDevTests */,
+				5D0863BC2320852600CD58F5 /* HundredHoursDevUITests */,
 				5DB734FF231DFDF400F53E30 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,14 +107,14 @@
 		5DB734FF231DFDF400F53E30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5DB734FE231DFDF400F53E30 /* 100HoursDev.app */,
-				5DB73515231DFDF600F53E30 /* 100HoursDevTests.xctest */,
-				5DB73520231DFDF700F53E30 /* 100HoursDevUITests.xctest */,
+				5DB734FE231DFDF400F53E30 /* HundredHoursDev.app */,
+				5D0863AD232084EB00CD58F5 /* HundredHoursDevTests.xctest */,
+				5D0863BB2320852600CD58F5 /* HundredHoursDevUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5DB73500231DFDF400F53E30 /* 100HoursDev */ = {
+		5DB73500231DFDF400F53E30 /* HundredHoursDev */ = {
 			isa = PBXGroup;
 			children = (
 				5DB73501231DFDF400F53E30 /* AppDelegate.swift */,
@@ -105,35 +123,53 @@
 				5DB7350B231DFDF600F53E30 /* Assets.xcassets */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 				5DB73510231DFDF600F53E30 /* Info.plist */,
-				5DB73508231DFDF400F53E30 /* _00HoursDev.xcdatamodeld */,
+				5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */,
 			);
-			path = 100HoursDev;
-			sourceTree = "<group>";
-		};
-		5DB73518231DFDF600F53E30 /* 100HoursDevTests */ = {
-			isa = PBXGroup;
-			children = (
-				5DB73519231DFDF600F53E30 /* _00HoursDevTests.swift */,
-				5DB7351B231DFDF600F53E30 /* Info.plist */,
-			);
-			path = 100HoursDevTests;
-			sourceTree = "<group>";
-		};
-		5DB73523231DFDF700F53E30 /* 100HoursDevUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5DB73524231DFDF700F53E30 /* _00HoursDevUITests.swift */,
-				5DB73526231DFDF700F53E30 /* Info.plist */,
-			);
-			path = 100HoursDevUITests;
+			path = HundredHoursDev;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5DB734FD231DFDF400F53E30 /* 100HoursDev */ = {
+		5D0863AC232084EB00CD58F5 /* HundredHoursDevTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5DB73529231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDev" */;
+			buildConfigurationList = 5D0863B4232084EB00CD58F5 /* Build configuration list for PBXNativeTarget "HundredHoursDevTests" */;
+			buildPhases = (
+				5D0863A9232084EB00CD58F5 /* Sources */,
+				5D0863AA232084EB00CD58F5 /* Frameworks */,
+				5D0863AB232084EB00CD58F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D0863B3232084EB00CD58F5 /* PBXTargetDependency */,
+			);
+			name = HundredHoursDevTests;
+			productName = HundredHoursDevTests;
+			productReference = 5D0863AD232084EB00CD58F5 /* HundredHoursDevTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5D0863BA2320852600CD58F5 /* HundredHoursDevUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D0863C22320852600CD58F5 /* Build configuration list for PBXNativeTarget "HundredHoursDevUITests" */;
+			buildPhases = (
+				5D0863B72320852600CD58F5 /* Sources */,
+				5D0863B82320852600CD58F5 /* Frameworks */,
+				5D0863B92320852600CD58F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D0863C12320852600CD58F5 /* PBXTargetDependency */,
+			);
+			name = HundredHoursDevUITests;
+			productName = HundredHoursDevUITests;
+			productReference = 5D0863BB2320852600CD58F5 /* HundredHoursDevUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5DB734FD231DFDF400F53E30 /* HundredHoursDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB73529231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "HundredHoursDev" */;
 			buildPhases = (
 				5DB734FA231DFDF400F53E30 /* Sources */,
 				5DB734FB231DFDF400F53E30 /* Frameworks */,
@@ -143,46 +179,10 @@
 			);
 			dependencies = (
 			);
-			name = 100HoursDev;
+			name = HundredHoursDev;
 			productName = 100HoursDev;
-			productReference = 5DB734FE231DFDF400F53E30 /* 100HoursDev.app */;
+			productReference = 5DB734FE231DFDF400F53E30 /* HundredHoursDev.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5DB73514231DFDF600F53E30 /* 100HoursDevTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5DB7352C231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDevTests" */;
-			buildPhases = (
-				5DB73511231DFDF600F53E30 /* Sources */,
-				5DB73512231DFDF600F53E30 /* Frameworks */,
-				5DB73513231DFDF600F53E30 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5DB73517231DFDF600F53E30 /* PBXTargetDependency */,
-			);
-			name = 100HoursDevTests;
-			productName = 100HoursDevTests;
-			productReference = 5DB73515231DFDF600F53E30 /* 100HoursDevTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5DB7351F231DFDF700F53E30 /* 100HoursDevUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5DB7352F231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDevUITests" */;
-			buildPhases = (
-				5DB7351C231DFDF700F53E30 /* Sources */,
-				5DB7351D231DFDF700F53E30 /* Frameworks */,
-				5DB7351E231DFDF700F53E30 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5DB73522231DFDF700F53E30 /* PBXTargetDependency */,
-			);
-			name = 100HoursDevUITests;
-			productName = 100HoursDevUITests;
-			productReference = 5DB73520231DFDF700F53E30 /* 100HoursDevUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,20 +194,20 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Stephen Ouyang";
 				TargetAttributes = {
+					5D0863AC232084EB00CD58F5 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 5DB734FD231DFDF400F53E30;
+					};
+					5D0863BA2320852600CD58F5 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 5DB734FD231DFDF400F53E30;
+					};
 					5DB734FD231DFDF400F53E30 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
-					5DB73514231DFDF600F53E30 = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 5DB734FD231DFDF400F53E30;
-					};
-					5DB7351F231DFDF700F53E30 = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 5DB734FD231DFDF400F53E30;
-					};
 				};
 			};
-			buildConfigurationList = 5DB734F9231DFDF400F53E30 /* Build configuration list for PBXProject "100HoursDev" */;
+			buildConfigurationList = 5DB734F9231DFDF400F53E30 /* Build configuration list for PBXProject "HundredHoursDev" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -220,14 +220,28 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5DB734FD231DFDF400F53E30 /* 100HoursDev */,
-				5DB73514231DFDF600F53E30 /* 100HoursDevTests */,
-				5DB7351F231DFDF700F53E30 /* 100HoursDevUITests */,
+				5DB734FD231DFDF400F53E30 /* HundredHoursDev */,
+				5D0863AC232084EB00CD58F5 /* HundredHoursDevTests */,
+				5D0863BA2320852600CD58F5 /* HundredHoursDevUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D0863AB232084EB00CD58F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D0863B92320852600CD58F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DB734FC231DFDF400F53E30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,62 +251,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5DB73513231DFDF600F53E30 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DB7351E231DFDF700F53E30 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D0863A9232084EB00CD58F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D0863B72320852600CD58F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DB734FA231DFDF400F53E30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DB7350A231DFDF400F53E30 /* _00HoursDev.xcdatamodeld in Sources */,
+				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsView.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5DB73511231DFDF600F53E30 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5DB7351A231DFDF600F53E30 /* _00HoursDevTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DB7351C231DFDF700F53E30 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5DB73525231DFDF700F53E30 /* _00HoursDevUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5DB73517231DFDF600F53E30 /* PBXTargetDependency */ = {
+		5D0863B3232084EB00CD58F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5DB734FD231DFDF400F53E30 /* 100HoursDev */;
-			targetProxy = 5DB73516231DFDF600F53E30 /* PBXContainerItemProxy */;
+			target = 5DB734FD231DFDF400F53E30 /* HundredHoursDev */;
+			targetProxy = 5D0863B2232084EB00CD58F5 /* PBXContainerItemProxy */;
 		};
-		5DB73522231DFDF700F53E30 /* PBXTargetDependency */ = {
+		5D0863C12320852600CD58F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5DB734FD231DFDF400F53E30 /* 100HoursDev */;
-			targetProxy = 5DB73521231DFDF700F53E30 /* PBXContainerItemProxy */;
+			target = 5DB734FD231DFDF400F53E30 /* HundredHoursDev */;
+			targetProxy = 5D0863C02320852600CD58F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -308,6 +308,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5D0863B5232084EB00CD58F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = HundredHoursDevTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.HundredHoursDevTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HundredHoursDev.app/HundredHoursDev";
+			};
+			name = Debug;
+		};
+		5D0863B6232084EB00CD58F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = HundredHoursDevTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.HundredHoursDevTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HundredHoursDev.app/HundredHoursDev";
+			};
+			name = Release;
+		};
+		5D0863C32320852600CD58F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = HundredHoursDevUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.HundredHoursDevUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HundredHoursDev;
+			};
+			name = Debug;
+		};
+		5D0863C42320852600CD58F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = HundredHoursDevUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.HundredHoursDevUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HundredHoursDev;
+			};
+			name = Release;
+		};
 		5DB73527231DFDF700F53E30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -430,12 +508,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDev/Info.plist;
+				INFOPLIST_FILE = HundredHoursDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-HundredHoursDev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,104 +526,40 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDev/Info.plist;
+				INFOPLIST_FILE = HundredHoursDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-HundredHoursDev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		5DB7352D231DFDF700F53E30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDevTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDevTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/100HoursDev.app/100HoursDev";
-			};
-			name = Debug;
-		};
-		5DB7352E231DFDF700F53E30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDevTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDevTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/100HoursDev.app/100HoursDev";
-			};
-			name = Release;
-		};
-		5DB73530231DFDF700F53E30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDevUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDevUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 100HoursDev;
-			};
-			name = Debug;
-		};
-		5DB73531231DFDF700F53E30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R7Y8QKEC95;
-				INFOPLIST_FILE = 100HoursDevUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.-00HoursDevUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 100HoursDev;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5DB734F9231DFDF400F53E30 /* Build configuration list for PBXProject "100HoursDev" */ = {
+		5D0863B4232084EB00CD58F5 /* Build configuration list for PBXNativeTarget "HundredHoursDevTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D0863B5232084EB00CD58F5 /* Debug */,
+				5D0863B6232084EB00CD58F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D0863C22320852600CD58F5 /* Build configuration list for PBXNativeTarget "HundredHoursDevUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D0863C32320852600CD58F5 /* Debug */,
+				5D0863C42320852600CD58F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DB734F9231DFDF400F53E30 /* Build configuration list for PBXProject "HundredHoursDev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5DB73527231DFDF700F53E30 /* Debug */,
@@ -554,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5DB73529231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDev" */ = {
+		5DB73529231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "HundredHoursDev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5DB7352A231DFDF700F53E30 /* Debug */,
@@ -563,34 +577,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5DB7352C231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDevTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5DB7352D231DFDF700F53E30 /* Debug */,
-				5DB7352E231DFDF700F53E30 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5DB7352F231DFDF700F53E30 /* Build configuration list for PBXNativeTarget "100HoursDevUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5DB73530231DFDF700F53E30 /* Debug */,
-				5DB73531231DFDF700F53E30 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5DB73508231DFDF400F53E30 /* _00HoursDev.xcdatamodeld */ = {
+		5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5DB73509231DFDF400F53E30 /* _00HoursDev.xcdatamodel */,
 			);
 			currentVersion = 5DB73509231DFDF400F53E30 /* _00HoursDev.xcdatamodel */;
-			path = _00HoursDev.xcdatamodeld;
+			path = HundredHoursDev.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -1,15 +1,14 @@
 //
-//  _00HoursDevTests.swift
-//  100HoursDevTests
+//  HundredHoursDevTests.swift
+//  HundredHoursDevTests
 //
-//  Created by Stephen Ouyang on 9/2/19.
+//  Created by Stephen Ouyang on 9/4/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
 import XCTest
-@testable import _00HoursDev
 
-class _00HoursDevTests: XCTestCase {
+class HundredHoursDevTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

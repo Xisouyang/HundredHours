@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     static var goalsArr: [String] = []
+    var isEmptyState: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +19,13 @@ class HomeViewController: UIViewController {
         navigationItem.title = "Goals"
         
         if HomeViewController.goalsArr.isEmpty {
+            isEmptyState = true
+        } else {
+            isEmptyState = false
+        }
+        
+        if isEmptyState {
             useEmptyStateView()
-            
         }
     }
     
