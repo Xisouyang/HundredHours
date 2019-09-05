@@ -7,11 +7,13 @@
 //
 
 import XCTest
+@testable import HundredHoursDev
 
 class HundredHoursDevTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
     }
 
     override func tearDown() {
@@ -29,5 +31,18 @@ class HundredHoursDevTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+    func testEmptyState() {
+        let testView = HomeViewController()
+        HomeViewController.goalsArr = []
+        testView.viewDidLoad()
+        XCTAssertTrue(testView.isEmptyState)
+    }
+    
+    func testNonEmptyState() {
+        let testView = HomeViewController()
+        HomeViewController.goalsArr = ["something"]
+        testView.viewDidLoad()
+        XCTAssertFalse(testView.isEmptyState)
+    }
 }
