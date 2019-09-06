@@ -37,5 +37,15 @@ class NewGoalViewController: UIViewController {
     
     @objc func createTapped() {
         print("tapped")
+        checkTextFields()
+    }
+    
+    func checkTextFields() {
+        
+        if newGoalView.goalNameTextField.text == "" ||
+            newGoalView.goalHoursTextField.text == "" {
+            
+            print("HI")
+        }
     }
 }

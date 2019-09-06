@@ -13,6 +13,8 @@
 		5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */; };
 		5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */; };
 		5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */; };
+		5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */; };
+		5D6DB6022323121A004B08F1 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6DB6012323121A004B08F1 /* ErrorView.swift */; };
 		5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73501231DFDF400F53E30 /* AppDelegate.swift */; };
 		5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73503231DFDF400F53E30 /* HomeViewController.swift */; };
 		5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */; };
@@ -49,6 +51,8 @@
 		5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSuperView.swift; sourceTree = "<group>"; };
 		5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
+		5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		5D6DB6012323121A004B08F1 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5DB734FE231DFDF400F53E30 /* HundredHoursDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HundredHoursDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB73501231DFDF400F53E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DB73503231DFDF400F53E30 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +132,9 @@
 				5DB73501231DFDF400F53E30 /* AppDelegate.swift */,
 				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
+				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
+				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
 				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 				5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */,
@@ -286,10 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
 				5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,
+				5D6DB6022323121A004B08F1 /* ErrorView.swift in Sources */,
 				5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 				5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */,
