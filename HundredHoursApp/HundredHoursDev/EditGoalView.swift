@@ -1,14 +1,14 @@
 //
-//  CreateGoalView.swift
+//  EditGoalView.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 9/5/19.
+//  Created by Stephen Ouyang on 9/6/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
 import UIKit
 
-class NewGoalView: GoalSuperView {
+class EditGoalView: GoalSuperView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +20,6 @@ class NewGoalView: GoalSuperView {
     }
     
     func configButton() {
-        defaultButton.setTitle("Create", for: .normal)
+        defaultButton.setTitle("Edit", for: .normal)
     }
 }

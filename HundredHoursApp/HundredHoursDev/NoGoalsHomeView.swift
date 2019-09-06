@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoGoalsView: UIView {
+class NoGoalsHomeView: UIView {
     
     let newGoalButton: UIButton = {
         let button = UIButton()
@@ -62,6 +62,6 @@ class NoGoalsView: UIView {
         newGoalButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: emptyStateLabel.topAnchor, multiplier: 40).isActive = true
+        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: emptyStateLabel.topAnchor, multiplier: 38).isActive = true
     }
 }

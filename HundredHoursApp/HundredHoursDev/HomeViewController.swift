@@ -46,7 +46,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if HomeViewController.goalsArr.isEmpty {
-            let noGoalsView = NoGoalsView(frame: view.frame)
+            let noGoalsView = NoGoalsHomeView(frame: view.frame)
             noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
             tableView.backgroundView = noGoalsView
             tableView.separatorStyle = .none
@@ -58,15 +58,6 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
         return cell
-    }
-}
-
-extension HomeViewController {
-    
-    func goalTableViewConstraints() {
-        goalTableView.translatesAutoresizingMaskIntoConstraints = false
-        goalTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        goalTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 }
 
