@@ -11,28 +11,21 @@ import UIKit
 class HomeViewController: UIViewController {
     
     static var goalsArr: [String] = []
-    var isEmptyState: Bool = true
+    var goalTableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.title = "Goals"
-        
-        if HomeViewController.goalsArr.isEmpty {
-            isEmptyState = true
-        } else {
-            isEmptyState = false
-        }
-        
-        if isEmptyState {
-            useEmptyStateView()
-        }
+        setTableView()
     }
     
-    func useEmptyStateView() {
-        let emptyView = NoGoalsView(frame: view.frame)
-        view.addSubview(emptyView)
-        emptyView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
+    func setTableView() {
+        
+        goalTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
+        goalTableView.dataSource = self
+        goalTableView.delegate = self
+        view.addSubview(goalTableView)
     }
 }
 
@@ -40,6 +33,40 @@ extension HomeViewController {
     
     @objc func newGoalTapped() {
         print("tapped")
+        let vc = NewGoalViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if HomeViewController.goalsArr.isEmpty {
+            let noGoalsView = NoGoalsView(frame: view.frame)
+            noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
+            tableView.backgroundView = noGoalsView
+            tableView.separatorStyle = .none
+        }
+        
+        return HomeViewController.goalsArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
+        return cell
+    }
+}
+
+extension HomeViewController {
+    
+    func goalTableViewConstraints() {
+        goalTableView.translatesAutoresizingMaskIntoConstraints = false
+        goalTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        goalTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 }
 

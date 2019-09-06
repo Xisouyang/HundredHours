@@ -13,8 +13,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black,
-                          NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 45)]
+    let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8),
+                          NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 50)]
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let appearance = UINavigationBar.appearance()
         appearance.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        appearance.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         appearance.prefersLargeTitles = true
         appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
     }

@@ -32,17 +32,17 @@ class HundredHoursDevTests: XCTestCase {
         }
     }
     
-    func testEmptyState() {
-        let testView = HomeViewController()
-        HomeViewController.goalsArr = []
-        testView.viewDidLoad()
-        XCTAssertTrue(testView.isEmptyState)
-    }
-    
-    func testNonEmptyState() {
-        let testView = HomeViewController()
-        HomeViewController.goalsArr = ["something"]
-        testView.viewDidLoad()
-        XCTAssertFalse(testView.isEmptyState)
-    }
+//    func testEmptyState() {
+//        let testView = HomeViewController()
+//        testView.viewDidLoad()
+//        HomeViewController.goalsArr = []
+//        XCTAssertNotNil(testView.goalTableView.backgroundView)
+//    }
+//    
+//    func testNonEmptyState() {
+//        let testView = HomeViewController()
+//        testView.viewDidLoad()
+//        HomeViewController.goalsArr = ["something"]
+//        XCTAssertNil(testView.goalTableView.backgroundView)
+//    }
 }
