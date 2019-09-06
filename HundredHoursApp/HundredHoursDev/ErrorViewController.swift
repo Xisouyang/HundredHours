@@ -10,9 +10,25 @@ import UIKit
 
 class ErrorViewController: UIViewController {
     
+    let errorView = ErrorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let errorView = ErrorView(frame: view.frame)
+        errorView.frame = view.frame
         view.addSubview(errorView)
+        setupSwipeGesture()
+    }
+    
+    func setupSwipeGesture() {
+        
+        let gestureDown = UISwipeGestureRecognizer()
+        gestureDown.numberOfTouchesRequired = 1
+        gestureDown.direction = .down
+        gestureDown.addTarget(self, action: #selector(viewSwiped))
+        errorView.addGestureRecognizer(gestureDown)
+    }
+    
+    @objc func viewSwiped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }

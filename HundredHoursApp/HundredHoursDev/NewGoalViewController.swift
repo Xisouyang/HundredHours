@@ -19,7 +19,7 @@ import UIKit
         store that string to tableView list in the HomeViewController
         navigate to the home view controller
  
-        Implement Core Data functionality to store the goal strings locally
+        implement Core Data functionality to store the goal strings locally
  */
 
 
@@ -45,7 +45,13 @@ class NewGoalViewController: UIViewController {
         if newGoalView.goalNameTextField.text == "" ||
             newGoalView.goalHoursTextField.text == "" {
             
-            print("HI")
+            presentErrorView()
         }
+    }
+    
+    func presentErrorView() {
+        let errorVC = ErrorViewController()
+        errorVC.modalPresentationStyle = .overFullScreen
+        present(errorVC, animated: true)
     }
 }

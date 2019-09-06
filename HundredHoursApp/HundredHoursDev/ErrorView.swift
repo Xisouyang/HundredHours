@@ -16,7 +16,7 @@ class ErrorView: UIView {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.font = UIFont(name: "HelveticaNeue", size: 25)
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
         
         return label
     }()
@@ -40,7 +40,7 @@ class ErrorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6827910959)
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4018621575)
         
         addSubview(errorView)
         errorViewConstraints()

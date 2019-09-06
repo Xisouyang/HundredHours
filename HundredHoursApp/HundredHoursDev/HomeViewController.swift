@@ -47,8 +47,8 @@ extension HomeViewController: UITableViewDataSource {
         
         if HomeViewController.goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: view.frame)
-            noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
             tableView.backgroundView = noGoalsView
+            noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
             tableView.separatorStyle = .none
         }
         
