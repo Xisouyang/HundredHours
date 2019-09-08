@@ -16,7 +16,7 @@ class ErrorView: UIView {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
+        label.font = UIFont(name: "HelveticaNeue", size: 20)
         
         return label
     }()
@@ -24,7 +24,7 @@ class ErrorView: UIView {
     let errorView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        view.layer.cornerRadius = 75
+        view.layer.cornerRadius = 50
         
         return view
     }()
@@ -40,7 +40,7 @@ class ErrorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4018621575)
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1000374572)
         
         addSubview(errorView)
         errorViewConstraints()
@@ -60,13 +60,15 @@ class ErrorView: UIView {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         errorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        errorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85).isActive = true
-        errorView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4).isActive = true
+        errorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+        errorView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
     }
     
     func errorCircleViewConstraints() {
         
         errorCircleView.translatesAutoresizingMaskIntoConstraints = false
+        errorCircleView.widthAnchor.constraint(equalTo: errorView.widthAnchor, multiplier: 0.25).isActive = true
+        errorCircleView.heightAnchor.constraint(equalTo: errorView.widthAnchor, multiplier: 0.25).isActive = true
         errorCircleView.topAnchor.constraint(equalToSystemSpacingBelow: errorView.topAnchor, multiplier: 8).isActive = true
         errorCircleView.centerXAnchor.constraint(equalTo: errorView.centerXAnchor).isActive = true
     }
@@ -74,8 +76,8 @@ class ErrorView: UIView {
     func errorLabelConstraints() {
         errorMsgLabel.translatesAutoresizingMaskIntoConstraints = false
         errorMsgLabel.widthAnchor.constraint(equalTo: errorView.widthAnchor, multiplier: 0.8).isActive = true
-        errorMsgLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        errorMsgLabel.heightAnchor.constraint(equalTo: errorView.heightAnchor, multiplier: 0.25).isActive = true
         errorMsgLabel.centerXAnchor.constraint(equalTo: errorView.centerXAnchor).isActive = true
-        errorMsgLabel.topAnchor.constraint(equalToSystemSpacingBelow: errorCircleView.bottomAnchor, multiplier: 2).isActive = true
+        errorMsgLabel.topAnchor.constraint(equalToSystemSpacingBelow: errorCircleView.bottomAnchor, multiplier: 1).isActive = true
     }
 }

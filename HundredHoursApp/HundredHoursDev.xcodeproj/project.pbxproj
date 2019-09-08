@@ -20,6 +20,7 @@
 		5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */; };
 		5DB7350C231DFDF600F53E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350B231DFDF600F53E30 /* Assets.xcassets */; };
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
+		5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		5DB7350B231DFDF600F53E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DB7350E231DFDF600F53E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			children = (
 				5DB73501231DFDF400F53E30 /* AppDelegate.swift */,
 				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
+				5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */,
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
 				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
@@ -294,6 +297,7 @@
 			files = (
 				5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
+				5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */,
 				5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,

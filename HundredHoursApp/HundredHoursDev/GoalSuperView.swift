@@ -15,14 +15,14 @@ class GoalSuperView: UIView {
     let goalNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Goal Name"
-        label.font = UIFont(name: "HelveticaNeue", size: 35)
+        label.font = UIFont(name: "HelveticaNeue", size: 30)
         return label
     }()
     
     let goalHoursLabel: UILabel = {
         let label = UILabel()
         label.text = "Number of Hours"
-        label.font = UIFont(name: "HelveticaNeue", size: 35)
+        label.font = UIFont(name: "HelveticaNeue", size: 30)
         return label
     }()
     

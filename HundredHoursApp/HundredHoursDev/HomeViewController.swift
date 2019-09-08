@@ -19,6 +19,13 @@ class HomeViewController: UIViewController {
         setTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print(HomeViewController.goalsArr)
+        goalTableView.reloadData()
+    }
+    
     func setTableView() {
         
         goalTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -57,6 +64,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
+        cell.textLabel?.text = HomeViewController.goalsArr[indexPath.row]
         return cell
     }
 }

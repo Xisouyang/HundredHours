@@ -37,16 +37,39 @@ class NewGoalViewController: UIViewController {
     
     @objc func createTapped() {
         print("tapped")
-        checkTextFields()
+        let shouldPresentError = checkTextFields()
+        
+        if shouldPresentError {
+            
+            presentErrorView()
+        } else {
+            
+            addGoal()
+            navigationController?.initRootViewController(vc: HomeViewController())
+        }
     }
     
-    func checkTextFields() {
+    func checkTextFields() -> Bool {
+        
+        var shouldPresentError = false
         
         if newGoalView.goalNameTextField.text == "" ||
             newGoalView.goalHoursTextField.text == "" {
             
-            presentErrorView()
+            shouldPresentError = true
         }
+        
+        guard let unwrappedHoursCheck = newGoalView.goalHoursTextField.text else {
+            
+            shouldPresentError = true
+            return shouldPresentError
+        }
+        if Int(unwrappedHoursCheck) == nil {
+            
+            shouldPresentError = true
+        }
+        
+        return shouldPresentError
     }
     
     func presentErrorView() {
@@ -54,4 +77,21 @@ class NewGoalViewController: UIViewController {
         errorVC.modalPresentationStyle = .overFullScreen
         present(errorVC, animated: true)
     }
+    
+    func addGoal() {
+        
+        guard let unwrappedGoalName = newGoalView.goalNameTextField.text else { return }
+        guard let unwrappedGoalHours = newGoalView.goalHoursTextField.text else { return }
+        let result = getGoalString(goalName: unwrappedGoalName, goalHours: unwrappedGoalHours)
+        HomeViewController.goalsArr.append(result)
+    }
+    
+    func getGoalString(goalName: String, goalHours: String) -> String {
+        
+        let result: String = goalName + " - " + goalHours + " HOURS"
+        return result
+    }
 }
+
+
+
