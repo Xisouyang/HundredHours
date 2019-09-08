@@ -132,21 +132,45 @@
 			isa = PBXGroup;
 			children = (
 				5DB73501231DFDF400F53E30 /* AppDelegate.swift */,
-				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
-				5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */,
-				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
-				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
-				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
-				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
-				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
-				5DFBC975232223D500896D64 /* NewGoalView.swift */,
-				5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */,
+				5DF6EA012325ABC600EC64B7 /* Models */,
+				5DF6EA002325ABB500EC64B7 /* Views */,
+				5DF6EA022325ABD400EC64B7 /* Controllers */,
 				5DB7350B231DFDF600F53E30 /* Assets.xcassets */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 				5DB73510231DFDF600F53E30 /* Info.plist */,
 				5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */,
 			);
 			path = HundredHoursDev;
+			sourceTree = "<group>";
+		};
+		5DF6EA002325ABB500EC64B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */,
+				5DFBC975232223D500896D64 /* NewGoalView.swift */,
+				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
+				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
+				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5DF6EA012325ABC600EC64B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5DF6EA022325ABD400EC64B7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
+				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
+				5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */,
+				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
