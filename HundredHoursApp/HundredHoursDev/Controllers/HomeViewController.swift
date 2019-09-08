@@ -12,18 +12,29 @@ class HomeViewController: UIViewController {
     
     static var goalsArr: [String] = []
     var goalTableView = UITableView()
+    
+    var newGoalButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Create Button", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        button.layer.cornerRadius = 25
+        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
+        button.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
+        
+        button.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowOpacity = 1
+        button.layer.shadowRadius = 3
+        
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
         setTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print(HomeViewController.goalsArr)
-        goalTableView.reloadData()
     }
     
     func setTableView() {
@@ -34,12 +45,20 @@ class HomeViewController: UIViewController {
         goalTableView.delegate = self
         view.addSubview(goalTableView)
     }
+    
+    func buttonConstraints() {
+        
+        newGoalButton.translatesAutoresizingMaskIntoConstraints = false
+        newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+        newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 84).isActive = true
+    }
 }
 
 extension HomeViewController {
     
     @objc func newGoalTapped() {
-        print("tapped")
         let vc = NewGoalViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -57,6 +76,10 @@ extension HomeViewController: UITableViewDataSource {
             tableView.backgroundView = noGoalsView
             noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
             tableView.separatorStyle = .none
+        } else {
+            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
+            view.addSubview(newGoalButton)
+            buttonConstraints()
         }
         
         return HomeViewController.goalsArr.count
