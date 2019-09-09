@@ -36,9 +36,8 @@ class NewGoalViewController: UIViewController {
     }
     
     @objc func createTapped() {
-        print("tapped")
-        let shouldPresentError = checkTextFields()
         
+        let shouldPresentError = checkTextFields()
         if shouldPresentError {
             
             presentErrorView()
@@ -83,12 +82,18 @@ class NewGoalViewController: UIViewController {
         guard let unwrappedGoalName = newGoalView.goalNameTextField.text else { return }
         guard let unwrappedGoalHours = newGoalView.goalHoursTextField.text else { return }
         let result = getGoalString(goalName: unwrappedGoalName, goalHours: unwrappedGoalHours)
-        HomeViewController.goalsArr.append(result)
+        CoreDataManager.sharedManager.createGoalTitleObj(name: result)
     }
     
     func getGoalString(goalName: String, goalHours: String) -> String {
         
-        let result: String = goalName + " - " + goalHours + " HOURS"
+        var result: String = ""
+        
+        if Int(goalHours) == 1 {
+            result = goalName + " - " + goalHours + " HOUR"
+        } else {
+            result = goalName + " - " + goalHours + " HOURS"
+        }
         return result
     }
 }

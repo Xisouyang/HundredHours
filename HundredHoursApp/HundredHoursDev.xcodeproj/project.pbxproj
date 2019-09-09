@@ -22,6 +22,7 @@
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
 		5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
+		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		5DF6EA012325ABC600EC64B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5DFBD9E02326BF8500573139 /* CoreDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,
+				5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */,
 				5D6DB6022323121A004B08F1 /* ErrorView.swift in Sources */,
 				5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,

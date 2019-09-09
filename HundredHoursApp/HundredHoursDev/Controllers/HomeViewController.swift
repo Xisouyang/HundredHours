@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     var newGoalButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Create Button", for: .normal)
+        button.setTitle("New Goal", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         button.layer.cornerRadius = 25
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateGoalList()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
         setTableView()
@@ -57,6 +58,22 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
+    
+    func populateGoalList() {
+        
+        var data: [String] = []
+        
+        if let objArr = CoreDataManager.sharedManager.fetchAllGoalTitleObjs() {
+            for item in objArr {
+                if let goalName = item.value(forKey: "name") {
+                    data.append(goalName as! String)
+                }
+            }
+            
+            HomeViewController.goalsArr = data
+        }
+        
+    }
     
     @objc func newGoalTapped() {
         let vc = NewGoalViewController()
