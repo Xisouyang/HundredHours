@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    static var goalsArr: [String] = []
+    var goalsArr: [String] = []
     var goalTableView = UITableView()
     
     var newGoalButton: UIButton = {
@@ -36,6 +36,9 @@ class HomeViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
         setTableView()
+        
+        view.addSubview(newGoalButton)
+        buttonConstraints()
     }
     
     func setTableView() {
@@ -70,7 +73,7 @@ extension HomeViewController {
                 }
             }
             
-            HomeViewController.goalsArr = data
+            goalsArr = data
         }
         
     }
@@ -88,24 +91,52 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if HomeViewController.goalsArr.isEmpty {
+        if goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: view.frame)
             tableView.backgroundView = noGoalsView
-            noGoalsView.newGoalButton.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
             tableView.separatorStyle = .none
+            
         } else {
             tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
-            view.addSubview(newGoalButton)
-            buttonConstraints()
         }
         
-        return HomeViewController.goalsArr.count
+        return goalsArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        cell.textLabel?.text = HomeViewController.goalsArr[indexPath.row]
+        cell.textLabel?.text = goalsArr[indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            // create alert controller
+            let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+            // create action
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+                // delete story from array & Core Data
+                self.deleteGoal(indexPath: indexPath)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            })
+            alert.addAction(okAction)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func deleteGoal(indexPath: IndexPath) {
+
+        let goalName = goalsArr[indexPath.row]
+        let goalToRemove = CoreDataManager.sharedManager.fetchGoalTitleObj(name: goalName)
+        let goalID = goalToRemove?.objectID
+        guard let unwrappedID = goalID else { return }
+        CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
+        CoreDataManager.sharedManager.saveContext()
+        goalsArr.remove(at: indexPath.row)
+    }
+    
 }
 

@@ -100,5 +100,11 @@ class CoreDataManager {
         
         return goalNameObj
     }
+    
+    // remove any single item from Core Data
+    func removeItem( objectID: NSManagedObjectID ) {
+        let obj = context.object(with: objectID)
+        context.delete(obj)
+    }
 
 }
