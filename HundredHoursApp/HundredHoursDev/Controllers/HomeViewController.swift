@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
     
-    var goalsArr: [String] = []
+    var goalsArr: [NSManagedObject] = []
     var goalTableView = UITableView()
     
     var newGoalButton: UIButton = {
@@ -64,18 +65,10 @@ extension HomeViewController {
     
     func populateGoalList() {
         
-        var data: [String] = []
-        
-        if let objArr = CoreDataManager.sharedManager.fetchAllGoalTitleObjs() {
-            for item in objArr {
-                if let goalName = item.value(forKey: "name") {
-                    data.append(goalName as! String)
-                }
-            }
+        if let objArr = CoreDataManager.sharedManager.fetchAllGoals() {
             
-            goalsArr = data
+            goalsArr = objArr
         }
-        
     }
     
     @objc func newGoalTapped() {
@@ -85,29 +78,6 @@ extension HomeViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    
-}
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if goalsArr.isEmpty {
-            let noGoalsView = NoGoalsHomeView(frame: view.frame)
-            tableView.backgroundView = noGoalsView
-            tableView.separatorStyle = .none
-            
-        } else {
-            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
-        }
-        
-        return goalsArr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        cell.textLabel?.text = goalsArr[indexPath.row]
-        return cell
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -128,9 +98,9 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func deleteGoal(indexPath: IndexPath) {
-
-        let goalName = goalsArr[indexPath.row]
-        let goalToRemove = CoreDataManager.sharedManager.fetchGoalTitleObj(name: goalName)
+        
+        let goalName = goalsArr[indexPath.row].value(forKey: "title")
+        let goalToRemove = CoreDataManager.sharedManager.fetchGoal(name: goalName as! String)
         let goalID = goalToRemove?.objectID
         guard let unwrappedID = goalID else { return }
         CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
@@ -138,5 +108,43 @@ extension HomeViewController: UITableViewDataSource {
         goalsArr.remove(at: indexPath.row)
     }
     
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if goalsArr.isEmpty {
+            let noGoalsView = NoGoalsHomeView(frame: view.frame)
+            tableView.backgroundView = noGoalsView
+            tableView.separatorStyle = .none
+            
+        } else {
+            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
+        }
+        
+        return goalsArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
+        
+        let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
+        let goalHours = goalsArr[indexPath.row].value(forKey: "totalHours") as! Int
+        let cellString = getCellString(goalName: goalName, goalHours: String(goalHours))
+        cell.textLabel?.text = cellString
+        return cell
+    }
+    
+        func getCellString(goalName: String, goalHours: String) -> String {
+    
+            var result: String = ""
+    
+            if Int(goalHours) == 1 {
+                result = goalName + " - " + goalHours + " HOUR"
+            } else {
+                result = goalName + " - " + goalHours + " HOURS"
+            }
+            return result
+        }
 }
 

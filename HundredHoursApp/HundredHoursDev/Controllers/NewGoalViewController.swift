@@ -79,24 +79,25 @@ class NewGoalViewController: UIViewController {
     
     func addGoal() {
         
-        guard let unwrappedGoalName = newGoalView.goalNameTextField.text else { return }
-        guard let unwrappedGoalHours = newGoalView.goalHoursTextField.text else { return }
-        let result = getGoalString(goalName: unwrappedGoalName, goalHours: unwrappedGoalHours)
-        CoreDataManager.sharedManager.createGoalTitleObj(name: result)
-    }
-    
-    func getGoalString(goalName: String, goalHours: String) -> String {
+        guard let goalName = newGoalView.goalNameTextField.text else { return }
+        guard let goalHoursString = newGoalView.goalHoursTextField.text else { return }
+        guard let goalHours = Int(goalHoursString) else { return }
         
-        var result: String = ""
         
-        if Int(goalHours) == 1 {
-            result = goalName + " - " + goalHours + " HOUR"
-        } else {
-            result = goalName + " - " + goalHours + " HOURS"
-        }
-        return result
+        CoreDataManager.sharedManager.createGoal(name: goalName, hours: goalHours)
     }
 }
 
+//    func getGoalString(goalName: String, goalHours: String) -> String {
+//
+//        var result: String = ""
+//
+//        if Int(goalHours) == 1 {
+//            result = goalName + " - " + goalHours + " HOUR"
+//        } else {
+//            result = goalName + " - " + goalHours + " HOURS"
+//        }
+//        return result
+//    }
 
 

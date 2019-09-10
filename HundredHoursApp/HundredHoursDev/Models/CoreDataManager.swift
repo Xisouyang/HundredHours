@@ -49,26 +49,28 @@ class CoreDataManager {
         }
     }
     
-    func createGoalTitleObj(name: String) {
+    func createGoal(name: String, hours: Int) {
         
         // create storyboard entity
-        let entity = NSEntityDescription.entity(forEntityName: "GoalTitle", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
             print("FAILURE: entity unable to be unwrapped: \(String(describing: entity))")
             return
         }
         // create storyboard object using entity
         let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
-        object.setValue(name, forKey: "name")
+        object.setValue(name, forKey: "title")
+        object.setValue(hours, forKey: "totalHours")
+        object.setValue(0, forKey: "currentHours")
         
         // save
         saveContext()
     }
     
-    func fetchAllGoalTitleObjs() -> [NSManagedObject]? {
+    func fetchAllGoals() -> [NSManagedObject]? {
         
         var goalNameArr: [NSManagedObject] = []
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GoalTitle")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")
         
         do {
             goalNameArr = try context.fetch(fetchRequest)
@@ -80,13 +82,13 @@ class CoreDataManager {
         return goalNameArr
     }
     
-    func fetchGoalTitleObj(name: String) -> NSManagedObject? {
+    func fetchGoal(name: String) -> NSManagedObject? {
         
         var goalNameArr: [NSManagedObject] = []
         var goalNameObj: NSManagedObject?
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GoalTitle")
-        fetchRequest.predicate = NSPredicate(format: "%@ = name", name)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")
+        fetchRequest.predicate = NSPredicate(format: "%@ = title", name)
         
         do {
             goalNameArr = try context.fetch(fetchRequest)
