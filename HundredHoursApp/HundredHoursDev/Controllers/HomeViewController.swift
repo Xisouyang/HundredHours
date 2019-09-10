@@ -114,6 +114,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if goalsArr.isEmpty {
+            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
             let noGoalsView = NoGoalsHomeView(frame: view.frame)
             tableView.backgroundView = noGoalsView
             tableView.separatorStyle = .none
@@ -135,16 +136,16 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-        func getCellString(goalName: String, goalHours: String) -> String {
-    
-            var result: String = ""
-    
-            if Int(goalHours) == 1 {
-                result = goalName + " - " + goalHours + " HOUR"
-            } else {
-                result = goalName + " - " + goalHours + " HOURS"
-            }
-            return result
+    func getCellString(goalName: String, goalHours: String) -> String {
+
+        var result: String = ""
+
+        if Int(goalHours) == 1 {
+            result = goalName + " - " + goalHours + " HOUR"
+        } else {
+            result = goalName + " - " + goalHours + " HOURS"
         }
+        return result
+    }
 }
 

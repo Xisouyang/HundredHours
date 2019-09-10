@@ -88,16 +88,4 @@ class NewGoalViewController: UIViewController {
     }
 }
 
-//    func getGoalString(goalName: String, goalHours: String) -> String {
-//
-//        var result: String = ""
-//
-//        if Int(goalHours) == 1 {
-//            result = goalName + " - " + goalHours + " HOUR"
-//        } else {
-//            result = goalName + " - " + goalHours + " HOURS"
-//        }
-//        return result
-//    }
-
 
