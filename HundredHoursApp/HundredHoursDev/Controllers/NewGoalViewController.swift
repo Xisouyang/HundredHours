@@ -8,7 +8,7 @@
 
 import UIKit
 
-/* TODO:
+/* TODO -DONE:
  
         function to validate information entered is valid
             - text fields cannot be blank
@@ -36,55 +36,26 @@ class NewGoalViewController: UIViewController {
     }
     
     @objc func createTapped() {
-        
-        let shouldPresentError = checkTextFields()
+
+        guard let goalName = newGoalView.goalNameTextField.text else { return }
+        guard let goalHours = newGoalView.goalHoursTextField.text else { return }
+
+        let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
+
         if shouldPresentError {
-            
+
             presentErrorView()
         } else {
-            
-            addGoal()
+
+            newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
             navigationController?.initRootViewController(vc: HomeViewController())
         }
     }
-    
-    func checkTextFields() -> Bool {
-        
-        var shouldPresentError = false
-        
-        if newGoalView.goalNameTextField.text == "" ||
-            newGoalView.goalHoursTextField.text == "" {
-            
-            shouldPresentError = true
-        }
-        
-        guard let unwrappedHoursCheck = newGoalView.goalHoursTextField.text else {
-            
-            shouldPresentError = true
-            return shouldPresentError
-        }
-        if Int(unwrappedHoursCheck) == nil {
-            
-            shouldPresentError = true
-        }
-        
-        return shouldPresentError
-    }
-    
+
     func presentErrorView() {
         let errorVC = ErrorViewController()
         errorVC.modalPresentationStyle = .overFullScreen
         present(errorVC, animated: true)
-    }
-    
-    func addGoal() {
-        
-        guard let goalName = newGoalView.goalNameTextField.text else { return }
-        guard let goalHoursString = newGoalView.goalHoursTextField.text else { return }
-        guard let goalHours = Int(goalHoursString) else { return }
-        
-        
-        CoreDataManager.sharedManager.createGoal(name: goalName, hours: goalHours)
     }
 }
 

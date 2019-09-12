@@ -11,6 +11,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
+    let viewModel = HomeViewModel()
     var goalsArr: [NSManagedObject] = []
     var goalTableView = UITableView()
     
@@ -33,7 +34,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateGoalList()
+        goalsArr = viewModel.populateGoalList()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
         setTableView()
@@ -62,14 +63,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
-    
-    func populateGoalList() {
-        
-        if let objArr = CoreDataManager.sharedManager.fetchAllGoals() {
-            
-            goalsArr = objArr
-        }
-    }
     
     @objc func newGoalTapped() {
         let vc = NewGoalViewController()
@@ -131,21 +124,9 @@ extension HomeViewController: UITableViewDataSource {
         
         let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
         let goalHours = goalsArr[indexPath.row].value(forKey: "totalHours") as! Int
-        let cellString = getCellString(goalName: goalName, goalHours: String(goalHours))
+        let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))
         cell.textLabel?.text = cellString
         return cell
-    }
-    
-    func getCellString(goalName: String, goalHours: String) -> String {
-
-        var result: String = ""
-
-        if Int(goalHours) == 1 {
-            result = goalName + " - " + goalHours + " HOUR"
-        } else {
-            result = goalName + " - " + goalHours + " HOURS"
-        }
-        return result
     }
 }
 

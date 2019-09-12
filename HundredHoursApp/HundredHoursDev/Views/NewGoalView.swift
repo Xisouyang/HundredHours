@@ -10,6 +10,8 @@ import UIKit
 
 class NewGoalView: GoalSuperView {
     
+    var viewModel = NewGoalViewModel()
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         configButton()
