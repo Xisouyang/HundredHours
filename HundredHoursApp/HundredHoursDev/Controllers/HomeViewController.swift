@@ -72,6 +72,12 @@ extension HomeViewController {
 
 extension HomeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.navigationItem.title = goalsArr[indexPath.row].value(forKey: "title") as? String
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -80,7 +86,8 @@ extension HomeViewController: UITableViewDelegate {
             // create action
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                 // delete story from array & Core Data
-                self.deleteGoal(indexPath: indexPath)
+                guard let resultList = self.viewModel.deleteGoal(indexPath: indexPath, goalList: self.goalsArr) else { return }
+                self.goalsArr = resultList
                 tableView.deleteRows(at: [indexPath], with: .fade)
             })
             alert.addAction(okAction)
@@ -89,18 +96,6 @@ extension HomeViewController: UITableViewDelegate {
             self.present(alert, animated: true)
         }
     }
-    
-    func deleteGoal(indexPath: IndexPath) {
-        
-        let goalName = goalsArr[indexPath.row].value(forKey: "title")
-        let goalToRemove = CoreDataManager.sharedManager.fetchGoal(name: goalName as! String)
-        let goalID = goalToRemove?.objectID
-        guard let unwrappedID = goalID else { return }
-        CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
-        CoreDataManager.sharedManager.saveContext()
-        goalsArr.remove(at: indexPath.row)
-    }
-    
 }
 
 extension HomeViewController: UITableViewDataSource {
