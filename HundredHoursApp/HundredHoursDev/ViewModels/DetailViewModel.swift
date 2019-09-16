@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DetailViewModel {
     
-    var goalTitle: String
+    var goal: NSManagedObject
     
-    init(title: String) {
-        self.goalTitle = title
+    init(goal: NSManagedObject) {
+        self.goal = goal
     }
     
 }

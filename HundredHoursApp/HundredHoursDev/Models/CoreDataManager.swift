@@ -82,27 +82,6 @@ class CoreDataManager {
         return goalNameArr
     }
     
-    func fetchGoal(name: String) -> NSManagedObject? {
-        
-        var goalNameArr: [NSManagedObject] = []
-        var goalNameObj: NSManagedObject?
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")
-        fetchRequest.predicate = NSPredicate(format: "%@ = title", name)
-        
-        do {
-            goalNameArr = try context.fetch(fetchRequest)
-            if !goalNameArr.isEmpty {
-                goalNameObj = goalNameArr.first
-            }
-
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        return goalNameObj
-    }
-    
     // remove any single item from Core Data
     func removeItem( objectID: NSManagedObjectID ) {
         let obj = context.object(with: objectID)

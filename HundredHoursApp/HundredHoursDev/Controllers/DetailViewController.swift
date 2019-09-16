@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
+    
+    var goal: NSManagedObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        guard let unwrappedGoal = goal else {
+            
+            print("ERROR: goal not passed to DetailViewController correctly")
+            return
+        }
+        
+        let detailViewModel = DetailViewModel(goal: unwrappedGoal)
+        let detailView = DetailGoalView(frame: view.frame)
+        view.addSubview(detailView)
+        navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
+        
     }
 }
