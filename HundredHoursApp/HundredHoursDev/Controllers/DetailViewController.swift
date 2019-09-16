@@ -27,5 +27,7 @@ class DetailViewController: UIViewController {
         view.addSubview(detailView)
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         
+        let percentage = detailViewModel.calcPercent()
+        detailView.animateBar(percentage: percentage)
     }
 }

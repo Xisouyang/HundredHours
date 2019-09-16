@@ -46,7 +46,7 @@ class DetailView: UIView {
     func createCircle(color: UIColor) -> CAShapeLayer {
         
         // create path
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: self.frame.width/3, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: self.frame.width/3.5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.587603271, green: 0.578435719, blue: 0.594556272, alpha: 1)
@@ -66,6 +66,25 @@ class DetailView: UIView {
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
         
         return shapeLayer
+    }
+    
+    func animateBar(percentage: CGFloat) {
+        
+        CATransaction.begin()
+        self.percentageLabel.text = "Loading"
+        CATransaction.setCompletionBlock {
+            print("animation done")
+            let percentNum = String(format: "%.01f", Double(percentage) * 100)
+            self.percentageLabel.text = "\(percentNum)%"
+        }
+        
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = percentage
+        basicAnimation.duration = 1
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.isRemovedOnCompletion = false
+        shapeLayer.add(basicAnimation, forKey: "keyOne")
+        CATransaction.commit()
     }
     
     func percentageLabelConstraints() {
