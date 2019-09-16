@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
         }
         
         let detailViewModel = DetailViewModel(goal: unwrappedGoal)
-        let detailView = DetailGoalView(frame: view.frame)
+        let detailView = DetailView(frame: view.frame)
         view.addSubview(detailView)
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         

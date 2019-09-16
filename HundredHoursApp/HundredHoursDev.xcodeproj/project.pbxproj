@@ -27,7 +27,7 @@
 		5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
-		5DFE43E0233001DE005C9A79 /* DetailGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailGoalView.swift */; };
+		5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 		5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		5DFE43DF233001DE005C9A79 /* DetailGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoalView.swift; sourceTree = "<group>"; };
+		5DFE43DF233001DE005C9A79 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +123,9 @@
 		5D9C529C232AC08800608D6D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */,
-				5D9C529D232B05BB00608D6D /* HomeViewModel.swift */,
 				5D051789232C1AC900B94C4B /* DetailViewModel.swift */,
+				5D9C529D232B05BB00608D6D /* HomeViewModel.swift */,
+				5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -168,13 +168,13 @@
 		5DF6EA002325ABB500EC64B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5DFE43DF233001DE005C9A79 /* DetailView.swift */,
 				5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */,
-				5DFE43DF233001DE005C9A79 /* DetailGoalView.swift */,
 				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
+				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
-				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,10 +190,10 @@
 		5DF6EA022325ABD400EC64B7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
 				5D051787232C1A1A00B94C4B /* DetailViewController.swift */,
-				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
+				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
+				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */,
 			);
 			path = Controllers;
@@ -359,7 +359,7 @@
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 				5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */,
 				5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */,
-				5DFE43E0233001DE005C9A79 /* DetailGoalView.swift in Sources */,
+				5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */,
 				5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */,
 				5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */,
 			);
