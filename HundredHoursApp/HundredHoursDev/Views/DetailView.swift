@@ -10,6 +10,8 @@ import UIKit
 
 class DetailView: UIView {
     
+    let timeStampsView = TimeStampsView(frame: .zero)
+    
     let shapeLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         return layer
@@ -37,6 +39,8 @@ class DetailView: UIView {
         self.layer.addSublayer(circle)
         addSubview(percentageLabel)
         percentageLabelConstraints()
+        addSubview(timeStampsView)
+        timeStampViewConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -94,5 +98,18 @@ class DetailView: UIView {
         percentageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         percentageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         percentageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    func timeStampViewConstraints() {
+        
+//        NSLayoutConstraint.activate([timeStampsView.widthAnchor.constraint(equalTo: self.widthAnchor),
+//            timeStampsView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.125),
+//            timeStampsView.leftAnchor.constraint(equalTo: self.leftAnchor),
+//            timeStampsView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1.1)])
+        timeStampsView.translatesAutoresizingMaskIntoConstraints = false
+        timeStampsView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        timeStampsView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        timeStampsView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 80).isActive = true
+        timeStampsView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
     }
 }

@@ -61,7 +61,7 @@ class CoreDataManager {
         let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
         object.setValue(name, forKey: "title")
         object.setValue(hours, forKey: "totalHours")
-        object.setValue(0, forKey: "currentHours")
+        object.setValue(10, forKey: "currentHours")
         
         // save
         saveContext()

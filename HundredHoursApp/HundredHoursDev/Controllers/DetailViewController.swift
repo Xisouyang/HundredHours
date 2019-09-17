@@ -12,6 +12,7 @@ import CoreData
 class DetailViewController: UIViewController {
     
     var goal: NSManagedObject?
+    var timeStampsTableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,5 +30,27 @@ class DetailViewController: UIViewController {
         
         let percentage = detailViewModel.calcPercent()
         detailView.animateBar(percentage: percentage)
+    }
+    
+    func setupTableView() {
+        timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
+        timeStampsTableView.delegate = self
+        timeStampsTableView.dataSource = self
+    }
+}
+
+extension DetailViewController: UITableViewDelegate {
+    
+}
+
+extension DetailViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath)
+        return cell
     }
 }

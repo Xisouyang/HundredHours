@@ -27,6 +27,7 @@
 		5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
+		5DFD97842331640600009AC0 /* TimeStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD97832331640600009AC0 /* TimeStampView.swift */; };
 		5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5DFD97832331640600009AC0 /* TimeStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampView.swift; sourceTree = "<group>"; };
 		5DFE43DF233001DE005C9A79 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				5DFE43DF233001DE005C9A79 /* DetailView.swift */,
+				5DFD97832331640600009AC0 /* TimeStampView.swift */,
 				5D6DB5FD2322D48A004B08F1 /* EditGoalView.swift */,
 				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
@@ -348,6 +351,7 @@
 				5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */,
 				5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
+				5DFD97842331640600009AC0 /* TimeStampView.swift in Sources */,
 				5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */,
 				5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,

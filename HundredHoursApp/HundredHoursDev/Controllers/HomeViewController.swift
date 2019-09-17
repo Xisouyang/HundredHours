@@ -74,7 +74,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
-//        vc.navigationItem.title = goalsArr[indexPath.row].value(forKey: "title") as? String
         vc.goal = goalsArr[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
