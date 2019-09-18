@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 84).isActive = true
+        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: view.frame.height * 0.105).isActive = true
     }
 }
 

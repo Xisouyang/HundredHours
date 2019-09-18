@@ -6,7 +6,11 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-// TODO: character limit for text fields
+/* TODO: character limit for text fields
+ 
+        change constraints so it works on every phone
+ 
+ */
 
 import UIKit
 
@@ -152,6 +156,6 @@ class GoalSuperView: UIView {
         defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6).isActive = true
         defaultButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         defaultButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        defaultButton.topAnchor.constraint(equalToSystemSpacingBelow: goalHoursTextField.bottomAnchor, multiplier: 10).isActive = true
+        defaultButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: UIScreen.main.bounds.height * 0.105).isActive = true
     }
 }

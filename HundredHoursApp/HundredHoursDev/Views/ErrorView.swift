@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: change constraints to work for all phones
+
 class ErrorView: UIView {
     
     let errorMsgLabel: UILabel = {

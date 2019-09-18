@@ -10,6 +10,8 @@ import UIKit
 
 class DetailView: UIView {
     
+    let gesture = UISwipeGestureRecognizer()
+    
     let timeStampView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height/1.2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -59,6 +61,8 @@ class DetailView: UIView {
         addSubview(timeStampView)
         timeStampView.addSubview(timeStampTitle)
         timeStampTitleConstraints()
+        setupGesture()
+        timeStampView.addGestureRecognizer(gesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -107,6 +111,40 @@ class DetailView: UIView {
         basicAnimation.isRemovedOnCompletion = false
         shapeLayer.add(basicAnimation, forKey: "keyOne")
         CATransaction.commit()
+    }
+    
+    func setupGesture() {
+        gesture.numberOfTouchesRequired = 1
+        gesture.direction = .up
+        gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))
+    }
+    
+    @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
+        print("swiped")
+        upAndDown()
+    }
+    
+    func upAndDown() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            
+            var startMainViewFrame = self.timeStampView.frame
+            
+            if startMainViewFrame.origin.y > 200 {
+                self.gesture.direction = .down
+                startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.8
+                self.timeStampView.frame = startMainViewFrame
+                print(self.timeStampView.frame)
+            } else {
+                self.gesture.direction = .up
+                startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
+                self.timeStampView.frame = startMainViewFrame
+                print(self.timeStampView.frame)
+            }
+            
+        }, completion: { complete in
+            print("animation completed")
+        })
     }
     
     func timeStampTitleConstraints() {
