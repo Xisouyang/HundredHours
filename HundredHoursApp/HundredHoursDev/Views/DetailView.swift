@@ -35,6 +35,7 @@ class DetailView: UIView {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
+        timeStampsView.frame = self.frame
         let circle = createCircle(color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
         self.layer.addSublayer(circle)
         addSubview(percentageLabel)
@@ -102,10 +103,6 @@ class DetailView: UIView {
     
     func timeStampViewConstraints() {
         
-//        NSLayoutConstraint.activate([timeStampsView.widthAnchor.constraint(equalTo: self.widthAnchor),
-//            timeStampsView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.125),
-//            timeStampsView.leftAnchor.constraint(equalTo: self.leftAnchor),
-//            timeStampsView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 1.1)])
         timeStampsView.translatesAutoresizingMaskIntoConstraints = false
         timeStampsView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         timeStampsView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true

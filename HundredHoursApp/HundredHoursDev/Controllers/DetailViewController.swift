@@ -12,6 +12,7 @@ import CoreData
 class DetailViewController: UIViewController {
     
     var goal: NSManagedObject?
+    let detailView = DetailView(frame: UIScreen.main.bounds)
     var timeStampsTableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
@@ -24,18 +25,29 @@ class DetailViewController: UIViewController {
         }
         
         let detailViewModel = DetailViewModel(goal: unwrappedGoal)
-        let detailView = DetailView(frame: view.frame)
         view.addSubview(detailView)
+        setupTableView()
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         
         let percentage = detailViewModel.calcPercent()
         detailView.animateBar(percentage: percentage)
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print(detailView.timeStampsView.frame)
     }
     
     func setupTableView() {
+        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampsView.frame.height * 0.08, width: detailView.timeStampsView.frame.width, height: detailView.timeStampsView.frame.height)
+        timeStampsTableView.frame = tableViewFrame
+        timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
         timeStampsTableView.delegate = self
         timeStampsTableView.dataSource = self
+        detailView.timeStampsView.addSubview(timeStampsTableView)
     }
 }
 
