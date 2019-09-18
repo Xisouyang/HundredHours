@@ -10,7 +10,24 @@ import UIKit
 
 class DetailView: UIView {
     
-    let timeStampsView = TimeStampsView(frame: .zero)
+    let timeStampView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height/1.2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.layer.cornerRadius = 25
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        return view
+    }()
+    
+    let timeStampTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Time Stamps"
+        label.textAlignment = .left
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "Avenir-Heavy", size: 25)
+        return label
+    }()
     
     let shapeLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
@@ -35,13 +52,13 @@ class DetailView: UIView {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        timeStampsView.frame = self.frame
         let circle = createCircle(color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
         self.layer.addSublayer(circle)
         addSubview(percentageLabel)
         percentageLabelConstraints()
-        addSubview(timeStampsView)
-        timeStampViewConstraints()
+        addSubview(timeStampView)
+        timeStampView.addSubview(timeStampTitle)
+        timeStampTitleConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,6 +109,15 @@ class DetailView: UIView {
         CATransaction.commit()
     }
     
+    func timeStampTitleConstraints() {
+        
+        timeStampTitle.translatesAutoresizingMaskIntoConstraints = false
+        timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.6).isActive = true
+        timeStampTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        timeStampTitle.topAnchor.constraint(equalToSystemSpacingBelow: timeStampView.topAnchor, multiplier: 2).isActive = true
+        timeStampTitle.leftAnchor.constraint(equalToSystemSpacingAfter: timeStampView.leftAnchor, multiplier: 2).isActive = true
+    }
+    
     func percentageLabelConstraints() {
         
         percentageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,14 +125,5 @@ class DetailView: UIView {
         percentageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         percentageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         percentageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    }
-    
-    func timeStampViewConstraints() {
-        
-        timeStampsView.translatesAutoresizingMaskIntoConstraints = false
-        timeStampsView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        timeStampsView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        timeStampsView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 80).isActive = true
-        timeStampsView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
     }
 }

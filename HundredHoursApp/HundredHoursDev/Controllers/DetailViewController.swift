@@ -37,17 +37,18 @@ class DetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        print(detailView.timeStampsView.frame)
+        print(detailView.timeStampView.frame)
     }
     
     func setupTableView() {
-        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampsView.frame.height * 0.08, width: detailView.timeStampsView.frame.width, height: detailView.timeStampsView.frame.height)
+        
+        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.timeStampView.frame.height)
         timeStampsTableView.frame = tableViewFrame
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
         timeStampsTableView.delegate = self
         timeStampsTableView.dataSource = self
-        detailView.timeStampsView.addSubview(timeStampsTableView)
+        detailView.timeStampView.addSubview(timeStampsTableView)
     }
 }
 
