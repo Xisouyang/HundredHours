@@ -6,6 +6,11 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+/*
+ TODO: create functionality to start timer view here
+       create functionality to stop and swipe timer down here
+ */
+
 import Foundation
 import UIKit
 import CoreData

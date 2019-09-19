@@ -8,12 +8,17 @@
 
 import UIKit
 
+/* TODO:
+        create button to start timer
+        move user interaction buttons/swipe functionality to controller
+ 
+ */
+
 class DetailView: UIView {
-    
-    let gesture = UISwipeGestureRecognizer()
     
     let timeStampView: UIView = {
         let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height/1.2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layer.cornerRadius = 25
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -61,8 +66,6 @@ class DetailView: UIView {
         addSubview(timeStampView)
         timeStampView.addSubview(timeStampTitle)
         timeStampTitleConstraints()
-        setupGesture()
-        timeStampView.addGestureRecognizer(gesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,30 +116,19 @@ class DetailView: UIView {
         CATransaction.commit()
     }
     
-    func setupGesture() {
-        gesture.numberOfTouchesRequired = 1
-        gesture.direction = .up
-        gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))
-    }
-    
-    @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
-        print("swiped")
-        upAndDown()
-    }
-    
-    func upAndDown() {
+    func scrollUpAndDown(gesture: UISwipeGestureRecognizer) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
             
             var startMainViewFrame = self.timeStampView.frame
             
             if startMainViewFrame.origin.y > 200 {
-                self.gesture.direction = .down
+                gesture.direction = .down
                 startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.8
                 self.timeStampView.frame = startMainViewFrame
                 print(self.timeStampView.frame)
             } else {
-                self.gesture.direction = .up
+                gesture.direction = .up
                 startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
                 self.timeStampView.frame = startMainViewFrame
                 print(self.timeStampView.frame)

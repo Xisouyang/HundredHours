@@ -6,6 +6,18 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+/*
+ TODO:
+ 
+    - move all swipe/button functions from view to here
+    - create button functions to start timer here
+    - create timer view and view model
+    - create time stamp entity, connect with goals entity one to many relation
+    - create update function in Core Data, call it when we swipe timer view down
+    - create function to create text string to store in time stamp table view
+ 
+ */
+
 import UIKit
 import CoreData
 
@@ -23,21 +35,18 @@ class DetailViewController: UIViewController {
             print("ERROR: goal not passed to DetailViewController correctly")
             return
         }
-        
+
         let detailViewModel = DetailViewModel(goal: unwrappedGoal)
         view.addSubview(detailView)
         setupTableView()
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         
+        let gesture = UISwipeGestureRecognizer()
+        setupGesture(gesture: gesture)
+        detailView.timeStampView.addGestureRecognizer(gesture)
+        
         let percentage = detailViewModel.calcPercent()
         detailView.animateBar(percentage: percentage)
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        print(detailView.timeStampView.frame)
     }
     
     func setupTableView() {
@@ -49,6 +58,19 @@ class DetailViewController: UIViewController {
         timeStampsTableView.delegate = self
         timeStampsTableView.dataSource = self
         detailView.timeStampView.addSubview(timeStampsTableView)
+    }
+    
+    // move to controller
+    func setupGesture(gesture: UISwipeGestureRecognizer) {
+        gesture.numberOfTouchesRequired = 1
+        gesture.direction = .up
+        gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))
+    }
+    
+    // move to controller
+    @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
+        print("swiped")
+        detailView.scrollUpAndDown(gesture: gesture)
     }
 }
 
