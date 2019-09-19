@@ -47,6 +47,8 @@ class DetailViewController: UIViewController {
         
         let percentage = detailViewModel.calcPercent()
         detailView.animateBar(percentage: percentage)
+        
+        detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
     }
     
     func setupTableView() {
@@ -60,17 +62,20 @@ class DetailViewController: UIViewController {
         detailView.timeStampView.addSubview(timeStampsTableView)
     }
     
-    // move to controller
     func setupGesture(gesture: UISwipeGestureRecognizer) {
         gesture.numberOfTouchesRequired = 1
         gesture.direction = .up
         gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))
     }
     
-    // move to controller
     @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
         print("swiped")
         detailView.scrollUpAndDown(gesture: gesture)
+    }
+    
+    @objc func timeButtonTapped() {
+        
+        print("tapped")
     }
 }
 

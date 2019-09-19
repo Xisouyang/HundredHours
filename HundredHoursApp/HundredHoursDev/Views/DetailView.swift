@@ -55,6 +55,20 @@ class DetailView: UIView {
         return label
     }()
     
+    let timeButton: UIButton = {
+        
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        button.setTitle("Timer", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .highlighted)
+        button.contentMode = .center
+        button.imageView?.contentMode = .scaleAspectFit
+        button.layer.borderWidth = 3
+        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -63,6 +77,11 @@ class DetailView: UIView {
         self.layer.addSublayer(circle)
         addSubview(percentageLabel)
         percentageLabelConstraints()
+        
+        timeButton.layer.cornerRadius = (self.frame.width * 0.18) / 2
+        addSubview(timeButton)
+        timeButtonConstraints()
+        
         addSubview(timeStampView)
         timeStampView.addSubview(timeStampTitle)
         timeStampTitleConstraints()
@@ -155,5 +174,14 @@ class DetailView: UIView {
         percentageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         percentageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         percentageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    func timeButtonConstraints() {
+        
+        timeButton.translatesAutoresizingMaskIntoConstraints = false
+        timeButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true
+        timeButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true
+        timeButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: self.frame.height * 0.08).isActive = true
+        timeButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
     }
 }
