@@ -11,6 +11,7 @@ import UIKit
 class TimerView: UIView {
     
     let model = TimerViewModel()
+    let tapGesture = UITapGestureRecognizer()
     
     var watchView: UIView = {
         

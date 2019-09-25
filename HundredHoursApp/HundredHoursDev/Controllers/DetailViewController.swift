@@ -29,26 +29,26 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupView()
+    }
+    
+    func setupView() {
         guard let unwrappedGoal = goal else {
-            
             print("ERROR: goal not passed to DetailViewController correctly")
             return
         }
-
-        let detailViewModel = DetailViewModel(goal: unwrappedGoal)
-        view.addSubview(detailView)
-        setupTableView()
-        navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         
         let gesture = UISwipeGestureRecognizer()
+        let detailViewModel = DetailViewModel(goal: unwrappedGoal)
+        let percentage = detailViewModel.calcPercent()
+        setupTableView()
         setupGesture(gesture: gesture)
         detailView.timeStampView.addGestureRecognizer(gesture)
-        
-        let percentage = detailViewModel.calcPercent()
         detailView.animateBar(percentage: percentage)
-        
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
+        navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
+        view.addSubview(detailView)
+
     }
     
     func setupTableView() {

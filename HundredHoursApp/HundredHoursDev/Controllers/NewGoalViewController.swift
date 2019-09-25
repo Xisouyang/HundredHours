@@ -35,24 +35,25 @@ class NewGoalViewController: UIViewController {
         view.addSubview(newGoalView)
     }
     
-    @objc func createTapped() {
-
+    @objc private func createTapped() {
+        createGoal()
+    }
+    
+    private func createGoal() {
         guard let goalName = newGoalView.goalNameTextField.text else { return }
         guard let goalHours = newGoalView.goalHoursTextField.text else { return }
-
+        
         let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
-
+        
         if shouldPresentError {
-
             presentErrorView()
         } else {
-
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
             navigationController?.initRootViewController(vc: HomeViewController())
         }
     }
 
-    func presentErrorView() {
+    private func presentErrorView() {
         newGoalView.blurScreen()
         let errorVC = ErrorViewController()
         errorVC.modalPresentationStyle = .overFullScreen

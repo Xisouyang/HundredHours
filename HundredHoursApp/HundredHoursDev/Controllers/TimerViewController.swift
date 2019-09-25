@@ -17,14 +17,17 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(timerView)
         view.backgroundColor = .clear
-        
+        timerView.tapGesture.addTarget(self, action: #selector(timerViewTapped))
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.frame = view.frame
-        
+    }
+    
+    @objc func timerViewTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func updateTimer() {
