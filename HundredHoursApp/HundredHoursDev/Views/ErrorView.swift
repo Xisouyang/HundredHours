@@ -12,6 +12,8 @@ import UIKit
 
 class ErrorView: UIView {
     
+    let tapGesture = UITapGestureRecognizer()
+    
     let errorMsgLabel: UILabel = {
         let label = UILabel()
         label.text = "Please enter correct input!"
@@ -41,17 +43,23 @@ class ErrorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1000374572)
-        
+        commonInit()
+    }
+    
+    func commonInit() {
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        setupGesture()
         addSubview(errorView)
-        errorViewConstraints()
-        
         errorView.addSubview(errorCircleView)
-        errorCircleViewConstraints()
-        
         errorView.addSubview(errorMsgLabel)
+        errorViewConstraints()
+        errorCircleViewConstraints()
         errorLabelConstraints()
+    }
+    
+    func setupGesture() {
+        tapGesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,8 +70,8 @@ class ErrorView: UIView {
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         errorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        errorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
-        errorView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
+        errorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+        errorView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35).isActive = true
     }
     
     func errorCircleViewConstraints() {

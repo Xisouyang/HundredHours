@@ -14,14 +14,35 @@ class NewGoalView: GoalSuperView {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configButton()
+        commonInit()
     }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func configButton() {
         defaultButton.setTitle("Create", for: .normal)
+    }
+    
+    func blurScreen() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurEffectView)
+    }
+    
+    func commonInit() {
+        NotificationCenter.default.addObserver(self, selector: #selector(removeBlur), name: Notification.Name("removeBlur"), object: nil)
+        configButton()
+    }
+    
+    @objc func removeBlur(notification: Notification) {
+        self.removeBlurEffect()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("removeBlur"), object: nil)
     }
 }

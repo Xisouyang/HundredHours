@@ -69,12 +69,12 @@ class DetailViewController: UIViewController {
     }
     
     @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
-        print("swiped")
+        print("Time stamps header swiped")
         detailView.scrollUpAndDown(gesture: gesture)
     }
     
     @objc func timeButtonTapped() {
-        print("tapped")
+        print("time tapped")
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen
         present(timerVC, animated: true, completion: nil)

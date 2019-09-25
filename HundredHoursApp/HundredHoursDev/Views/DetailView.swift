@@ -145,12 +145,10 @@ class DetailView: UIView {
                 gesture.direction = .down
                 startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.8
                 self.timeStampView.frame = startMainViewFrame
-                print(self.timeStampView.frame)
             } else {
                 gesture.direction = .up
                 startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
                 self.timeStampView.frame = startMainViewFrame
-                print(self.timeStampView.frame)
             }
             
         }, completion: { complete in

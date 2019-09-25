@@ -4,7 +4,6 @@
 //
 //  Created by Stephen Ouyang on 9/6/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
-//
 
 import UIKit
 
@@ -14,21 +13,17 @@ class ErrorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonInit()
+    }
+    
+    func commonInit() {
         errorView.frame = view.frame
         view.addSubview(errorView)
-        setupSwipeGesture()
+        errorView.tapGesture.addTarget(self, action: #selector(viewTapped))
     }
     
-    func setupSwipeGesture() {
-        
-        let gestureDown = UISwipeGestureRecognizer()
-        gestureDown.numberOfTouchesRequired = 1
-        gestureDown.direction = .down
-        gestureDown.addTarget(self, action: #selector(viewSwiped))
-        errorView.addGestureRecognizer(gestureDown)
-    }
-    
-    @objc func viewSwiped() {
+    @objc func viewTapped() {
+        NotificationCenter.default.post(name: Notification.Name("removeBlur"), object: self)
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -53,6 +53,7 @@ class NewGoalViewController: UIViewController {
     }
 
     func presentErrorView() {
+        newGoalView.blurScreen()
         let errorVC = ErrorViewController()
         errorVC.modalPresentationStyle = .overFullScreen
         present(errorVC, animated: true)
