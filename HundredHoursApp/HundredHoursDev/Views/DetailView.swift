@@ -56,7 +56,6 @@ class DetailView: UIView {
     }()
     
     let timeButton: UIButton = {
-        
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         button.setTitle("Timer", for: .normal)
@@ -72,18 +71,15 @@ class DetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
         let circle = createCircle(color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
-        self.layer.addSublayer(circle)
-        addSubview(percentageLabel)
-        percentageLabelConstraints()
-        
         timeButton.layer.cornerRadius = (self.frame.width * 0.18) / 2
+        addSubview(percentageLabel)
         addSubview(timeButton)
-        timeButtonConstraints()
-        
         addSubview(timeStampView)
         timeStampView.addSubview(timeStampTitle)
+        self.layer.addSublayer(circle)
+        percentageLabelConstraints()
+        timeButtonConstraints()
         timeStampTitleConstraints()
     }
     
@@ -92,19 +88,25 @@ class DetailView: UIView {
     }
     
     func createCircle(color: UIColor) -> CAShapeLayer {
-        
         // create path
         let circularPath = UIBezierPath(arcCenter: .zero, radius: self.frame.width/3.5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        trackLayer.path = circularPath.cgPath
+        configTrackLayer(path: circularPath)
+        configShapeLayer(path: circularPath, color: color)
+        self.layer.addSublayer(trackLayer)
+        return shapeLayer
+    }
+    
+    func configTrackLayer(path: UIBezierPath) {
+        trackLayer.path = path.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.587603271, green: 0.578435719, blue: 0.594556272, alpha: 1)
         trackLayer.lineWidth = 12.5
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = CAShapeLayerLineCap.round
         trackLayer.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
-        self.layer.addSublayer(trackLayer)
-        
-        shapeLayer.path = circularPath.cgPath
+    }
+    
+    func configShapeLayer(path: UIBezierPath, color: UIColor) {
+        shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.lineWidth = 12.5
         shapeLayer.fillColor = UIColor.clear.cgColor
@@ -112,12 +114,9 @@ class DetailView: UIView {
         shapeLayer.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
         shapeLayer.strokeEnd = 0
         shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi / 2, 0, 0, 1)
-        
-        return shapeLayer
     }
     
     func animateBar(percentage: CGFloat) {
-        
         CATransaction.begin()
         self.percentageLabel.text = "Loading"
         CATransaction.setCompletionBlock {
@@ -125,7 +124,6 @@ class DetailView: UIView {
             let percentNum = String(format: "%.01f", Double(percentage) * 100)
             self.percentageLabel.text = "\(percentNum)%"
         }
-        
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = percentage
         basicAnimation.duration = 1
@@ -136,11 +134,8 @@ class DetailView: UIView {
     }
     
     func scrollUpAndDown(gesture: UISwipeGestureRecognizer) {
-        
         UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
-            
             var startMainViewFrame = self.timeStampView.frame
-            
             if startMainViewFrame.origin.y > 200 {
                 gesture.direction = .down
                 startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.8
@@ -150,14 +145,12 @@ class DetailView: UIView {
                 startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
                 self.timeStampView.frame = startMainViewFrame
             }
-            
         }, completion: { complete in
             print("animation completed")
         })
     }
     
     func timeStampTitleConstraints() {
-        
         timeStampTitle.translatesAutoresizingMaskIntoConstraints = false
         timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.6).isActive = true
         timeStampTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -166,7 +159,6 @@ class DetailView: UIView {
     }
     
     func percentageLabelConstraints() {
-        
         percentageLabel.translatesAutoresizingMaskIntoConstraints = false
         percentageLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         percentageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
@@ -175,7 +167,6 @@ class DetailView: UIView {
     }
     
     func timeButtonConstraints() {
-        
         timeButton.translatesAutoresizingMaskIntoConstraints = false
         timeButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true
         timeButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true

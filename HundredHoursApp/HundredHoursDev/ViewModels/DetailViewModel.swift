@@ -24,11 +24,9 @@ class DetailViewModel {
     }
     
     func calcPercent() -> CGFloat {
-        
         let curHours = goal.value(forKey: "currentHours") as! CGFloat
         let totHours = goal.value(forKey: "totalHours") as! CGFloat
         var percentage = curHours / totHours
-        
         if percentage > 1 {
             percentage = 1
         }

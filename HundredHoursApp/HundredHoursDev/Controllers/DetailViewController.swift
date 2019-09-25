@@ -74,7 +74,8 @@ class DetailViewController: UIViewController {
     }
     
     @objc func timeButtonTapped() {
-        print("time tapped")
+        print("timer tapped")
+        detailView.blurScreen()
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen
         present(timerVC, animated: true, completion: nil)

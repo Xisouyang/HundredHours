@@ -55,19 +55,16 @@ class GoalSuperView: UIView {
     }()
     
     var defaultButton: UIButton = {
-        
         let button = UIButton()
         button.setTitle("default", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         button.layer.cornerRadius = 25
-        
         button.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 3
-        
         return button
     }()
 
@@ -82,7 +79,6 @@ class GoalSuperView: UIView {
     }
     
     func configView() {
-        
         addSubview(goalNameLabel)
         addSubview(goalNameTextField)
         addSubview(goalNameTextLine)
@@ -90,7 +86,6 @@ class GoalSuperView: UIView {
         addSubview(goalHoursTextField)
         addSubview(goalHoursTextLine)
         addSubview(defaultButton)
-        
         goalNameLabelConstraints()
         goalNameTextFieldConstraints()
         goalNameLineConstraints()
@@ -109,7 +104,6 @@ class GoalSuperView: UIView {
     }
     
     func goalHoursLabelConstraints() {
-        
         goalHoursLabel.translatesAutoresizingMaskIntoConstraints = false
         goalHoursLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
         goalHoursLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -142,7 +136,6 @@ class GoalSuperView: UIView {
     }
     
     func goalHoursTextLineConstraints() {
-        
         goalHoursTextLine.translatesAutoresizingMaskIntoConstraints = false
         goalHoursTextLine.widthAnchor.constraint(equalTo: goalHoursTextField.widthAnchor).isActive = true
         goalHoursTextLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
@@ -151,7 +144,6 @@ class GoalSuperView: UIView {
     }
     
     func buttonConstraints() {
-        
         defaultButton.translatesAutoresizingMaskIntoConstraints = false
         defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6).isActive = true
         defaultButton.heightAnchor.constraint(equalToConstant: 50).isActive = true

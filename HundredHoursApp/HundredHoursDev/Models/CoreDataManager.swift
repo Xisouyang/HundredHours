@@ -18,7 +18,6 @@ class CoreDataManager {
     private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
-        
         let container = NSPersistentContainer(name: "HundredHoursDev")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -37,12 +36,10 @@ class CoreDataManager {
     }()
     
     func saveContext () {
-        
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-          
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
@@ -50,7 +47,6 @@ class CoreDataManager {
     }
     
     func createGoal(name: String, hours: Int) {
-        
         // create storyboard entity
         let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
@@ -62,23 +58,18 @@ class CoreDataManager {
         object.setValue(name, forKey: "title")
         object.setValue(hours, forKey: "totalHours")
         object.setValue(10, forKey: "currentHours")
-        
         // save
         saveContext()
     }
     
     func fetchAllGoals() -> [NSManagedObject]? {
-        
         var goalNameArr: [NSManagedObject] = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")
-        
         do {
             goalNameArr = try context.fetch(fetchRequest)
-            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
         return goalNameArr
     }
     

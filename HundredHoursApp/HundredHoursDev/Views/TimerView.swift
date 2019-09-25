@@ -14,13 +14,13 @@ class TimerView: UIView {
     let tapGesture = UITapGestureRecognizer()
     
     var watchView: UIView = {
-        
         let view = UIView()
         let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 1.75, height: UIScreen.main.bounds.height / 4)
         view.frame = viewFrame
         view.layer.cornerRadius = 20
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
+        view.layer.borderWidth = 1
+        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return view
     }()
     
@@ -42,7 +42,7 @@ class TimerView: UIView {
     }
     
     private func commonInit() {
-        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6026662436)
+        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         self.addSubview(watchView)
         watchView.center = self.center
         watchView.addSubview(watchLabel)
@@ -56,7 +56,6 @@ class TimerView: UIView {
     }
     
     func watchLabelConstraints() {
-        
         watchLabel.translatesAutoresizingMaskIntoConstraints = false
         watchLabel.centerXAnchor.constraint(equalTo: watchView.centerXAnchor).isActive = true
         watchLabel.centerYAnchor.constraint(equalTo: watchView.centerYAnchor).isActive = true

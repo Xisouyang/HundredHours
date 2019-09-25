@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController()
@@ -31,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // navigation bar UI
     func setNavigation(navigationBar: UINavigationBar) {
-        
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         appearance.prefersLargeTitles = true

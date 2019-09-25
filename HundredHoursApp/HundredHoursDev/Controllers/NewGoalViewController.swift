@@ -42,9 +42,7 @@ class NewGoalViewController: UIViewController {
     private func createGoal() {
         guard let goalName = newGoalView.goalNameTextField.text else { return }
         guard let goalHours = newGoalView.goalHoursTextField.text else { return }
-        
         let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
-        
         if shouldPresentError {
             presentErrorView()
         } else {

@@ -14,7 +14,6 @@ class HomeViewController: UIViewController {
     let viewModel = HomeViewModel()
     var goalsArr: [NSManagedObject] = []
     var goalTableView = UITableView()
-    
     var newGoalButton: UIButton = {
         let button = UIButton()
         button.setTitle("New Goal", for: .normal)
@@ -23,28 +22,24 @@ class HomeViewController: UIViewController {
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
         button.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
-        
         button.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 3
-        
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        goalsArr = viewModel.populateGoalList()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
-        setTableView()
-        
         view.addSubview(newGoalButton)
+        goalsArr = viewModel.populateGoalList()
+        setTableView()
         buttonConstraints()
     }
     
     func setTableView() {
-        
         goalTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
         goalTableView.dataSource = self
@@ -53,7 +48,6 @@ class HomeViewController: UIViewController {
     }
     
     func buttonConstraints() {
-        
         newGoalButton.translatesAutoresizingMaskIntoConstraints = false
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -80,7 +74,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             // create alert controller
             let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
             // create action
@@ -92,7 +85,6 @@ extension HomeViewController: UITableViewDelegate {
             })
             alert.addAction(okAction)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
             self.present(alert, animated: true)
         }
     }
@@ -100,23 +92,19 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if goalsArr.isEmpty {
             tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
             let noGoalsView = NoGoalsHomeView(frame: view.frame)
             tableView.backgroundView = noGoalsView
             tableView.separatorStyle = .none
-            
         } else {
             tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
         }
-        
         return goalsArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        
         let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
         let goalHours = goalsArr[indexPath.row].value(forKey: "totalHours") as! Int
         let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))

@@ -12,13 +12,11 @@ import CoreData
 class HomeViewModel {
     
     func populateGoalList() -> [NSManagedObject] {
-        
         guard let unwrappedGoalObjs = CoreDataManager.sharedManager.fetchAllGoals() else { return [] }
         return unwrappedGoalObjs
     }
     
     func deleteGoal(indexPath: IndexPath, goalList: [NSManagedObject]) -> [NSManagedObject]? {
-        
         var mutableList = goalList
         let goal = goalList[indexPath.row]
         CoreDataManager.sharedManager.removeItem(objectID: goal.objectID)
@@ -28,9 +26,7 @@ class HomeViewModel {
     }
     
     func getCellString(goalName: String, goalHours: String) -> String {
-        
         var result: String = ""
-        
         if Int(goalHours) == 1 {
             result = goalName + " - " + goalHours + " HOUR"
         } else {

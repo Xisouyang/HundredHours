@@ -21,15 +21,15 @@ class ErrorView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.font = UIFont(name: "HelveticaNeue", size: 20)
-        
         return label
     }()
     
     let errorView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.layer.borderWidth = 1
+        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         view.layer.cornerRadius = 50
-        
         return view
     }()
     
@@ -37,7 +37,6 @@ class ErrorView: UIView {
         let imageView = UIImageView()
         let errorCircleImage = UIImage(named: "errorCircle")
         imageView.image = errorCircleImage
-        
         return imageView
     }()
     
