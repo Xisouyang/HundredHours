@@ -37,17 +37,17 @@ class DetailViewController: UIViewController {
             print("ERROR: goal not passed to DetailViewController correctly")
             return
         }
-        
         let gesture = UISwipeGestureRecognizer()
         let detailViewModel = DetailViewModel(goal: unwrappedGoal)
         let percentage = detailViewModel.calcPercent()
+        navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
+        view.addSubview(detailView)
         setupTableView()
         setupGesture(gesture: gesture)
         detailView.timeStampView.addGestureRecognizer(gesture)
         detailView.animateBar(percentage: percentage)
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
-        navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
-        view.addSubview(detailView)
+       
 
     }
     

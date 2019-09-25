@@ -33,9 +33,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
+        setTableView()
         view.addSubview(newGoalButton)
         goalsArr = viewModel.populateGoalList()
-        setTableView()
         buttonConstraints()
     }
     

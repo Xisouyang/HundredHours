@@ -73,11 +73,11 @@ class DetailView: UIView {
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let circle = createCircle(color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
         timeButton.layer.cornerRadius = (self.frame.width * 0.18) / 2
+        self.layer.addSublayer(circle)
         addSubview(percentageLabel)
         addSubview(timeButton)
         addSubview(timeStampView)
         timeStampView.addSubview(timeStampTitle)
-        self.layer.addSublayer(circle)
         percentageLabelConstraints()
         timeButtonConstraints()
         timeStampTitleConstraints()
