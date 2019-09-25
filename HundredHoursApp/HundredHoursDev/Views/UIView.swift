@@ -11,7 +11,6 @@ import UIKit
 
 extension UIView {
     
-    /// Remove UIBlurEffect from UIView
     func removeBlurEffect() {
         let blurredEffectViews = self.subviews.filter{$0 is UIVisualEffectView}
         blurredEffectViews.forEach{ blurView in

@@ -34,15 +34,25 @@ class TimerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6026662436)
         self.addSubview(watchView)
         watchView.center = self.center
         watchView.addSubview(watchLabel)
         watchLabelConstraints()
+        configTapGesture()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func configTapGesture() {
+        tapGesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(tapGesture)
     }
     
     func watchLabelConstraints() {
