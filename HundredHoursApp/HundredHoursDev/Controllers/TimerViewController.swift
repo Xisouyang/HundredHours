@@ -27,6 +27,7 @@ class TimerViewController: UIViewController {
     }
     
     @objc func timerViewTapped() {
+        NotificationCenter.default.post(name: Notification.Name("timerVC dismissed"), object: self)
         self.dismiss(animated: true, completion: nil)
     }
     

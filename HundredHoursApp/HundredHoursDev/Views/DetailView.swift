@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /* TODO:
         create button to start timer
@@ -15,7 +16,7 @@ import UIKit
  */
 
 class DetailView: UIView {
-    
+        
     let timeStampView: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -148,6 +149,14 @@ class DetailView: UIView {
         }, completion: { complete in
             print("animation completed")
         })
+    }
+    
+    func addBlur() {
+        self.blurScreen()
+    }
+    
+    func removeBlur() {
+        self.removeBlurEffect()
     }
     
     func timeStampTitleConstraints() {

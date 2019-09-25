@@ -23,7 +23,7 @@ class ErrorViewController: UIViewController {
     }
     
     @objc func viewTapped() {
-        NotificationCenter.default.post(name: Notification.Name("removeBlur"), object: self)
+        NotificationCenter.default.post(name: Notification.Name("errorVC dismissed"), object: self)
         self.dismiss(animated: true, completion: nil)
     }
 }

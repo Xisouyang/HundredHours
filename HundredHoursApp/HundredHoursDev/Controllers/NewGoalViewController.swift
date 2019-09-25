@@ -33,6 +33,7 @@ class NewGoalViewController: UIViewController {
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
         view.addSubview(newGoalView)
+        NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("errorVC dismissed"), object: nil)
     }
     
     @objc private func createTapped() {
@@ -52,10 +53,18 @@ class NewGoalViewController: UIViewController {
     }
 
     private func presentErrorView() {
-        newGoalView.blurScreen()
+        newGoalView.addBlur()
         let errorVC = ErrorViewController()
         errorVC.modalPresentationStyle = .overFullScreen
         present(errorVC, animated: true)
+    }
+    
+    @objc func resetScreen(notification: Notification) {
+        newGoalView.removeBlur()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("errorVC dismissed"), object: nil)
     }
 }
 

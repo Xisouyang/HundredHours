@@ -22,7 +22,6 @@ class NewGoalView: GoalSuperView {
     }
     
     func commonInit() {
-        NotificationCenter.default.addObserver(self, selector: #selector(removeBlur), name: Notification.Name("removeBlur"), object: nil)
         configButton()
     }
     
@@ -30,11 +29,11 @@ class NewGoalView: GoalSuperView {
         defaultButton.setTitle("Create", for: .normal)
     }
     
-    @objc func removeBlur(notification: Notification) {
+    func removeBlur() {
         self.removeBlurEffect()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("removeBlur"), object: nil)
+    func addBlur() {
+        self.blurScreen()
     }
 }

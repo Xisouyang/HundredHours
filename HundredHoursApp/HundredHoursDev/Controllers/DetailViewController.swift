@@ -8,14 +8,12 @@
 
 /*
  TODO:
- 
     - move all swipe/button functions from view to here
     - create button functions to start timer here
     - create timer view and view model
     - create time stamp entity, connect with goals entity one to many relation
     - create update function in Core Data, call it when we swipe timer view down
     - create function to create text string to store in time stamp table view
- 
  */
 
 import UIKit
@@ -24,12 +22,14 @@ import CoreData
 class DetailViewController: UIViewController {
     
     var goal: NSManagedObject?
+    let detailViewModel = DetailViewModel()
     let detailView = DetailView(frame: UIScreen.main.bounds)
     var timeStampsTableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("timerVC dismissed"), object: nil)
     }
     
     func setupView() {
@@ -38,8 +38,7 @@ class DetailViewController: UIViewController {
             return
         }
         let gesture = UISwipeGestureRecognizer()
-        let detailViewModel = DetailViewModel(goal: unwrappedGoal)
-        let percentage = detailViewModel.calcPercent()
+        let percentage = detailViewModel.calcPercent(goal: unwrappedGoal)
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         view.addSubview(detailView)
         setupTableView()
@@ -47,8 +46,6 @@ class DetailViewController: UIViewController {
         detailView.timeStampView.addGestureRecognizer(gesture)
         detailView.animateBar(percentage: percentage)
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
-       
-
     }
     
     func setupTableView() {
@@ -75,10 +72,18 @@ class DetailViewController: UIViewController {
     
     @objc func timeButtonTapped() {
         print("timer tapped")
-        detailView.blurScreen()
+        detailView.addBlur()
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen
         present(timerVC, animated: true, completion: nil)
+    }
+    
+    @objc func resetScreen() {
+        detailView.removeBlur()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("timerVC dismissed"), object: nil)
     }
 }
 
