@@ -87,5 +87,4 @@ class CoreDataManager {
         let obj = context.object(with: objectID)
         context.delete(obj)
     }
-
 }
