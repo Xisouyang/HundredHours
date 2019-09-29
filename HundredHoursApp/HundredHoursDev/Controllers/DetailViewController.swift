@@ -16,6 +16,8 @@
     - create function to create text string to store in time stamp table view
  */
 
+/* Pan-gesture recognizer instead of swipe */
+
 import UIKit
 import CoreData
 
@@ -23,6 +25,7 @@ class DetailViewController: UIViewController {
     
     var goal: NSManagedObject?
     let detailViewModel = DetailViewModel()
+    var timerViewModel = TimerViewModel()
     let detailView = DetailView(frame: UIScreen.main.bounds)
     var timeStampsTableView = UITableView(frame: .zero)
 
@@ -75,11 +78,15 @@ class DetailViewController: UIViewController {
         detailView.addBlur()
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen
+        timerViewModel = timerVC.timerViewModel
         present(timerVC, animated: true, completion: nil)
     }
     
     @objc func resetScreen() {
         detailView.removeBlur()
+        let session = timerViewModel.getTimeLabel()
+        detailViewModel.timeStampsArr.append(session)
+        timeStampsTableView.reloadData()
     }
     
     deinit {
@@ -94,11 +101,12 @@ extension DetailViewController: UITableViewDelegate {
 extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return detailViewModel.timeStampsArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath)
+        cell.textLabel?.text = String(detailViewModel.timeStampsArr[indexPath.row])
         return cell
     }
 }

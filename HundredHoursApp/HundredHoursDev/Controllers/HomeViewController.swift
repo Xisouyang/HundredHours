@@ -12,7 +12,7 @@ import CoreData
 class HomeViewController: UIViewController {
     
     let viewModel = HomeViewModel()
-    var goalsArr: [NSManagedObject] = []
+    var goalsArr: [Goal] = []
     var goalTableView = UITableView()
     var newGoalButton: UIButton = {
         let button = UIButton()

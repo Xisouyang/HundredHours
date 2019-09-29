@@ -12,6 +12,7 @@ class TimerViewController: UIViewController {
     
     var timer = Timer()
     let timerView = TimerView(frame: UIScreen.main.bounds)
+    let timerViewModel = TimerViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        timerView.model.seconds += 1
-        timerView.watchLabel.text = timerView.model.timeString(time: TimeInterval(timerView.model.seconds))
+        timerViewModel.seconds += 1
+        timerView.watchLabel.text = timerViewModel.timeString(time: TimeInterval(timerViewModel.seconds))
     }
 }

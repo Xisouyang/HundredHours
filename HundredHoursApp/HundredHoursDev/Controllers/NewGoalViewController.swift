@@ -8,6 +8,8 @@
 
 import UIKit
 
+/* numpad keyboard when user interact with hours text field */
+
 /* TODO -DONE:
  
         function to validate information entered is valid

@@ -54,19 +54,33 @@ class CoreDataManager {
             return
         }
         // create storyboard object using entity
-        let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
+        let object = Goal(entity: unwrappedEntity, insertInto: context)
         object.setValue(name, forKey: "title")
         object.setValue(hours, forKey: "totalHours")
         object.setValue(10, forKey: "currentHours")
+        
         // save
         saveContext()
     }
     
-    func fetchAllGoals() -> [NSManagedObject]? {
-        var goalNameArr: [NSManagedObject] = []
+    func createTimestamp(time: Int, goal: Goal) {
+        let entity = NSEntityDescription.entity(forEntityName: "Timestamps", in: context)
+        guard let unwrappedEntity = entity else {
+            print("FAILURE: entity unable to be unwrapped: \(String(describing: entity))")
+            return
+        }
+        // create storyboard object using entity
+        let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
+        object.setValue(time, forKey: "session")
+        goal.addToTimestamps(object as! Timestamps)
+        saveContext()
+    }
+    
+    func fetchAllGoals() -> [Goal]? {
+        var goalNameArr: [Goal] = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")
         do {
-            goalNameArr = try context.fetch(fetchRequest)
+            goalNameArr = try context.fetch(fetchRequest) as! [Goal]
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }

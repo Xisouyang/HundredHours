@@ -31,18 +31,4 @@ class HundredHoursDevTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-//    func testEmptyState() {
-//        let testView = HomeViewController()
-//        testView.viewDidLoad()
-//        HomeViewController.goalsArr = []
-//        XCTAssertNotNil(testView.goalTableView.backgroundView)
-//    }
-//    
-//    func testNonEmptyState() {
-//        let testView = HomeViewController()
-//        testView.viewDidLoad()
-//        HomeViewController.goalsArr = ["something"]
-//        XCTAssertNil(testView.goalTableView.backgroundView)
-//    }
 }

@@ -17,6 +17,8 @@ import CoreData
 
 class DetailViewModel {
     
+    var timeStampsArr = [String]()
+    
     func calcPercent(goal: NSManagedObject) -> CGFloat {
         let curHours = goal.value(forKey: "currentHours") as! CGFloat
         let totHours = goal.value(forKey: "totalHours") as! CGFloat

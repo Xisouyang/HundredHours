@@ -11,12 +11,12 @@ import CoreData
 
 class HomeViewModel {
     
-    func populateGoalList() -> [NSManagedObject] {
+    func populateGoalList() -> [Goal] {
         guard let unwrappedGoalObjs = CoreDataManager.sharedManager.fetchAllGoals() else { return [] }
         return unwrappedGoalObjs
     }
     
-    func deleteGoal(indexPath: IndexPath, goalList: [NSManagedObject]) -> [NSManagedObject]? {
+    func deleteGoal(indexPath: IndexPath, goalList: [Goal]) -> [Goal]? {
         var mutableList = goalList
         let goal = goalList[indexPath.row]
         CoreDataManager.sharedManager.removeItem(objectID: goal.objectID)
