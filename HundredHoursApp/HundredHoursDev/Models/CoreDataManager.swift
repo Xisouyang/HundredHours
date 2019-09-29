@@ -76,6 +76,12 @@ class CoreDataManager {
         saveContext()
     }
     
+    func fetchTimeStamps(goal: Goal) -> [Timestamps] {
+        let arr = goal.timestamps
+        let timeStampsArr = arr?.allObjects as! [Timestamps]
+        return timeStampsArr
+    }
+    
     func fetchAllGoals() -> [Goal]? {
         var goalNameArr: [Goal] = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Goal")

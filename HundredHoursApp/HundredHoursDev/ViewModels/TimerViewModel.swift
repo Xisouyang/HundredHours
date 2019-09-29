@@ -21,7 +21,11 @@ class TimerViewModel {
     }
     
     func getTimeLabel() -> String {
-        return "\(timeString(time: TimeInterval(seconds)))"
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.long
+        formatter.timeStyle = DateFormatter.Style.none
+        return "\(formatter.string(from: date)) - \(timeString(time: TimeInterval(seconds)))"
     }
     
     func getSeconds() -> Int {

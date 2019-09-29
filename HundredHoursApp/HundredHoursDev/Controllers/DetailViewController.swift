@@ -23,7 +23,7 @@ import CoreData
 
 class DetailViewController: UIViewController {
     
-    var goal: NSManagedObject?
+    var goal: Goal?
     let detailViewModel = DetailViewModel()
     var timerViewModel = TimerViewModel()
     let detailView = DetailView(frame: UIScreen.main.bounds)
@@ -45,6 +45,7 @@ class DetailViewController: UIViewController {
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         view.addSubview(detailView)
         setupTableView()
+        detailViewModel.populateStampsArr(goal: unwrappedGoal)
         setupGesture(gesture: gesture)
         detailView.timeStampView.addGestureRecognizer(gesture)
         detailView.animateBar(percentage: percentage)
@@ -83,7 +84,10 @@ class DetailViewController: UIViewController {
     }
     
     @objc func resetScreen() {
+        guard let unwrappedGoal = goal else { return }
         detailView.removeBlur()
+        let timeToSave = timerViewModel.getSeconds()
+        detailViewModel.saveTimeStamp(time: timeToSave, goal: unwrappedGoal)
         let session = timerViewModel.getTimeLabel()
         detailViewModel.timeStampsArr.append(session)
         timeStampsTableView.reloadData()
