@@ -20,8 +20,8 @@ class DetailViewModel {
     var timeStampsArr = [String]()
     
     func calcPercent(goal: NSManagedObject) -> CGFloat {
-        let curHours = goal.value(forKey: "currentHours") as! CGFloat
-        let totHours = goal.value(forKey: "totalHours") as! CGFloat
+        let curHours = goal.value(forKey: "currSeconds") as! CGFloat
+        let totHours = goal.value(forKey: "totalSeconds") as! CGFloat
         var percentage = curHours / totHours
         if percentage > 1 {
             percentage = 1
@@ -54,5 +54,10 @@ class DetailViewModel {
         formatter.dateStyle = DateFormatter.Style.long
         formatter.timeStyle = DateFormatter.Style.none
         return "\(formatter.string(from: date)) - \(timeString(time: TimeInterval(seconds)))"
+    }
+    
+    func updateCurrentTime(goal: Goal, seconds: Int) {
+        goal.currSeconds = goal.currSeconds + Int64(seconds)
+        CoreDataManager.sharedManager.saveContext()
     }
 }

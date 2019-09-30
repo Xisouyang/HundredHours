@@ -106,7 +106,8 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
         let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
-        let goalHours = goalsArr[indexPath.row].value(forKey: "totalHours") as! Int
+        let goalSeconds = goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
+        let goalHours = goalSeconds / 3600
         let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))
         cell.textLabel?.text = cellString
         return cell

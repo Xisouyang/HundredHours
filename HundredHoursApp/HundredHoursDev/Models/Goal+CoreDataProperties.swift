@@ -17,9 +17,9 @@ extension Goal {
         return NSFetchRequest<Goal>(entityName: "Goal")
     }
 
-    @NSManaged public var currentHours: Int64
+    @NSManaged public var currSeconds: Int64
     @NSManaged public var title: String?
-    @NSManaged public var totalHours: Int64
+    @NSManaged public var totalSeconds: Int64
     @NSManaged public var timestamps: NSSet?
 
 }

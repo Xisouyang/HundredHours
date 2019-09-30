@@ -56,8 +56,8 @@ class CoreDataManager {
         // create storyboard object using entity
         let object = Goal(entity: unwrappedEntity, insertInto: context)
         object.setValue(name, forKey: "title")
-        object.setValue(hours, forKey: "totalHours")
-        object.setValue(10, forKey: "currentHours")
+        object.setValue(hours, forKey: "totalSeconds")
+        object.setValue(0, forKey: "currSeconds")
         
         // save
         saveContext()
