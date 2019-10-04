@@ -36,7 +36,7 @@ class DetailViewModel {
     func populateStampsArr(goal: Goal) {
         let timeStamps = CoreDataManager.sharedManager.fetchTimeStamps(goal: goal)
         for timeStamp in timeStamps {
-            let sessionString = getTimeLabel(seconds: Int(timeStamp.session))
+            let sessionString = getTimeLabel(timeStamp: timeStamp)
             timeStampsArr.append(sessionString)
         }
     }
@@ -48,12 +48,13 @@ class DetailViewModel {
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    func getTimeLabel(seconds: Int) -> String {
-        let date = Date()
+    func getTimeLabel(timeStamp: Timestamps) -> String {
+        guard let day = timeStamp.day else { return ""}
+        let seconds = Int(timeStamp.session)
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long
         formatter.timeStyle = DateFormatter.Style.none
-        return "\(formatter.string(from: date)) - \(timeString(time: TimeInterval(seconds)))"
+        return "\(formatter.string(from: day as Date)) - \(timeString(time: TimeInterval(seconds)))"
     }
     
     func updateCurrentTime(goal: Goal, seconds: Int) {

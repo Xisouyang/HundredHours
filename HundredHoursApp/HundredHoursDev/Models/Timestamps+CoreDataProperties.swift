@@ -2,7 +2,7 @@
 //  Timestamps+CoreDataProperties.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 9/25/19.
+//  Created by Stephen Ouyang on 10/4/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Timestamps {
     }
 
     @NSManaged public var session: Int64
+    @NSManaged public var day: NSDate?
     @NSManaged public var goal: Goal?
 
 }

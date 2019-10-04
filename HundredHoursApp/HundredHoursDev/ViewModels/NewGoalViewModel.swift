@@ -11,8 +11,10 @@ import UIKit
 
 class NewGoalViewModel {
     
+    //TODO: validate the length od the goal's name, max ~15
     func checkTextFields(name: String, hourString: String) -> Bool {
         var shouldPresentError = false
+        //TODO: use .isEmpty instead of == ""
         if name == "" || hourString == "" {
             shouldPresentError = true
         }

@@ -10,6 +10,7 @@ import UIKit
 
 class TimerViewController: UIViewController {
     
+    //TODO: check if any of these are accessed outside the class, if not, turn them into private
     var timer = Timer()
     let timerView = TimerView(frame: UIScreen.main.bounds)
     let timerViewModel = TimerViewModel()

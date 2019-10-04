@@ -6,15 +6,14 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+//TODO: look into a DEBUG flag to get rid of print statements
+
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8),
-                          NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 50)]
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // navigation bar UI
     func setNavigation(navigationBar: UINavigationBar) {
+        let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8),
+                                    NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 25)]
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         appearance.prefersLargeTitles = true

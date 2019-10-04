@@ -12,6 +12,7 @@ import CoreData
 class HomeViewController: UIViewController {
     
     let viewModel = HomeViewModel()
+    //TODO: move this to the viewmodel and update this class
     var goalsArr: [Goal] = []
     var goalTableView = UITableView()
     var newGoalButton: UIButton = {
@@ -40,7 +41,10 @@ class HomeViewController: UIViewController {
     }
     
     func setTableView() {
+        //TODO: change this to constraints using the anchor of the button
         goalTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        //TODO: create a custom uitableviewcell sometime
+        //TODO: change the identifier to something more descriptive
         goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
         goalTableView.dataSource = self
         goalTableView.delegate = self
@@ -52,7 +56,9 @@ class HomeViewController: UIViewController {
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: view.frame.height * 0.105).isActive = true
+        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        //TODO: get rid of this line below
+        //newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: view.frame.height * 0.105).isActive = true
     }
 }
 
@@ -92,13 +98,14 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //TODO: adjust this section to remove changing the frame of the tableview
         if goalsArr.isEmpty {
             tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
             let noGoalsView = NoGoalsHomeView(frame: view.frame)
             tableView.backgroundView = noGoalsView
             tableView.separatorStyle = .none
         } else {
-            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8)
+            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         }
         return goalsArr.count
     }

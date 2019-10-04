@@ -13,7 +13,7 @@ class HomeViewModel {
     
     func populateGoalList() -> [Goal] {
         guard let unwrappedGoalObjs = CoreDataManager.sharedManager.fetchAllGoals() else { return [] }
-        return unwrappedGoalObjs
+        return unwrappedGoalObjs 
     }
     
     func deleteGoal(indexPath: IndexPath, goalList: [Goal]) -> [Goal]? {

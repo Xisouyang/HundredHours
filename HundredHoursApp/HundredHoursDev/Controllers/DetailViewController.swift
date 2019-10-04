@@ -74,6 +74,7 @@ class DetailViewController: UIViewController {
         detailView.scrollUpAndDown(gesture: gesture)
     }
     
+    //TODO: find if we can also blur the navbar
     @objc func timeButtonTapped() {
         print("timer tapped")
         detailView.addBlur()

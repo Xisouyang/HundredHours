@@ -69,9 +69,11 @@ class CoreDataManager {
             print("FAILURE: entity unable to be unwrapped: \(String(describing: entity))")
             return
         }
+        let currentDate = Date()
         // create storyboard object using entity
         let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
         object.setValue(time, forKey: "session")
+        object.setValue(currentDate, forKey: "day")
         goal.addToTimestamps(object as! Timestamps)
         saveContext()
     }

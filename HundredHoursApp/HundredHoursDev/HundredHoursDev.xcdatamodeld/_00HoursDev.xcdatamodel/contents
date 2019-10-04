@@ -7,11 +7,12 @@
         <relationship name="timestamps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timestamps" inverseName="goal" inverseEntity="Timestamps" syncable="YES"/>
     </entity>
     <entity name="Timestamps" representedClassName="Timestamps" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="session" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="timestamps" inverseEntity="Goal" syncable="YES"/>
     </entity>
     <elements>
         <element name="Goal" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Timestamps" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Timestamps" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>

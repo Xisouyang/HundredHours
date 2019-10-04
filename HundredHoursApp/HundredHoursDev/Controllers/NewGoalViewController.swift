@@ -24,6 +24,7 @@ import UIKit
         implement Core Data functionality to store the goal strings locally
  */
 
+//TODO: prompt the user to start typing tight away and maybe add a placeholder too on the textfields.
 
 class NewGoalViewController: UIViewController {
     
@@ -43,6 +44,7 @@ class NewGoalViewController: UIViewController {
     }
     
     private func createGoal() {
+        //TODO: combine the two guard lets into one
         guard let goalName = newGoalView.goalNameTextField.text else { return }
         guard let goalHours = newGoalView.goalHoursTextField.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
@@ -50,6 +52,7 @@ class NewGoalViewController: UIViewController {
             presentErrorView()
         } else {
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
+            //TODO: this should be the same animation as hitting the back button, you might need a delegate to refresh the goal view
             navigationController?.initRootViewController(vc: HomeViewController())
         }
     }
@@ -57,6 +60,7 @@ class NewGoalViewController: UIViewController {
     private func presentErrorView() {
         newGoalView.addBlur()
         let errorVC = ErrorViewController()
+        //TODO: find out a way to have the nav bar blur as well
         errorVC.modalPresentationStyle = .overFullScreen
         present(errorVC, animated: true)
     }
