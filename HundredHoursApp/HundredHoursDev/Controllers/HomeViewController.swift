@@ -38,6 +38,12 @@ class HomeViewController: UIViewController {
         viewModel.goalsArr = viewModel.populateGoalList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.goalsArr = viewModel.populateGoalList()
+        goalTableView.reloadData()
+    }
+    
     func setTableView() {
         //TODO: create a custom uitableviewcell sometime
         //TODO: change the identifier to something more descriptive

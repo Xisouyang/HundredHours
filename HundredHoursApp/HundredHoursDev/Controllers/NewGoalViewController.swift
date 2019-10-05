@@ -44,16 +44,15 @@ class NewGoalViewController: UIViewController {
     }
     
     private func createGoal() {
-        //TODO: combine the two guard lets into one
-        guard let goalName = newGoalView.goalNameTextField.text else { return }
-        guard let goalHours = newGoalView.goalHoursTextField.text else { return }
+        guard let goalName = newGoalView.goalNameTextField.text, let goalHours = newGoalView.goalHoursTextField.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
         if shouldPresentError {
             presentErrorView()
         } else {
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
             //TODO: this should be the same animation as hitting the back button, you might need a delegate to refresh the goal view
-            navigationController?.initRootViewController(vc: HomeViewController())
+//            navigationController?.initRootViewController(vc: HomeViewController())
+            navigationController?.popViewController(animated: true)
         }
     }
 
