@@ -42,9 +42,21 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.goalsArr = viewModel.populateGoalList()
         goalTableView.reloadData()
+        configTableView()
     }
     
-    func setTableView() {
+    private func configTableView() {
+        if viewModel.goalsArr.isEmpty {
+            let noGoalsView = NoGoalsHomeView(frame: goalTableView.frame)
+            goalTableView.backgroundView = noGoalsView
+            goalTableView.separatorStyle = .none
+        } else {
+            goalTableView.backgroundView = nil
+            goalTableView.separatorStyle = .singleLine
+        }
+    }
+    
+    private func setTableView() {
         //TODO: create a custom uitableviewcell sometime
         //TODO: change the identifier to something more descriptive
         goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
@@ -54,7 +66,7 @@ class HomeViewController: UIViewController {
         tableConstraints()
     }
     
-    func buttonConstraints() {
+    private func buttonConstraints() {
         newGoalButton.translatesAutoresizingMaskIntoConstraints = false
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -62,7 +74,7 @@ class HomeViewController: UIViewController {
         newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
     
-    func tableConstraints() {
+    private func tableConstraints() {
         goalTableView.translatesAutoresizingMaskIntoConstraints = false
         goalTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         goalTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -73,7 +85,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     
-    @objc func newGoalTapped() {
+    @objc private func newGoalTapped() {
         let vc = NewGoalViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -107,11 +119,7 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.goalsArr.isEmpty {
-            let noGoalsView = NoGoalsHomeView(frame: tableView.frame)
-            tableView.backgroundView = noGoalsView
-            tableView.separatorStyle = .none
-        }
+        configTableView()
         return viewModel.goalsArr.count
     }
     
