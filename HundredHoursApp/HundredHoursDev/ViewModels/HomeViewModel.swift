@@ -11,6 +11,8 @@ import CoreData
 
 class HomeViewModel {
     
+    var goalsArr: [Goal] = []
+    
     func populateGoalList() -> [Goal] {
         guard let unwrappedGoalObjs = CoreDataManager.sharedManager.fetchAllGoals() else { return [] }
         return unwrappedGoalObjs 

@@ -12,8 +12,6 @@ import CoreData
 class HomeViewController: UIViewController {
     
     let viewModel = HomeViewModel()
-    //TODO: move this to the viewmodel and update this class
-    var goalsArr: [Goal] = []
     var goalTableView = UITableView()
     var newGoalButton: UIButton = {
         let button = UIButton()
@@ -34,21 +32,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "Goals"
-        setTableView()
         view.addSubview(newGoalButton)
-        goalsArr = viewModel.populateGoalList()
         buttonConstraints()
+        setTableView()
+        viewModel.goalsArr = viewModel.populateGoalList()
     }
     
     func setTableView() {
-        //TODO: change this to constraints using the anchor of the button
-        goalTableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         //TODO: create a custom uitableviewcell sometime
         //TODO: change the identifier to something more descriptive
         goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
         goalTableView.dataSource = self
         goalTableView.delegate = self
         view.addSubview(goalTableView)
+        tableConstraints()
     }
     
     func buttonConstraints() {
@@ -56,9 +53,15 @@ class HomeViewController: UIViewController {
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        //TODO: get rid of this line below
-        //newGoalButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: view.frame.height * 0.105).isActive = true
+        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+    }
+    
+    func tableConstraints() {
+        goalTableView.translatesAutoresizingMaskIntoConstraints = false
+        goalTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        goalTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        goalTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        goalTableView.bottomAnchor.constraint(equalTo: newGoalButton.topAnchor, constant: -10).isActive = true
     }
 }
 
@@ -74,7 +77,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
-        vc.goal = goalsArr[indexPath.row]
+        vc.goal = viewModel.goalsArr[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -85,8 +88,8 @@ extension HomeViewController: UITableViewDelegate {
             // create action
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                 // delete story from array & Core Data
-                guard let resultList = self.viewModel.deleteGoal(indexPath: indexPath, goalList: self.goalsArr) else { return }
-                self.goalsArr = resultList
+                guard let resultList = self.viewModel.deleteGoal(indexPath: indexPath, goalList: self.viewModel.goalsArr) else { return }
+                self.viewModel.goalsArr = resultList
                 tableView.deleteRows(at: [indexPath], with: .fade)
             })
             alert.addAction(okAction)
@@ -98,22 +101,18 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: adjust this section to remove changing the frame of the tableview
-        if goalsArr.isEmpty {
-            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-            let noGoalsView = NoGoalsHomeView(frame: view.frame)
+        if viewModel.goalsArr.isEmpty {
+            let noGoalsView = NoGoalsHomeView(frame: tableView.frame)
             tableView.backgroundView = noGoalsView
             tableView.separatorStyle = .none
-        } else {
-            tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         }
-        return goalsArr.count
+        return viewModel.goalsArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
-        let goalSeconds = goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
+        let goalName = viewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
+        let goalSeconds = viewModel.goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
         let goalHours = goalSeconds / 3600
         let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))
         cell.textLabel?.text = cellString
