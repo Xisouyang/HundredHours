@@ -10,37 +10,33 @@ import UIKit
 
 /* numpad keyboard when user interact with hours text field */
 
-/* TODO -DONE:
- 
-        function to validate information entered is valid
-            - text fields cannot be blank
-            - hours must be able to be converted to an Int
-                - create error view controller to show when these conditions aren't met
-        function to combine goal name and hour string into 1 string
- 
-        store that string to tableView list in the HomeViewController
-        navigate to the home view controller
- 
-        implement Core Data functionality to store the goal strings locally
- */
-
 //TODO: prompt the user to start typing tight away and maybe add a placeholder too on the textfields.
 
-class NewGoalViewController: UIViewController {
+class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
-    let newGoalView = NewGoalView()
+    private let newGoalView = NewGoalView()
+    private var isGoalName = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNotifications()
+        setupView()
+    }
+    
+    private func setupView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         navigationItem.title = "New Goal"
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
         view.addSubview(newGoalView)
-        NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("errorVC dismissed"), object: nil)
+        view.addGestureRecognizer(tapGesture)
+        newGoalView.goalNameTextField.delegate = self
     }
     
-    @objc private func createTapped() {
-        createGoal()
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("errorVC dismissed"), object: nil)
     }
     
     private func createGoal() {
@@ -50,8 +46,6 @@ class NewGoalViewController: UIViewController {
             presentErrorView()
         } else {
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
-            //TODO: this should be the same animation as hitting the back button, you might need a delegate to refresh the goal view
-//            navigationController?.initRootViewController(vc: HomeViewController())
             navigationController?.popViewController(animated: true)
         }
     }
@@ -64,8 +58,42 @@ class NewGoalViewController: UIViewController {
         present(errorVC, animated: true)
     }
     
+    @objc private func createTapped() {
+        createGoal()
+    }
+    
     @objc func resetScreen(notification: Notification) {
         newGoalView.removeBlur()
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isGoalName = false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == newGoalView.goalNameTextField {
+            isGoalName = true
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if isGoalName == false {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     deinit {

@@ -72,6 +72,7 @@ class GoalSuperView: UIView {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         configView()
+        goalNameTextField.becomeFirstResponder()
     }
     
     required init?(coder aDecoder: NSCoder) {

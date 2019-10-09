@@ -31,7 +31,6 @@
 		5DD9912E2347D32E001D5190 /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9912A2347D32E001D5190 /* Goal+CoreDataProperties.swift */; };
 		5DD9912F2347D32E001D5190 /* Timestamps+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9912B2347D32E001D5190 /* Timestamps+CoreDataClass.swift */; };
 		5DD991302347D32E001D5190 /* Timestamps+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9912C2347D32E001D5190 /* Timestamps+CoreDataProperties.swift */; };
-		5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
 		5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD92F8233B06F700397CF1 /* UIView.swift */; };
@@ -86,7 +85,6 @@
 		5DD9912A2347D32E001D5190 /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5DD9912B2347D32E001D5190 /* Timestamps+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamps+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5DD9912C2347D32E001D5190 /* Timestamps+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamps+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5DFD92F8233B06F700397CF1 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
 				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5D4C61CC23344C30005FFD1F /* TimerViewController.swift */,
-				5DF6E9FE2325AA2700EC64B7 /* UINavController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,7 +370,6 @@
 				5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */,
 				5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
-				5DF6E9FF2325AA2700EC64B7 /* UINavController.swift in Sources */,
 				5DD9912E2347D32E001D5190 /* Goal+CoreDataProperties.swift in Sources */,
 				5D6DB5FE2322D48A004B08F1 /* EditGoalView.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
