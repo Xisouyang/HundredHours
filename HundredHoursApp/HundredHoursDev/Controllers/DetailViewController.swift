@@ -93,7 +93,7 @@ class DetailViewController: UIViewController {
         let newPercent = detailViewModel.calcPercent(goal: unwrappedGoal)
         detailView.animateBar(percentage: newPercent)
         let session = timerViewModel.getTimeLabel()
-        detailViewModel.timeStampsArr.append(session)
+        detailViewModel.timeStampsArr.insert(session, at: 0)
         timeStampsTableView.reloadData()
     }
     

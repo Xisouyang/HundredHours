@@ -80,7 +80,8 @@ class CoreDataManager {
     
     func fetchTimeStamps(goal: Goal) -> [Timestamps] {
         let arr = goal.timestamps
-        let timeStampsArr = arr?.allObjects as! [Timestamps]
+        var timeStampsArr = arr?.allObjects as! [Timestamps]
+        timeStampsArr.sort(by: { $0.day?.compare($1.day! as Date) == .orderedDescending })
         return timeStampsArr
     }
     
