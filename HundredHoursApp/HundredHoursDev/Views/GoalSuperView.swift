@@ -19,26 +19,26 @@ class GoalSuperView: UIView {
     let goalNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Goal Name"
-        label.font = UIFont(name: "HelveticaNeue", size: 30)
+        label.font = UIFont(name: "HelveticaNeue", size: 25)
         return label
     }()
     
     let goalHoursLabel: UILabel = {
         let label = UILabel()
         label.text = "Number of Hours"
-        label.font = UIFont(name: "HelveticaNeue", size: 30)
+        label.font = UIFont(name: "HelveticaNeue", size: 25)
         return label
     }()
     
     let goalNameTextField: UITextField = {
         let textField = UITextField()
-        textField.font = UIFont(name: "HelveticaNeue", size: 25)
+        textField.font = UIFont(name: "HelveticaNeue", size: 20)
         return textField
     }()
     
     let goalHoursTextField: UITextField = {
         let textField = UITextField()
-        textField.font = UIFont(name: "HelveticaNeue", size: 25)
+        textField.font = UIFont(name: "HelveticaNeue", size: 20)
         return textField
     }()
     
@@ -99,15 +99,15 @@ class GoalSuperView: UIView {
     func goalNameLabelConstraints() {
         goalNameLabel.translatesAutoresizingMaskIntoConstraints = false
         goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalNameLabel.heightAnchor.constraint(equalToConstant: 70)
+        goalNameLabel.heightAnchor.constraint(equalToConstant: 50)
         goalNameLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2).isActive = true
-        goalNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 32).isActive = true
+        goalNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25).isActive = true
     }
     
     func goalHoursLabelConstraints() {
         goalHoursLabel.translatesAutoresizingMaskIntoConstraints = false
         goalHoursLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalHoursLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        goalHoursLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         goalHoursLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2).isActive = true
         goalHoursLabel.topAnchor.constraint(equalToSystemSpacingBelow: goalNameLabel.bottomAnchor, multiplier: 20).isActive = true
     }
@@ -115,7 +115,7 @@ class GoalSuperView: UIView {
     func goalNameTextFieldConstraints() {
         goalNameTextField.translatesAutoresizingMaskIntoConstraints = false
         goalNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalNameTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        goalNameTextField.heightAnchor.constraint(equalToConstant: 68).isActive = true
         goalNameTextField.topAnchor.constraint(equalTo: goalNameLabel.bottomAnchor, constant: 10).isActive = true
         goalNameTextField.leftAnchor.constraint(equalTo: goalNameLabel.leftAnchor).isActive = true
     }
@@ -123,7 +123,7 @@ class GoalSuperView: UIView {
     func goalHoursTextFieldConstraints() {
         goalHoursTextField.translatesAutoresizingMaskIntoConstraints = false
         goalHoursTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2).isActive = true
-        goalHoursTextField.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        goalHoursTextField.heightAnchor.constraint(equalToConstant: 68).isActive = true
         goalHoursTextField.topAnchor.constraint(equalTo: goalHoursLabel.bottomAnchor, constant: 10).isActive = true
         goalHoursTextField.leftAnchor.constraint(equalTo: goalHoursLabel.leftAnchor).isActive = true
     }
@@ -149,6 +149,6 @@ class GoalSuperView: UIView {
         defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6).isActive = true
         defaultButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         defaultButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        defaultButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: UIScreen.main.bounds.height * 0.105).isActive = true
+        defaultButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
 }

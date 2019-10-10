@@ -35,6 +35,14 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("timerVC dismissed"), object: nil)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let navBarHeight = navigationController?.navigationBar.safeAreaLayoutGuide.layoutFrame.height else { return }
+        let timeStampHeaderHeight = detailView.timeStampTitle.safeAreaLayoutGuide.layoutFrame.height
+        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height - timeStampHeaderHeight)
+        timeStampsTableView.frame = tableViewFrame
+    }
+    
     func setupView() {
         guard let unwrappedGoal = goal else {
             print("ERROR: goal not passed to DetailViewController correctly")
@@ -53,9 +61,6 @@ class DetailViewController: UIViewController {
     }
     
     func setupTableView() {
-        
-        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.timeStampView.frame.height)
-        timeStampsTableView.frame = tableViewFrame
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
         timeStampsTableView.delegate = self

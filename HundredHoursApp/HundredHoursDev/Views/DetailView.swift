@@ -9,12 +9,6 @@
 import UIKit
 import CoreData
 
-/* TODO:
-        create button to start timer
-        move user interaction buttons/swipe functionality to controller
- 
- */
-
 class DetailView: UIView {
         
     let timeStampView: UIView = {
@@ -32,7 +26,7 @@ class DetailView: UIView {
         let label = UILabel()
         label.text = "Time Stamps"
         label.textAlignment = .left
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
         label.font = UIFont(name: "Avenir-Heavy", size: 25)
         return label
     }()
@@ -119,7 +113,7 @@ class DetailView: UIView {
     
     func animateBar(percentage: CGFloat) {
         CATransaction.begin()
-        self.percentageLabel.text = "Loading"
+        self.percentageLabel.text = "Loading..."
         CATransaction.setCompletionBlock {
             print("animation done")
             let percentNum = String(format: "%.01f", Double(percentage) * 100)
@@ -139,7 +133,7 @@ class DetailView: UIView {
             var startMainViewFrame = self.timeStampView.frame
             if startMainViewFrame.origin.y > 200 {
                 gesture.direction = .down
-                startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.8
+                startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.79
                 self.timeStampView.frame = startMainViewFrame
             } else {
                 gesture.direction = .up

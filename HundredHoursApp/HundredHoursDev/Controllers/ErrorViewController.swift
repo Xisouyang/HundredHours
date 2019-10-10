@@ -9,14 +9,14 @@ import UIKit
 
 class ErrorViewController: UIViewController {
     
-    let errorView = ErrorView()
+    private let errorView = ErrorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         errorView.frame = view.frame
         view.addSubview(errorView)
         errorView.tapGesture.addTarget(self, action: #selector(viewTapped))

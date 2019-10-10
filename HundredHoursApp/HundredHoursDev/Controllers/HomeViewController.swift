@@ -11,9 +11,9 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
-    let viewModel = HomeViewModel()
-    var goalTableView = UITableView()
-    var newGoalButton: UIButton = {
+    private let viewModel = HomeViewModel()
+    private var goalTableView = UITableView()
+    private var newGoalButton: UIButton = {
         let button = UIButton()
         button.setTitle("New Goal", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
@@ -85,7 +85,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     
-    @objc private func newGoalTapped() {
+    @objc func newGoalTapped() {
         let vc = NewGoalViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

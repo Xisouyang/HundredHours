@@ -10,8 +10,6 @@ import UIKit
 
 /* numpad keyboard when user interact with hours text field */
 
-//TODO: prompt the user to start typing tight away and maybe add a placeholder too on the textfields.
-
 class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     private let newGoalView = NewGoalView()
@@ -70,14 +68,23 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        isGoalName = false
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let maxLength = 15
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == newGoalView.goalNameTextField {
             isGoalName = true
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isGoalName = false
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
