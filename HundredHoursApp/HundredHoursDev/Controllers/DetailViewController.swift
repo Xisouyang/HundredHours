@@ -37,7 +37,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard let navBarHeight = navigationController?.navigationBar.safeAreaLayoutGuide.layoutFrame.height else { return }
         let timeStampHeaderHeight = detailView.timeStampTitle.safeAreaLayoutGuide.layoutFrame.height
         let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height - timeStampHeaderHeight)
         timeStampsTableView.frame = tableViewFrame
@@ -63,7 +62,6 @@ class DetailViewController: UIViewController {
     func setupTableView() {
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
-        timeStampsTableView.delegate = self
         timeStampsTableView.dataSource = self
         detailView.timeStampView.addSubview(timeStampsTableView)
     }
@@ -105,10 +103,6 @@ class DetailViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("timerVC dismissed"), object: nil)
     }
-}
-
-extension DetailViewController: UITableViewDelegate {
-    
 }
 
 extension DetailViewController: UITableViewDataSource {

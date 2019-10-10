@@ -36,4 +36,13 @@ class NewGoalView: GoalSuperView {
     func addBlur() {
         self.blurScreen()
     }
+    
+    func highlightLine(line: UIView) {
+        line.layer.borderWidth = 2
+        line.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    }
+    
+    func unhighlightLine(line: UIView) {
+        line.layer.borderWidth = 0
+    }
 }

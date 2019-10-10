@@ -29,6 +29,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(newGoalView)
         view.addGestureRecognizer(tapGesture)
         newGoalView.goalNameTextField.delegate = self
+        newGoalView.goalHoursTextField.delegate = self
     }
     
     private func setupNotifications() {
@@ -69,7 +70,6 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let maxLength = 15
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
@@ -77,21 +77,43 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         return newString.length <= maxLength
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if textField == newGoalView.goalNameTextField {
+            newGoalView.goalNameTextField.resignFirstResponder()
+            newGoalView.goalHoursTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == newGoalView.goalNameTextField {
             isGoalName = true
+            let line = newGoalView.goalNameTextLine
+            newGoalView.highlightLine(line: line)
+        } else if textField == newGoalView.goalHoursTextField {
+            let line = newGoalView.goalHoursTextLine
+            newGoalView.highlightLine(line: line)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         isGoalName = false
+        if textField == newGoalView.goalNameTextField {
+            let line = newGoalView.goalNameTextLine
+            newGoalView.unhighlightLine(line: line)
+        } else if textField == newGoalView.goalHoursTextField {
+            let line = newGoalView.goalHoursTextLine
+            newGoalView.unhighlightLine(line: line)
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if isGoalName == false {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.frame.origin.y -= (keyboardSize.height/2)
                 }
             }
         }
