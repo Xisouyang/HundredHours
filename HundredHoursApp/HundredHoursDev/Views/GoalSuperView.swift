@@ -6,53 +6,9 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/* TODO: character limit for text fields
- 
-        change constraints so it works on every phone
- 
- */
-
 import UIKit
 
 class GoalSuperView: UIView {
-    
-    let goalNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Goal Name"
-        label.font = UIFont(name: "HelveticaNeue", size: 25)
-        return label
-    }()
-    
-    let goalHoursLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Number of Hours"
-        label.font = UIFont(name: "HelveticaNeue", size: 25)
-        return label
-    }()
-    
-    let goalNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.font = UIFont(name: "HelveticaNeue", size: 20)
-        return textField
-    }()
-    
-    let goalHoursTextField: UITextField = {
-        let textField = UITextField()
-        textField.font = UIFont(name: "HelveticaNeue", size: 20)
-        return textField
-    }()
-    
-    let goalNameTextLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        return view
-    }()
-    
-    let goalHoursTextLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        return view
-    }()
     
     var defaultButton: UIButton = {
         let button = UIButton()
@@ -67,12 +23,15 @@ class GoalSuperView: UIView {
         button.layer.shadowRadius = 3
         return button
     }()
-
+    
+    let goalNameField = NewGoalFormField(text: "Goal Name", frame: .zero)
+    let goalHourField = NewGoalFormField(text: "Total Hours", frame: .zero)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         configView()
-        goalNameTextField.becomeFirstResponder()
+        goalNameField.formField.textField.becomeFirstResponder()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,68 +39,12 @@ class GoalSuperView: UIView {
     }
     
     func configView() {
-        addSubview(goalNameLabel)
-        addSubview(goalNameTextField)
-        addSubview(goalNameTextLine)
-        addSubview(goalHoursLabel)
-        addSubview(goalHoursTextField)
-        addSubview(goalHoursTextLine)
         addSubview(defaultButton)
-        goalNameLabelConstraints()
-        goalNameTextFieldConstraints()
-        goalNameLineConstraints()
-        goalHoursLabelConstraints()
-        goalHoursTextFieldConstraints()
+        addSubview(goalNameField)
+        addSubview(goalHourField)
+        goalNameConstraint()
+        goalHourConstraint()
         buttonConstraints()
-        goalHoursTextLineConstraints()
-    }
-    
-    func goalNameLabelConstraints() {
-        goalNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalNameLabel.heightAnchor.constraint(equalToConstant: 50)
-        goalNameLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2).isActive = true
-        goalNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25).isActive = true
-    }
-    
-    func goalHoursLabelConstraints() {
-        goalHoursLabel.translatesAutoresizingMaskIntoConstraints = false
-        goalHoursLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalHoursLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        goalHoursLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2).isActive = true
-        goalHoursLabel.topAnchor.constraint(equalToSystemSpacingBelow: goalNameLabel.bottomAnchor, multiplier: 20).isActive = true
-    }
-    
-    func goalNameTextFieldConstraints() {
-        goalNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        goalNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        goalNameTextField.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        goalNameTextField.topAnchor.constraint(equalTo: goalNameLabel.bottomAnchor, constant: 10).isActive = true
-        goalNameTextField.leftAnchor.constraint(equalTo: goalNameLabel.leftAnchor).isActive = true
-    }
-    
-    func goalHoursTextFieldConstraints() {
-        goalHoursTextField.translatesAutoresizingMaskIntoConstraints = false
-        goalHoursTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2).isActive = true
-        goalHoursTextField.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        goalHoursTextField.topAnchor.constraint(equalTo: goalHoursLabel.bottomAnchor, constant: 10).isActive = true
-        goalHoursTextField.leftAnchor.constraint(equalTo: goalHoursLabel.leftAnchor).isActive = true
-    }
-    
-    func goalNameLineConstraints() {
-        goalNameTextLine.translatesAutoresizingMaskIntoConstraints = false
-        goalNameTextLine.widthAnchor.constraint(equalTo: goalNameTextField.widthAnchor).isActive = true
-        goalNameTextLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        goalNameTextLine.topAnchor.constraint(equalToSystemSpacingBelow: goalNameTextField.topAnchor, multiplier: 6).isActive = true
-        goalNameTextLine.leftAnchor.constraint(equalTo: goalNameTextField.leftAnchor).isActive = true
-    }
-    
-    func goalHoursTextLineConstraints() {
-        goalHoursTextLine.translatesAutoresizingMaskIntoConstraints = false
-        goalHoursTextLine.widthAnchor.constraint(equalTo: goalHoursTextField.widthAnchor).isActive = true
-        goalHoursTextLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        goalHoursTextLine.topAnchor.constraint(equalToSystemSpacingBelow: goalHoursTextField.topAnchor, multiplier: 6).isActive = true
-        goalHoursTextLine.leftAnchor.constraint(equalTo: goalHoursTextField.leftAnchor).isActive = true
     }
     
     func buttonConstraints() {
@@ -150,5 +53,23 @@ class GoalSuperView: UIView {
         defaultButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         defaultButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         defaultButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+    }
+    
+    private func goalNameConstraint() {
+        goalNameField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [goalNameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+             goalNameField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
+            goalNameField.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2),
+            goalNameField.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25)])
+    }
+    
+    private func goalHourConstraint() {
+        goalHourField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+           [goalHourField.widthAnchor.constraint(equalTo: goalNameField.widthAnchor),
+            goalHourField.heightAnchor.constraint(equalTo: goalNameField.heightAnchor),
+            goalHourField.leftAnchor.constraint(equalTo: goalNameField.leftAnchor),
+            goalHourField.topAnchor.constraint(equalTo: goalNameField.safeAreaLayoutGuide.bottomAnchor)])
     }
 }

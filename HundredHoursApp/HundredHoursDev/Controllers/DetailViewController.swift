@@ -6,16 +6,6 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/*
- TODO:
-    - move all swipe/button functions from view to here
-    - create button functions to start timer here
-    - create timer view and view model
-    - create time stamp entity, connect with goals entity one to many relation
-    - create update function in Core Data, call it when we swipe timer view down
-    - create function to create text string to store in time stamp table view
- */
-
 /* Pan-gesture recognizer instead of swipe */
 
 import UIKit

@@ -23,13 +23,13 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     private func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         navigationItem.title = "New Goal"
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
+        newGoalView.goalNameField.formField.textField.delegate = self
+        newGoalView.goalHourField.formField.textField.delegate = self
         view.addSubview(newGoalView)
-        view.addGestureRecognizer(tapGesture)
-        newGoalView.goalNameTextField.delegate = self
-        newGoalView.goalHoursTextField.delegate = self
     }
     
     private func setupNotifications() {
@@ -39,7 +39,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func createGoal() {
-        guard let goalName = newGoalView.goalNameTextField.text, let goalHours = newGoalView.goalHoursTextField.text else { return }
+        guard let goalName = newGoalView.goalNameField.formField.textField.text, let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
         if shouldPresentError {
             presentErrorView()
@@ -78,9 +78,9 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if textField == newGoalView.goalNameTextField {
-            newGoalView.goalNameTextField.resignFirstResponder()
-            newGoalView.goalHoursTextField.becomeFirstResponder()
+            if textField == newGoalView.goalNameField.formField.textField {
+            newGoalView.goalNameField.formField.textField.resignFirstResponder()
+            newGoalView.goalHourField.formField.textField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
@@ -88,23 +88,23 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == newGoalView.goalNameTextField {
+        if textField == newGoalView.goalNameField.formField.textField {
             isGoalName = true
-            let line = newGoalView.goalNameTextLine
+            let line = newGoalView.goalNameField.formLine
             newGoalView.highlightLine(line: line)
-        } else if textField == newGoalView.goalHoursTextField {
-            let line = newGoalView.goalHoursTextLine
+        } else if textField == newGoalView.goalHourField.formField.textField {
+            let line = newGoalView.goalHourField.formLine
             newGoalView.highlightLine(line: line)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         isGoalName = false
-        if textField == newGoalView.goalNameTextField {
-            let line = newGoalView.goalNameTextLine
+        if textField == newGoalView.goalNameField.formField.textField {
+            let line = newGoalView.goalNameField.formLine
             newGoalView.unhighlightLine(line: line)
-        } else if textField == newGoalView.goalHoursTextField {
-            let line = newGoalView.goalHoursTextLine
+        } else if textField == newGoalView.goalHourField.formField.textField {
+            let line = newGoalView.goalHourField.formLine
             newGoalView.unhighlightLine(line: line)
         }
     }

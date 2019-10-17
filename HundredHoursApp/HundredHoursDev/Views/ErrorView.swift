@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: change constraints to work for all phones
-
 class ErrorView: UIView {
     
     let tapGesture = UITapGestureRecognizer()
@@ -74,7 +72,6 @@ class ErrorView: UIView {
     }
     
     func errorCircleViewConstraints() {
-        
         errorCircleView.translatesAutoresizingMaskIntoConstraints = false
         errorCircleView.widthAnchor.constraint(equalTo: errorView.widthAnchor, multiplier: 0.25).isActive = true
         errorCircleView.heightAnchor.constraint(equalTo: errorView.widthAnchor, multiplier: 0.25).isActive = true
