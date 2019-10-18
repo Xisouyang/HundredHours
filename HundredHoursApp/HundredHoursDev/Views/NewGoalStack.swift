@@ -54,9 +54,8 @@ class NewGoalStack: UIStackView {
     
     func textLabelConstraints() {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-            [
+        NSLayoutConstraint.activate([
             textLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
-            ])
+        ])
     }
 }

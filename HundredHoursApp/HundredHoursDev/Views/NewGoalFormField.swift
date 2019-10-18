@@ -45,27 +45,28 @@ class NewGoalFormField: UIView {
     
     func configTextFont() {
         let goalLabelFontSize = self.formField.textLabel.frame.height * 0.4
-        let goalFieldFontSize = self.formField.textField.frame.height * 0.25
+        let goalFieldFontSize = self.formField.textField.frame.height * 0.22
         formField.textLabel.font = UIFont(name: "HelveticaNeue", size: goalLabelFontSize)
         formField.textField.font = UIFont(name: "HelveticaNeue", size: goalFieldFontSize)
     }
     
     private func formFieldConstraints() {
         formField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-            [formField.widthAnchor.constraint(equalTo: self.widthAnchor),
-             formField.heightAnchor.constraint(equalTo: self.heightAnchor),
-             formField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-             formField.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            ])
+        NSLayoutConstraint.activate([
+            formField.widthAnchor.constraint(equalTo: self.widthAnchor),
+            formField.heightAnchor.constraint(equalTo: self.heightAnchor),
+            formField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            formField.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
     
     private func formLineConstraints() {
         formLine.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-           [formLine.widthAnchor.constraint(equalTo: formField.widthAnchor),
+        NSLayoutConstraint.activate([
+            formLine.widthAnchor.constraint(equalTo: formField.widthAnchor),
             formLine.heightAnchor.constraint(equalToConstant: 1),
             formLine.leftAnchor.constraint(equalTo: formField.leftAnchor),
-            formLine.topAnchor.constraint(equalToSystemSpacingBelow: formField.textField.topAnchor, multiplier: 7.5)])
+            formLine.topAnchor.constraint(equalToSystemSpacingBelow: formField.textField.topAnchor, multiplier: 7.5)
+        ])
     }
 }

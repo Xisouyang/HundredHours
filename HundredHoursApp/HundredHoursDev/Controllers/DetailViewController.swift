@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         timeStampsTableView.frame = tableViewFrame
     }
     
-    func setupView() {
+    private func setupView() {
         guard let unwrappedGoal = goal else {
             print("ERROR: goal not passed to DetailViewController correctly")
             return
@@ -49,14 +49,14 @@ class DetailViewController: UIViewController {
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
         timeStampsTableView.dataSource = self
         detailView.timeStampView.addSubview(timeStampsTableView)
     }
     
-    func setupGesture(gesture: UISwipeGestureRecognizer) {
+    private func setupGesture(gesture: UISwipeGestureRecognizer) {
         gesture.numberOfTouchesRequired = 1
         gesture.direction = .up
         gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))

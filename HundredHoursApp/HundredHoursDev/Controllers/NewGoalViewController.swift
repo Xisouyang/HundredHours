@@ -23,13 +23,15 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     private func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let uiComponents = [newGoalView.goalNameField.formField.textField, newGoalView.goalHourField.formField.textField]
         view.addGestureRecognizer(tapGesture)
         navigationItem.title = "New Goal"
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
+        view.addSubview(newGoalView)
+        uiComponents.forEach({$0.addTarget(self, action: #selector(editingChanged), for: .editingChanged)})
         newGoalView.goalNameField.formField.textField.delegate = self
         newGoalView.goalHourField.formField.textField.delegate = self
-        view.addSubview(newGoalView)
     }
     
     private func setupNotifications() {
@@ -57,7 +59,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         present(errorVC, animated: true)
     }
     
-    @objc private func createTapped() {
+    @objc func createTapped() {
         createGoal()
     }
     
@@ -89,17 +91,17 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == newGoalView.goalNameField.formField.textField {
-            isGoalName = true
             let line = newGoalView.goalNameField.formLine
             newGoalView.highlightLine(line: line)
+            isGoalName = true
         } else if textField == newGoalView.goalHourField.formField.textField {
             let line = newGoalView.goalHourField.formLine
             newGoalView.highlightLine(line: line)
+            isGoalName = false
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        isGoalName = false
         if textField == newGoalView.goalNameField.formField.textField {
             let line = newGoalView.goalNameField.formLine
             newGoalView.unhighlightLine(line: line)
@@ -111,6 +113,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print(isGoalName)
             if isGoalName == false {
                 if self.view.frame.origin.y == 0 {
                     self.view.frame.origin.y -= (keyboardSize.height/2)
@@ -125,8 +128,30 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func editingChanged(textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let nameField = newGoalView.goalNameField.formField.textField.text,
+            let hourField = newGoalView.goalHourField.formField.textField.text,
+            !nameField.isEmpty, !hourField.isEmpty
+        else {
+            newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            newGoalView.defaultButton.isEnabled = false
+            return
+        }
+        newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        newGoalView.defaultButton.isEnabled = true
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("errorVC dismissed"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 

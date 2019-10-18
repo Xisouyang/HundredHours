@@ -15,7 +15,7 @@ class NewGoalViewModel {
     func checkTextFields(name: String, hourString: String) -> Bool {
         var shouldPresentError = false
         //TODO: use .isEmpty instead of == ""
-        if name == "" || hourString == "" {
+        if name.isEmpty || hourString.isEmpty {
             shouldPresentError = true
         }
         if Int(hourString) == nil {
