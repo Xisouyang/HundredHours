@@ -44,5 +44,6 @@ class NewGoalView: GoalSuperView {
     
     func unhighlightLine(line: UIView) {
         line.layer.borderWidth = 0
+        line.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     }
 }

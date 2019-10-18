@@ -9,17 +9,12 @@
 import Foundation
 import UIKit
 
+
+
 class NewGoalViewModel {
     
-    func checkFieldError(name: String, hourString: String) -> Bool {
-        var error = false
-        if name.isEmpty || hourString.isEmpty {
-            error = true
-        }
-        if Int(hourString) == nil {
-            error = true
-        }
-        return error
+    func checkHourStringError(hourString: String) -> Bool {
+        return Int(hourString) == nil ? true : false
     }
     
     func addGoal(name: String, hourString: String) {

@@ -42,9 +42,11 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     private func createGoal() {
         guard let goalName = newGoalView.goalNameField.formField.textField.text, let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
-        let shouldPresentError = newGoalView.viewModel.checkFieldError(name: goalName, hourString: goalHours)
+        let shouldPresentError = newGoalView.viewModel.checkHourStringError(hourString: goalHours)
         if shouldPresentError {
             presentErrorView()
+//            newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+//            newGoalView.errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         } else {
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
             navigationController?.popViewController(animated: true)
@@ -67,6 +69,8 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         newGoalView.removeBlur()
         newGoalView.goalNameField.formField.textField.text = ""
         newGoalView.goalHourField.formField.textField.text = ""
+        newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        newGoalView.defaultButton.isEnabled = false
     }
     
     @objc func dismissKeyboard() {
@@ -136,6 +140,9 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
                 textField.text = ""
                 return
             }
+        }
+        if textField == newGoalView.goalHourField.formField.textField {
+            newGoalView.errorLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
         guard
             let nameField = newGoalView.goalNameField.formField.textField.text,

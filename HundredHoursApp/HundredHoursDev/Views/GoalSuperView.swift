@@ -11,6 +11,7 @@ import UIKit
 class GoalSuperView: UIView {
     
     var defaultButton = UIButton()
+    var errorLabel = UILabel()
     let goalNameField = NewGoalFormField(text: "Goal Name", frame: .zero)
     let goalHourField = NewGoalFormField(text: "Total Hours", frame: .zero)
     
@@ -27,12 +28,15 @@ class GoalSuperView: UIView {
     
     private func configView() {
         defaultButton = createButton()
+        errorLabel = createErrorLabel()
         addSubview(defaultButton)
         addSubview(goalNameField)
         addSubview(goalHourField)
-        goalNameConstraint()
-        goalHourConstraint()
+        addSubview(errorLabel)
+        goalNameConstraints()
+        goalHourConstraints()
         buttonConstraints()
+        errorLabelConstraints()
         goalNameField.configPlaceholder(text: "Enter Goal Name")
         goalHourField.configPlaceholder(text: "Number of Hours")
     }
@@ -52,6 +56,13 @@ class GoalSuperView: UIView {
         return button
     }
     
+    private func createErrorLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "x Input must be a whole number"
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return label
+    }
+    
     private func buttonConstraints() {
         defaultButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -62,7 +73,7 @@ class GoalSuperView: UIView {
         ])
     }
     
-    private func goalNameConstraint() {
+    private func goalNameConstraints() {
         goalNameField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             goalNameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
@@ -72,13 +83,23 @@ class GoalSuperView: UIView {
         ])
     }
     
-    private func goalHourConstraint() {
+    private func goalHourConstraints() {
         goalHourField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             goalHourField.widthAnchor.constraint(equalTo: goalNameField.widthAnchor),
             goalHourField.heightAnchor.constraint(equalTo: goalNameField.heightAnchor),
             goalHourField.leftAnchor.constraint(equalTo: goalNameField.leftAnchor),
             goalHourField.topAnchor.constraint(equalTo: goalNameField.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    private func errorLabelConstraints() {
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            errorLabel.widthAnchor.constraint(equalTo: goalHourField.widthAnchor),
+            errorLabel.heightAnchor.constraint(equalTo: goalHourField.heightAnchor, multiplier: 0.5),
+            errorLabel.leftAnchor.constraint(equalTo: goalHourField.leftAnchor),
+            errorLabel.topAnchor.constraint(equalTo: goalHourField.formLine.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
