@@ -6,10 +6,6 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/* TODO: Switch items in stackview: instead of line and textField, do label and textField.
-   Keep line separate from stackview, keep line in the formField class instead.
- */
-
 import UIKit
 
 class NewGoalStack: UIStackView {

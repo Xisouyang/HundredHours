@@ -42,7 +42,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     private func createGoal() {
         guard let goalName = newGoalView.goalNameField.formField.textField.text, let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
-        let shouldPresentError = newGoalView.viewModel.checkTextFields(name: goalName, hourString: goalHours)
+        let shouldPresentError = newGoalView.viewModel.checkFieldError(name: goalName, hourString: goalHours)
         if shouldPresentError {
             presentErrorView()
         } else {
@@ -65,6 +65,8 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     @objc func resetScreen(notification: Notification) {
         newGoalView.removeBlur()
+        newGoalView.goalNameField.formField.textField.text = ""
+        newGoalView.goalHourField.formField.textField.text = ""
     }
     
     @objc func dismissKeyboard() {

@@ -33,6 +33,8 @@ class GoalSuperView: UIView {
         goalNameConstraint()
         goalHourConstraint()
         buttonConstraints()
+        goalNameField.configPlaceholder(text: "Enter Goal Name")
+        goalHourField.configPlaceholder(text: "Number of Hours")
     }
     
     private func createButton() -> UIButton {

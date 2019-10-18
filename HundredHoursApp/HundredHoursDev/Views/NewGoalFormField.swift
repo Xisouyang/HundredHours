@@ -43,6 +43,10 @@ class NewGoalFormField: UIView {
         formLine.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
+    func configPlaceholder(text: String) {
+        formField.textField.placeholder = text
+    }
+    
     func configTextFont() {
         let goalLabelFontSize = self.formField.textLabel.frame.height * 0.4
         let goalFieldFontSize = self.formField.textField.frame.height * 0.22
