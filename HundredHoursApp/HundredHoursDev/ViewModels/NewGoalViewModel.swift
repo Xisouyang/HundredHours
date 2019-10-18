@@ -14,7 +14,8 @@ import UIKit
 class NewGoalViewModel {
     
     func checkHourStringError(hourString: String) -> Bool {
-        return Int(hourString) == nil ? true : false
+        guard let hours = Int(hourString) else { return true }
+        return hours < 0 ? true : false
     }
     
     func addGoal(name: String, hourString: String) {

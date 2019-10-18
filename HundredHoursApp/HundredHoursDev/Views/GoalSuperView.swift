@@ -58,7 +58,7 @@ class GoalSuperView: UIView {
     
     private func createErrorLabel() -> UILabel {
         let label = UILabel()
-        label.text = "x Input must be a whole number"
+        label.text = "x  Must be a positive whole number"
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
     }
