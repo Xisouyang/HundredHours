@@ -99,7 +99,7 @@ class GoalSuperView: UIView {
             errorLabel.widthAnchor.constraint(equalTo: goalHourField.widthAnchor),
             errorLabel.heightAnchor.constraint(equalTo: goalHourField.heightAnchor, multiplier: 0.5),
             errorLabel.leftAnchor.constraint(equalTo: goalHourField.leftAnchor),
-            errorLabel.topAnchor.constraint(equalTo: goalHourField.formLine.safeAreaLayoutGuide.bottomAnchor)
+            errorLabel.topAnchor.constraint(equalTo: goalHourField.safeAreaLayoutGuide.bottomAnchor, constant: -35)
         ])
     }
 }

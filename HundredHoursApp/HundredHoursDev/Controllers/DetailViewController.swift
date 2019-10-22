@@ -27,6 +27,10 @@ class DetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        configTimeStampView()
+    }
+    
+    private func configTimeStampView() {
         let timeStampHeaderHeight = detailView.timeStampTitle.safeAreaLayoutGuide.layoutFrame.height
         let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height - timeStampHeaderHeight)
         timeStampsTableView.frame = tableViewFrame
@@ -80,10 +84,14 @@ class DetailViewController: UIViewController {
     @objc func resetScreen() {
         guard let unwrappedGoal = goal else { return }
         detailView.removeBlur()
+        updateData(goal: unwrappedGoal)
+    }
+    
+    private func updateData(goal: Goal) {
         let timeToSave = timerViewModel.getSeconds()
-        detailViewModel.saveTimeStamp(time: timeToSave, goal: unwrappedGoal)
-        detailViewModel.updateCurrentTime(goal: unwrappedGoal, seconds: timeToSave)
-        let newPercent = detailViewModel.calcPercent(goal: unwrappedGoal)
+        detailViewModel.saveTimeStamp(time: timeToSave, goal: goal)
+        detailViewModel.updateCurrentTime(goal: goal, seconds: timeToSave)
+        let newPercent = detailViewModel.calcPercent(goal: goal)
         detailView.animateBar(percentage: newPercent)
         let session = timerViewModel.getTimeLabel()
         detailViewModel.timeStampsArr.insert(session, at: 0)

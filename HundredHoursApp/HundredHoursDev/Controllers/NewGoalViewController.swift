@@ -37,40 +37,22 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("errorVC dismissed"), object: nil)
     }
     
     private func createGoal() {
         guard let goalName = newGoalView.goalNameField.formField.textField.text, let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkHourStringError(hourString: goalHours)
         if shouldPresentError {
-            presentErrorView()
-//            newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-//            newGoalView.errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            newGoalView.errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         } else {
             newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
             navigationController?.popViewController(animated: true)
         }
     }
-
-    private func presentErrorView() {
-        newGoalView.addBlur()
-        let errorVC = ErrorViewController()
-        //TODO: find out a way to have the nav bar blur as well
-        errorVC.modalPresentationStyle = .overFullScreen
-        present(errorVC, animated: true)
-    }
     
     @objc func createTapped() {
         createGoal()
-    }
-    
-    @objc func resetScreen(notification: Notification) {
-        newGoalView.removeBlur()
-        newGoalView.goalNameField.formField.textField.text = ""
-        newGoalView.goalHourField.formField.textField.text = ""
-        newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        newGoalView.defaultButton.isEnabled = false
     }
     
     @objc func dismissKeyboard() {

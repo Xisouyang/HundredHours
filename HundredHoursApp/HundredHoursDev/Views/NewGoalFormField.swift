@@ -70,7 +70,7 @@ class NewGoalFormField: UIView {
             formLine.widthAnchor.constraint(equalTo: formField.widthAnchor),
             formLine.heightAnchor.constraint(equalToConstant: 1),
             formLine.leftAnchor.constraint(equalTo: formField.leftAnchor),
-            formLine.topAnchor.constraint(equalToSystemSpacingBelow: formField.textField.topAnchor, multiplier: 7.5)
+            formLine.topAnchor.constraint(equalTo: formField.textField.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 }

@@ -10,19 +10,12 @@ import UIKit
 
 class NoGoalsHomeView: UIView {
     
-    let emptyStateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Get started with a new goal!"
-        label.textAlignment = .center
-        label.font = UIFont(name: "HelveticaNeue", size: 25)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        return label
-    }()
+    private var emptyStateLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        emptyStateLabel = createEmptyStateLabel()
         self.addSubview(emptyStateLabel)
         labelConstraints()
     }
@@ -31,7 +24,17 @@ class NoGoalsHomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func labelConstraints() {
+    private func createEmptyStateLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Get started with a new goal!"
+        label.textAlignment = .center
+        label.font = UIFont(name: "HelveticaNeue", size: 25)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }
+    
+    private func labelConstraints() {
         emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
         emptyStateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         emptyStateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

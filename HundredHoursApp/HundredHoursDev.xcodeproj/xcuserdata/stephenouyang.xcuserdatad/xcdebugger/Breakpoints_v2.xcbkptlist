@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "593125568.382309"
+            timestampString = "593470454.9055901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "593125568.382374"
+            timestampString = "593470454.905648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "textFieldDidEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "593125568.3824199"
+            timestampString = "593470454.905688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "keyboardWillHide(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "593125568.382463"
+            timestampString = "593470454.905725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "keyboardWillShow(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "593125568.382506"
+            timestampString = "593470454.90576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "editingChanged(textField:)"
             landmarkType = "7">
          </BreakpointContent>

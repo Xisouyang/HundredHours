@@ -11,25 +11,8 @@ import UIKit
 class TimerView: UIView {
     
     let tapGesture = UITapGestureRecognizer()
-    
-    var watchView: UIView = {
-        let view = UIView()
-        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 1.75, height: UIScreen.main.bounds.height / 4)
-        view.frame = viewFrame
-        view.layer.cornerRadius = 20
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        return view
-    }()
-    
-    var watchLabel: UILabel = {
-        let label = UILabel()
-        label.text = "00:00:00"
-        label.font = UIFont(name: "CourierNewPS-BoldMT", size: 30)
-        label.textAlignment = .center
-        return label
-    }()
+    var watchView = UIView()
+    var watchLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +25,32 @@ class TimerView: UIView {
     
     private func commonInit() {
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        watchView = createWatchView()
+        watchLabel = createWatchLabel()
         self.addSubview(watchView)
-        watchView.center = self.center
         watchView.addSubview(watchLabel)
         watchLabelConstraints()
         configTapGesture()
+    }
+    
+    private func createWatchView() -> UIView {
+        let view = UIView()
+        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 1.75, height: UIScreen.main.bounds.height / 4)
+        view.frame = viewFrame
+        view.center = self.center
+        view.layer.cornerRadius = 20
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.layer.borderWidth = 1
+        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return view
+    }
+    
+    private func createWatchLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "00:00:00"
+        label.font = UIFont(name: "CourierNewPS-BoldMT", size: 30)
+        label.textAlignment = .center
+        return label
     }
     
     private func configTapGesture() {

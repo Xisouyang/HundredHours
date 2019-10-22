@@ -17,8 +17,6 @@
 		5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CC23344C30005FFD1F /* TimerViewController.swift */; };
 		5D4C61CF23344C53005FFD1F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CE23344C53005FFD1F /* TimerView.swift */; };
 		5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61D023344CAF005FFD1F /* TimerViewModel.swift */; };
-		5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */; };
-		5D6DB6022323121A004B08F1 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6DB6012323121A004B08F1 /* ErrorView.swift */; };
 		5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */; };
 		5D9C529E232B05BB00608D6D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C529D232B05BB00608D6D /* HomeViewModel.swift */; };
 		5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73501231DFDF400F53E30 /* AppDelegate.swift */; };
@@ -70,8 +68,6 @@
 		5D4C61CC23344C30005FFD1F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		5D4C61CE23344C53005FFD1F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		5D4C61D023344CAF005FFD1F /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
-		5D6DB6012323121A004B08F1 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewModel.swift; sourceTree = "<group>"; };
 		5D9C529D232B05BB00608D6D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5DB734FE231DFDF400F53E30 /* HundredHoursDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HundredHoursDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				5DFE43DF233001DE005C9A79 /* DetailView.swift */,
-				5D6DB6012323121A004B08F1 /* ErrorView.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
 				5DB7FB0B235649D20069040C /* NewGoalFormField.swift */,
 				5DB7FB0D2356515E0069040C /* NewGoalStack.swift */,
@@ -215,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				5D051787232C1A1A00B94C4B /* DetailViewController.swift */,
-				5D6DB5FF2322E354004B08F1 /* ErrorViewController.swift */,
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
 				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5D4C61CC23344C30005FFD1F /* TimerViewController.swift */,
@@ -371,14 +365,12 @@
 			files = (
 				5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */,
 				5DB7FB0E2356515E0069040C /* NewGoalStack.swift in Sources */,
-				5D6DB6002322E354004B08F1 /* ErrorViewController.swift in Sources */,
 				5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
 				5DD9912E2347D32E001D5190 /* Goal+CoreDataProperties.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,
 				5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */,
-				5D6DB6022323121A004B08F1 /* ErrorView.swift in Sources */,
 				5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */,
 				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
 				5DD9912F2347D32E001D5190 /* Timestamps+CoreDataClass.swift in Sources */,

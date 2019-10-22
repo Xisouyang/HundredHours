@@ -11,64 +11,36 @@ import CoreData
 
 class DetailView: UIView {
         
-    let timeStampView: UIView = {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height/1.2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        view.layer.cornerRadius = 25
-        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        return view
-    }()
-    
-    let timeStampTitle: UILabel = {
-        let label = UILabel()
-        label.text = "Time Stamps"
-        label.textAlignment = .left
-        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
-        label.font = UIFont(name: "Avenir-Heavy", size: 25)
-        return label
-    }()
-    
-    let shapeLayer: CAShapeLayer = {
-        let layer = CAShapeLayer()
-        return layer
-    }()
-    
-    let trackLayer: CAShapeLayer = {
-        let layer = CAShapeLayer()
-        return layer
-    }()
-    
-    let percentageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Start"
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 25)
-        return label
-    }()
-    
-    let timeButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        button.setTitle("Timer", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .highlighted)
-        button.contentMode = .center
-        button.imageView?.contentMode = .scaleAspectFit
-        button.layer.borderWidth = 3
-        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        return button
-    }()
+    var timeStampView = UIView()
+    var timeStampTitle = UILabel()
+    var shapeLayer = CAShapeLayer()
+    var trackLayer = CAShapeLayer()
+    var percentageLabel = UILabel()
+    var timeButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let circle = createCircle(color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))
-        timeButton.layer.cornerRadius = (self.frame.width * 0.18) / 2
         self.layer.addSublayer(circle)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        timeButton.layer.cornerRadius = timeButton.frame.width / 2
+        layoutIfNeeded()
+    }
+    
+    private func setupView() {
+        percentageLabel = createPercentageLabel()
+        timeButton = createTimeButton()
+        timeStampView = createTimeStampView()
+        timeStampTitle = createTimeStampTitle()
         addSubview(percentageLabel)
         addSubview(timeButton)
         addSubview(timeStampView)
@@ -78,11 +50,50 @@ class DetailView: UIView {
         timeStampTitleConstraints()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func createTimeStampView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height/1.2, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.layer.cornerRadius = 25
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        return view
     }
     
-    func createCircle(color: UIColor) -> CAShapeLayer {
+    private func createTimeStampTitle() -> UILabel {
+        let label = UILabel()
+        label.text = "Time Stamps"
+        label.textAlignment = .left
+        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
+        label.font = UIFont(name: "Avenir-Heavy", size: 25)
+        return label
+    }
+    
+    private func createPercentageLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Start"
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        return label
+    }
+    
+    private func createTimeButton() -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        button.setTitle("Timer", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .highlighted)
+        button.contentMode = .center
+        button.imageView?.contentMode = .scaleAspectFit
+        button.layer.borderWidth = 3
+        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        button.layer.cornerRadius = 50
+        return button
+    }
+    
+    private func createCircle(color: UIColor) -> CAShapeLayer {
         // create path
         let circularPath = UIBezierPath(arcCenter: .zero, radius: self.frame.width/3.5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         configTrackLayer(path: circularPath)
@@ -91,7 +102,7 @@ class DetailView: UIView {
         return shapeLayer
     }
     
-    func configTrackLayer(path: UIBezierPath) {
+    private func configTrackLayer(path: UIBezierPath) {
         trackLayer.path = path.cgPath
         trackLayer.strokeColor = #colorLiteral(red: 0.587603271, green: 0.578435719, blue: 0.594556272, alpha: 1)
         trackLayer.lineWidth = 12.5
@@ -100,7 +111,7 @@ class DetailView: UIView {
         trackLayer.position = CGPoint(x: (self.frame.size.width)/2, y: (self.frame.size.height)/2)
     }
     
-    func configShapeLayer(path: UIBezierPath, color: UIColor) {
+    private func configShapeLayer(path: UIBezierPath, color: UIColor) {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.lineWidth = 12.5
@@ -153,7 +164,7 @@ class DetailView: UIView {
         self.removeBlurEffect()
     }
     
-    func timeStampTitleConstraints() {
+    private func timeStampTitleConstraints() {
         timeStampTitle.translatesAutoresizingMaskIntoConstraints = false
         timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.6).isActive = true
         timeStampTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -161,7 +172,7 @@ class DetailView: UIView {
         timeStampTitle.leftAnchor.constraint(equalToSystemSpacingAfter: timeStampView.leftAnchor, multiplier: 2).isActive = true
     }
     
-    func percentageLabelConstraints() {
+    private func percentageLabelConstraints() {
         percentageLabel.translatesAutoresizingMaskIntoConstraints = false
         percentageLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         percentageLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
@@ -169,7 +180,7 @@ class DetailView: UIView {
         percentageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     
-    func timeButtonConstraints() {
+    private func timeButtonConstraints() {
         timeButton.translatesAutoresizingMaskIntoConstraints = false
         timeButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true
         timeButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18).isActive = true
