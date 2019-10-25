@@ -11,6 +11,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
+    var coordinator: MainCoordinator?
     private let viewModel = HomeViewModel()
     private var goalTableView = UITableView()
     private var newGoalButton = UIButton()
@@ -18,6 +19,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTableView()
+    }
+    
+    private func setupView() {
         navigationItem.title = "Goals"
         newGoalButton = createNewGoalBtn()
         view.addSubview(newGoalButton)
@@ -26,8 +36,7 @@ class HomeViewController: UIViewController {
         viewModel.goalsArr = viewModel.populateGoalList()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func updateTableView() {
         viewModel.goalsArr = viewModel.populateGoalList()
         goalTableView.reloadData()
         configTableView()
@@ -89,17 +98,20 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     @objc func newGoalTapped() {
-        let vc = NewGoalViewController()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = NewGoalViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.createNewGoal()
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
-        vc.goal = viewModel.goalsArr[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = DetailViewController()
+//        vc.goal = viewModel.goalsArr[indexPath.row]
+//        navigationController?.pushViewController(vc, animated: true)
+        let goalToPass = viewModel.goalsArr[indexPath.row]
+        coordinator?.goToDetailScreen(goal: goalToPass)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -127,10 +139,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let secondsInHour = 3600
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
         let goalName = viewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
         let goalSeconds = viewModel.goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
-        let goalHours = goalSeconds / 3600
+        let goalHours = goalSeconds / secondsInHour
         let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))
         cell.textLabel?.text = cellString
         return cell

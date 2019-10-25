@@ -13,11 +13,12 @@ import CoreData
 
 class DetailViewController: UIViewController {
     
+    var coordinator: Coordinator?
     var goal: Goal?
-    let detailViewModel = DetailViewModel()
-    var timerViewModel = TimerViewModel()
-    let detailView = DetailView(frame: UIScreen.main.bounds)
-    var timeStampsTableView = UITableView(frame: .zero)
+    private let detailViewModel = DetailViewModel()
+    private var timerViewModel = TimerViewModel()
+    private let detailView = DetailView(frame: UIScreen.main.bounds)
+    private var timeStampsTableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
         super.viewDidLoad()

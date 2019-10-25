@@ -14,15 +14,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var coordinator: MainCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        let nav = UINavigationController()
+//        let vc = HomeViewController()
+//        nav.viewControllers = [vc]
+//        setNavigation(navigationBar: nav.navigationBar)
+//        window?.rootViewController = nav
+//        window?.makeKeyAndVisible()
+//        return true
+        
         let nav = UINavigationController()
-        let vc = HomeViewController()
-        nav.viewControllers = [vc]
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let onboard = OnboardViewController(collectionViewLayout: layout)
         setNavigation(navigationBar: nav.navigationBar)
-        window?.rootViewController = nav
+        coordinator = MainCoordinator(navigationController: nav)
+        coordinator?.start()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = onboard
         window?.makeKeyAndVisible()
         return true
     }
