@@ -9,11 +9,6 @@
 import Foundation
 
 struct OnboardText {
-    var title: String
-    var description: String
-    
-    init(title: String, description: String) {
-        self.title = title
-        self.description = description
-    }
+    let title: String
+    let description: String
 }
