@@ -26,7 +26,7 @@ class NewGoalView: GoalSuperView {
     }
     
     func configButton() {
-        defaultButton.setTitle("Create", for: .normal)
+        defaultButton.setTitle("CREATE", for: .normal)
     }
     
     func removeBlur() {

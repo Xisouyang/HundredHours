@@ -12,7 +12,7 @@ import UIKit
 
 class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
-    var coordinator: Coordinator?
+    weak var coordinator: Coordinator?
     private let newGoalView = NewGoalView()
     private var isGoalName = false
 

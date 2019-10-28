@@ -11,7 +11,7 @@ import CoreData
 
 class HomeViewController: UIViewController {
     
-    var coordinator: MainCoordinator?
+    weak var coordinator: MainCoordinator?
     private let viewModel = HomeViewModel()
     private var goalTableView = UITableView()
     private var newGoalButton = UIButton()
@@ -24,11 +24,12 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.title = "Goals"
+        navigationItem.hidesBackButton = true
         updateTableView()
     }
     
     private func setupView() {
-        navigationItem.title = "Goals"
         newGoalButton = createNewGoalBtn()
         view.addSubview(newGoalButton)
         buttonConstraints()
@@ -65,7 +66,7 @@ class HomeViewController: UIViewController {
     
     private func createNewGoalBtn() -> UIButton {
         let button = UIButton()
-        button.setTitle("New Goal", for: .normal)
+        button.setTitle("NEW", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         button.layer.cornerRadius = 25
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
@@ -80,7 +81,7 @@ class HomeViewController: UIViewController {
     
     private func buttonConstraints() {
         newGoalButton.translatesAutoresizingMaskIntoConstraints = false
-        newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+        newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true

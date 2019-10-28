@@ -7,6 +7,8 @@
 //
 
 //TODO: look into a DEBUG flag to get rid of print statements
+//TODO: Fix bug that occurs when number of hours is too large
+//TODO: Maybe fix character limit
 
 import UIKit
 
@@ -28,20 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return true
         
         let nav = UINavigationController()
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let onboard = OnboardViewController(collectionViewLayout: layout)
-        setNavigation(navigationBar: nav.navigationBar)
+        configNavigation(navigationBar: nav.navigationBar)
         coordinator = MainCoordinator(navigationController: nav)
-        coordinator?.start()
+        if UserDefaults.standard.object(forKey: "onboarded") as? Bool == true {
+            coordinator?.start()
+        } else {
+            coordinator?.onboard()
+        }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = onboard
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         return true
     }
     
     // navigation bar UI
-    func setNavigation(navigationBar: UINavigationBar) {
+    func configNavigation(navigationBar: UINavigationBar) {
         let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8),
                                     NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 25)]
         let appearance = UINavigationBar.appearance()

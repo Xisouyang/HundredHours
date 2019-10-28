@@ -13,8 +13,8 @@ import CoreData
 
 class DetailViewController: UIViewController {
     
-    var coordinator: Coordinator?
-    var goal: Goal?
+    weak var coordinator: Coordinator?
+    weak var goal: Goal?
     private let detailViewModel = DetailViewModel()
     private var timerViewModel = TimerViewModel()
     private let detailView = DetailView(frame: UIScreen.main.bounds)

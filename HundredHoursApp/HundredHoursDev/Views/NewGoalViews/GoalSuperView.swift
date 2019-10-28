@@ -66,7 +66,7 @@ class GoalSuperView: UIView {
     private func buttonConstraints() {
         defaultButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+            defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4),
             defaultButton.heightAnchor.constraint(equalToConstant: 50),
             defaultButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             defaultButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30)

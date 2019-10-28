@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 class NewGoalViewModel {
     
     func checkHourStringError(hourString: String) -> Bool {

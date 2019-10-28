@@ -18,6 +18,15 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         self.navController = navigationController
     }
     
+    func onboard() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        navController.delegate = self
+        let vc = OnboardViewController(collectionViewLayout: layout)
+        vc.coordinator = self
+        navController.pushViewController(vc, animated: true)
+    }
+    
     func start() {
         navController.delegate = self
         let vc = HomeViewController()

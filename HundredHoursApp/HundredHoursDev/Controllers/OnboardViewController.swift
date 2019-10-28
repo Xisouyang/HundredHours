@@ -10,6 +10,7 @@ import UIKit
 
 class OnboardViewController: UICollectionViewController {
     
+    weak var coordinator: MainCoordinator?
     let viewModel = OnboardViewModel()
     private var startButton = UIButton(frame: .zero)
     private var pageControl = UIPageControl()
@@ -26,6 +27,12 @@ class OnboardViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func configView() {
@@ -61,6 +68,7 @@ class OnboardViewController: UICollectionViewController {
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 3
         button.alpha = 0
+        button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         return button
     }
     
@@ -89,7 +97,7 @@ class OnboardViewController: UICollectionViewController {
             pageControl.heightAnchor.constraint(equalToConstant: 40),
             pageControl.widthAnchor.constraint(equalToConstant: 100),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pageControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 65 )
+            pageControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 65)
         ])
     }
 
@@ -105,6 +113,12 @@ class OnboardViewController: UICollectionViewController {
                 self.startButton.alpha = 1
             })
         }
+    }
+    
+    @objc private func startTapped() {
+        print("start tapped")
+        UserDefaults.standard.set(true, forKey: "onboarded")
+        coordinator?.start()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -138,6 +152,10 @@ extension OnboardViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
     }
 }
 
