@@ -37,6 +37,8 @@ class OnboardPageCell: UICollectionViewCell {
         label.text = text
         label.textAlignment = .center
         label.font = font
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }
     
@@ -46,7 +48,7 @@ class OnboardPageCell: UICollectionViewCell {
             titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75),
             titleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1),
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 30)
+            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
@@ -54,9 +56,9 @@ class OnboardPageCell: UICollectionViewCell {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor),
-            descriptionLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 0.9),
+            descriptionLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 3),
             descriptionLabel.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.bottomAnchor)
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.bottomAnchor, constant: 5)
         ])
     }
 }

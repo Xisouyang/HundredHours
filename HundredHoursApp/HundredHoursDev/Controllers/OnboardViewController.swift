@@ -12,6 +12,12 @@ class OnboardViewController: UICollectionViewController {
     
     let viewModel = OnboardViewModel()
     private var startButton = UIButton(frame: .zero)
+    private var pageControl = UIPageControl()
+    private var currPageIndex = 0 {
+        didSet {
+            print(currPageIndex)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +29,11 @@ class OnboardViewController: UICollectionViewController {
     }
     
     private func configView() {
-        collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectionView.register(OnboardPageCell.self, forCellWithReuseIdentifier: OnboardPageCell.identifier)
         collectionView.isPagingEnabled = true
         createButton()
+        createPageControl()
     }
     
     private func createButton() {
@@ -35,11 +42,17 @@ class OnboardViewController: UICollectionViewController {
         startButtonConstraints()
     }
     
+    private func createPageControl() {
+        pageControl = configPageControl()
+        view.addSubview(pageControl)
+        pageControlConstraints()
+    }
+    
     private func configStartButton() -> UIButton {
         let button = UIButton()
         button.isEnabled = false
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        button.setTitle("Start", for: .normal)
+        button.setTitle("START", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
         button.layer.cornerRadius = 25
@@ -51,6 +64,35 @@ class OnboardViewController: UICollectionViewController {
         return button
     }
     
+    private func configPageControl() -> UIPageControl {
+        let control = UIPageControl()
+        control.currentPage = 0
+        control.numberOfPages = viewModel.dataSource.count
+        control.currentPageIndicatorTintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        control.pageIndicatorTintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        return control
+    }
+    
+    private func startButtonConstraints() {
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            startButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
+            startButton.heightAnchor.constraint(equalToConstant: 50),
+            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            ])
+    }
+    
+    private func pageControlConstraints() {
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageControl.heightAnchor.constraint(equalToConstant: 40),
+            pageControl.widthAnchor.constraint(equalToConstant: 100),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pageControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 65 )
+        ])
+    }
+
     private func toggleButton(index: Int) {
         if index < viewModel.dataSource.count - 1 {
             startButton.isEnabled = false
@@ -63,16 +105,6 @@ class OnboardViewController: UICollectionViewController {
                 self.startButton.alpha = 1
             })
         }
-    }
-    
-    private func startButtonConstraints() {
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            startButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-            startButton.heightAnchor.constraint(equalToConstant: 50),
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
-        ])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,8 +123,9 @@ class OnboardViewController: UICollectionViewController {
         let point = CGPoint(x: rect.midX, y: rect.midY)
         let index = collectionView.indexPathForItem(at: point)
         if let unwrappedIndex = index {
-            print("current page index: \(unwrappedIndex.item)")
             toggleButton(index: unwrappedIndex.item)
+            currPageIndex = unwrappedIndex.item
+            pageControl.currentPage = currPageIndex
         }
     }
 }
@@ -100,7 +133,7 @@ class OnboardViewController: UICollectionViewController {
 extension OnboardViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height * 0.6)
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height * 0.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

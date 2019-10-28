@@ -17,7 +17,7 @@ extension UIFont {
     }()
     
     static let descriptionFont: UIFont = {
-        let font = UIFont(name: "Avenir", size: 24)
-        return font ?? UIFont.systemFont(ofSize: 24)
+        let font = UIFont(name: "Avenir", size: 18)
+        return font ?? UIFont.systemFont(ofSize: 18)
     }()
 }

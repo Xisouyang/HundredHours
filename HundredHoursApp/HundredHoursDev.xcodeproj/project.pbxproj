@@ -195,8 +195,8 @@
 				5DFE02AC235FAC94001A295B /* Coordinators */,
 				5DF6EA022325ABD400EC64B7 /* Controllers */,
 				5DF6EA012325ABC600EC64B7 /* Models */,
-				5D9C529C232AC08800608D6D /* ViewModels */,
 				5DF6EA002325ABB500EC64B7 /* Views */,
+				5D9C529C232AC08800608D6D /* ViewModels */,
 				5DFF84C923626070006AD6EE /* Extensions */,
 			);
 			path = HundredHoursDev;
