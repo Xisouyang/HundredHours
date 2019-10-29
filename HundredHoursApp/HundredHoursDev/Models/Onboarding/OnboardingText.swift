@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct OnboardText {
+struct OnboardItems {
     let title: String
     let description: String
+    let imgName: String
 }

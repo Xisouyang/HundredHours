@@ -100,19 +100,19 @@ class OnboardViewController: UICollectionViewController {
     private func toggleButton(index: Int) {
         if index < viewModel.dataSource.count - 1 {
             startButton.isEnabled = false
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 0
             })
         } else {
             startButton.isEnabled = true
-            UIView.animate(withDuration: 0.75, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 1
             })
         }
     }
     
     @objc private func startTapped() {
-//        UserDefaults.standard.set(true, forKey: "onboarded")
+        UserDefaults.standard.set(true, forKey: "onboarded")
         coordinator?.start()
     }
     
@@ -122,8 +122,8 @@ class OnboardViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardPageCell.identifier, for: indexPath) as! OnboardPageCell
-        let onboardText = viewModel.dataSource[indexPath.item]
-        cell.onboardText = onboardText
+        let onboardItem = viewModel.dataSource[indexPath.item]
+        cell.onboardItem = onboardItem
         return cell
     }
     
