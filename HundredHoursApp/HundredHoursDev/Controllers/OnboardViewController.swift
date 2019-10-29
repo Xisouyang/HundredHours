@@ -14,11 +14,7 @@ class OnboardViewController: UICollectionViewController {
     let viewModel = OnboardViewModel()
     private var startButton = UIButton(frame: .zero)
     private var pageControl = UIPageControl()
-    private var currPageIndex = 0 {
-        didSet {
-            print(currPageIndex)
-        }
-    }
+    private var currPageIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,8 +112,7 @@ class OnboardViewController: UICollectionViewController {
     }
     
     @objc private func startTapped() {
-        print("start tapped")
-        UserDefaults.standard.set(true, forKey: "onboarded")
+//        UserDefaults.standard.set(true, forKey: "onboarded")
         coordinator?.start()
     }
     

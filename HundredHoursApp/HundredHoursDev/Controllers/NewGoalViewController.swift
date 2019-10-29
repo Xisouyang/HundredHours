@@ -102,7 +102,6 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print(isGoalName)
             if isGoalName == false {
                 if self.view.frame.origin.y == 0 {
                     self.view.frame.origin.y -= (keyboardSize.height/2)

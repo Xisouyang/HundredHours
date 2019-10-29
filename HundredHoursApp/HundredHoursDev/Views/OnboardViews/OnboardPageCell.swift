@@ -13,7 +13,6 @@ class OnboardPageCell: UICollectionViewCell {
     static let identifier = "onboarding"
     var onboardText: OnboardText? {
         didSet {
-            // prevent codes from crashing if data source
             guard let unwrappedText = onboardText else { return }
             titleLabel = configLabel(text: unwrappedText.title, font: UIFont.titleFont)
             descriptionLabel = configLabel(text: unwrappedText.description, font: UIFont.descriptionFont)

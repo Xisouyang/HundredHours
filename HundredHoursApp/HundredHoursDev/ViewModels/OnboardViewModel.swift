@@ -11,8 +11,8 @@ import Foundation
 class OnboardViewModel {
     
     let dataSource: [OnboardText] = [
-        OnboardText(title: "TITLE ONE", description: "description one"),
-        OnboardText(title: "TITLE TWO", description: "description two"),
-        OnboardText(title: "TITLE THREE", description: "description three description threedescription three description three description three description three description three description three description three description three")
+        OnboardText(title: "Create a Goal", description: "Create a goal to keep track of"),
+        OnboardText(title: "Hours Only", description: "Be sure to only input whole numbers that represent the number of hours for the goal"),
+        OnboardText(title: "Track Your Progress", description: "Track progress using the circular bar. Swipe up to see all timed sessions. Tap timer to start session, tap again to exit")
     ]
 }

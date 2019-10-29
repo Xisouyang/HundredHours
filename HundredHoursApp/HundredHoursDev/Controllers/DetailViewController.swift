@@ -68,13 +68,11 @@ class DetailViewController: UIViewController {
     }
     
     @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
-        print("Time stamps header swiped")
         detailView.scrollUpAndDown(gesture: gesture)
     }
     
     //TODO: find if we can also blur the navbar
     @objc func timeButtonTapped() {
-        print("timer tapped")
         detailView.addBlur()
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen

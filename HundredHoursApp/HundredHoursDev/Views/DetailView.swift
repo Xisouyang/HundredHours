@@ -126,7 +126,6 @@ class DetailView: UIView {
         CATransaction.begin()
         self.percentageLabel.text = "Loading..."
         CATransaction.setCompletionBlock {
-            print("animation done")
             let percentNum = String(format: "%.01f", Double(percentage) * 100)
             self.percentageLabel.text = "\(percentNum)%"
         }
@@ -151,8 +150,6 @@ class DetailView: UIView {
                 startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
                 self.timeStampView.frame = startMainViewFrame
             }
-        }, completion: { complete in
-            print("animation completed")
         })
     }
     
