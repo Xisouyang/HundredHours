@@ -9,6 +9,7 @@
 //TODO: look into a DEBUG flag to get rid of print statements
 //TODO: Fix bug that occurs when number of hours is too large
 //TODO: Maybe fix character limit
+//TODO: Add notification center to app
 
 import UIKit
 

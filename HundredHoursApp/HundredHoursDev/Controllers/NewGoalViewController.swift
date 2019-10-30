@@ -27,12 +27,13 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         let uiComponents = [newGoalView.goalNameField.formField.textField, newGoalView.goalHourField.formField.textField]
         view.addGestureRecognizer(tapGesture)
         navigationItem.title = "New Goal"
+        view.addSubview(newGoalView)
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
-        view.addSubview(newGoalView)
         uiComponents.forEach({$0.addTarget(self, action: #selector(editingChanged), for: .editingChanged)})
         newGoalView.goalNameField.formField.textField.delegate = self
         newGoalView.goalHourField.formField.textField.delegate = self
+        newGoalView.goalHourField.formField.textField.keyboardType = .asciiCapableNumberPad
     }
     
     private func setupNotifications() {
@@ -69,7 +70,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if textField == newGoalView.goalNameField.formField.textField {
+        if textField == newGoalView.goalNameField.formField.textField {
             newGoalView.goalNameField.formField.textField.resignFirstResponder()
             newGoalView.goalHourField.formField.textField.becomeFirstResponder()
         } else {
@@ -100,6 +101,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // this function is not called when we tap from textField to textField
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if isGoalName == false {
@@ -110,6 +112,7 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    // this function is not called when we tap from textField to textField
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0

@@ -126,7 +126,7 @@ class DetailView: UIView {
         CATransaction.begin()
         self.percentageLabel.text = "Loading..."
         CATransaction.setCompletionBlock {
-            let percentNum = String(format: "%.01f", Double(percentage) * 100)
+            let percentNum = String(format: "%.2f", CGFloat(percentage * 100))
             self.percentageLabel.text = "\(percentNum)%"
         }
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")

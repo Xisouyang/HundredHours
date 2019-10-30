@@ -13,6 +13,7 @@ class OnboardViewController: UICollectionViewController {
     weak var coordinator: MainCoordinator?
     let viewModel = OnboardViewModel()
     private var startButton = UIButton(frame: .zero)
+//    private var leftSwipe = UISwipeGestureRecognizer()
     private var pageControl = UIPageControl()
     private var currPageIndex = 0
 
@@ -37,6 +38,7 @@ class OnboardViewController: UICollectionViewController {
         collectionView.isPagingEnabled = true
         createButton()
         createPageControl()
+//        configLeftSwipe()
     }
     
     private func createButton() {
@@ -49,6 +51,23 @@ class OnboardViewController: UICollectionViewController {
         pageControl = configPageControl()
         view.addSubview(pageControl)
         pageControlConstraints()
+    }
+    
+    private func configLeftSwipe() {
+//        leftSwipe.delegate = self //as? UIGestureRecognizerDelegate
+//        leftSwipe.numberOfTouchesRequired = 1
+//        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        leftSwipe.direction = .left
+        
+        collectionView.addGestureRecognizer(leftSwipe)
+    }
+    
+    @objc func swipedLeft() {
+            startButton.isEnabled = false
+            UIView.animate(withDuration: 0.1, animations: {
+                self.startButton.alpha = 0
+            })
     }
     
     private func configStartButton() -> UIButton {
@@ -97,22 +116,23 @@ class OnboardViewController: UICollectionViewController {
         ])
     }
 
-    private func toggleButton(index: Int) {
-        if index < viewModel.dataSource.count - 1 {
-            startButton.isEnabled = false
-            UIView.animate(withDuration: 0.25, animations: {
-                self.startButton.alpha = 0
-            })
-        } else {
+    private func showButton(index: Int) {
+        if index == viewModel.dataSource.count - 1 {
             startButton.isEnabled = true
             UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 1
             })
         }
+        else {
+            startButton.isEnabled = false
+            UIView.animate(withDuration: 0.25, animations: {
+                self.startButton.alpha = 0
+            })
+        }
     }
     
     @objc private func startTapped() {
-        UserDefaults.standard.set(true, forKey: "onboarded")
+//        UserDefaults.standard.set(true, forKey: "onboarded")
         coordinator?.start()
     }
     
@@ -132,11 +152,20 @@ class OnboardViewController: UICollectionViewController {
         let point = CGPoint(x: rect.midX, y: rect.midY)
         let index = collectionView.indexPathForItem(at: point)
         if let unwrappedIndex = index {
-            toggleButton(index: unwrappedIndex.item)
+            showButton(index: unwrappedIndex.item)
             currPageIndex = unwrappedIndex.item
             pageControl.currentPage = currPageIndex
         }
     }
+    
+//    override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+//        if currPageIndex < viewModel.dataSource.count - 1 {
+//            startButton.isEnabled = false
+//            UIView.animate(withDuration: 0.1, animations: {
+//                self.startButton.alpha = 0
+//            })
+//        }
+//    }
 }
 
 extension OnboardViewController: UICollectionViewDelegateFlowLayout {

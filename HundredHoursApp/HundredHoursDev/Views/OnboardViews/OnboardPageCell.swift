@@ -11,7 +11,7 @@ import UIKit
 class OnboardPageCell: UICollectionViewCell {
     
     static let identifier = "onboarding"
-    var onboardItem: OnboardItems? {
+    var onboardItem: OnboardItem? {
         didSet {
             guard let unwrappedItem = onboardItem else { return }
             setupView(item: unwrappedItem)
@@ -23,7 +23,7 @@ class OnboardPageCell: UICollectionViewCell {
     private var containerView = UIView()
     private var imgView = UIImageView()
     
-    private func setupView(item: OnboardItems) {
+    private func setupView(item: OnboardItem) {
         containerView = createContainerView()
         imgView = createImageView(imageName: item.imgName)
         titleLabel = configLabel(text: item.title, font: UIFont.titleFont)
@@ -37,10 +37,6 @@ class OnboardPageCell: UICollectionViewCell {
         descriptionLabelConstraints()
         containerViewConstraints()
         imgViewConstraints()
-        
-    }
-    
-    private func setupImgView(index: Int) {
         
     }
     

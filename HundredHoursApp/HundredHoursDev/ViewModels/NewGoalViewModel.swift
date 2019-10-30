@@ -13,7 +13,7 @@ class NewGoalViewModel {
     
     func checkHourStringError(hourString: String) -> Bool {
         guard let hours = Int(hourString) else { return true }
-        return hours < 0 ? true : false
+        return hours <= 0 ? true : false
     }
     
     func addGoal(name: String, hourString: String) {

@@ -10,9 +10,9 @@ import Foundation
 
 class OnboardViewModel {
     
-    let dataSource: [OnboardItems] = [
-        OnboardItems(title: "Create a Goal", description: "Create a goal to keep track of", imgName: "createIcon"),
-        OnboardItems(title: "Hours Only", description: "Be sure to only input whole numbers that represent the number of hours for the goal", imgName: "warningIcon"),
-        OnboardItems(title: "Track Your Progress", description: "Track progress using the circular bar. Swipe up to see all timed sessions. Tap timer to start session, tap again to exit", imgName: "timerIcon")
+    let dataSource: [OnboardItem] = [
+        OnboardItem(title: "Create Goal", description: "Create a goal or activity to keep track of", imgName: "createIcon"),
+        OnboardItem(title: "Start Timer", description: "Start timer when you're ready to work on your goal or activity", imgName: "timerIcon"),
+        OnboardItem(title: "Track Progress", description: "Visually track your progress", imgName: "progressIcon")
     ]
 }

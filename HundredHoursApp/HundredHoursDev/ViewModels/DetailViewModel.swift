@@ -49,7 +49,7 @@ class DetailViewModel {
     }
     
     func getTimeLabel(timeStamp: Timestamps) -> String {
-        guard let day = timeStamp.day else { return ""}
+        guard let day = timeStamp.day else { return "" }
         let seconds = Int(timeStamp.session)
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.long

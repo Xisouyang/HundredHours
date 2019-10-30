@@ -40,7 +40,7 @@
 		5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE2A802362CCAC006604A0 /* UIFont.swift */; };
 		5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailView.swift */; };
 		5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */; };
-		5DFF84CF23626A93006AD6EE /* OnboardingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CE23626A93006AD6EE /* OnboardingText.swift */; };
+		5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +100,7 @@
 		5DFE2A802362CCAC006604A0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		5DFE43DF233001DE005C9A79 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageCell.swift; sourceTree = "<group>"; };
-		5DFF84CE23626A93006AD6EE /* OnboardingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingText.swift; sourceTree = "<group>"; };
+		5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,7 +281,7 @@
 		5DFF84D023626AB3006AD6EE /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				5DFF84CE23626A93006AD6EE /* OnboardingText.swift */,
+				5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -443,7 +443,7 @@
 				5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */,
 				5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */,
 				5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */,
-				5DFF84CF23626A93006AD6EE /* OnboardingText.swift in Sources */,
+				5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */,
 				5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */,
 				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
 				5DD9912F2347D32E001D5190 /* Timestamps+CoreDataClass.swift in Sources */,
