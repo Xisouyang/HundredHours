@@ -8,8 +8,6 @@
 
 import UIKit
 
-/* numpad keyboard when user interact with hours text field */
-
 class NewGoalViewController: UIViewController, UITextFieldDelegate {
     
     weak var coordinator: Coordinator?
@@ -42,7 +40,8 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func createGoal() {
-        guard let goalName = newGoalView.goalNameField.formField.textField.text, let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
+        guard let goalName = newGoalView.goalNameField.formField.textField.text,
+            let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkHourStringError(hourString: goalHours)
         if shouldPresentError {
             newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -101,7 +100,6 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // this function is not called when we tap from textField to textField
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if isGoalName == false {
@@ -112,7 +110,6 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    // this function is not called when we tap from textField to textField
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0

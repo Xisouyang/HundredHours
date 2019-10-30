@@ -123,7 +123,10 @@ class OnboardViewController: UICollectionViewController {
                 self.startButton.alpha = 1
             })
         }
-        else {
+    }
+    
+    private func hideButton(index: Int) {
+        if index <= viewModel.dataSource.count - 1 {
             startButton.isEnabled = false
             UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 0
@@ -152,20 +155,18 @@ class OnboardViewController: UICollectionViewController {
         let point = CGPoint(x: rect.midX, y: rect.midY)
         let index = collectionView.indexPathForItem(at: point)
         if let unwrappedIndex = index {
-            showButton(index: unwrappedIndex.item)
             currPageIndex = unwrappedIndex.item
             pageControl.currentPage = currPageIndex
+            showButton(index: currPageIndex)
         }
     }
     
-//    override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        if currPageIndex < viewModel.dataSource.count - 1 {
-//            startButton.isEnabled = false
-//            UIView.animate(withDuration: 0.1, animations: {
-//                self.startButton.alpha = 0
-//            })
-//        }
-//    }
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        if translation.x > 0 {
+            hideButton(index: currPageIndex)
+        }
+    }
 }
 
 extension OnboardViewController: UICollectionViewDelegateFlowLayout {
