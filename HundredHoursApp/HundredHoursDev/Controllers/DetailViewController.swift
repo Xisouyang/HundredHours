@@ -32,8 +32,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configTimeStampView() {
-        let timeStampHeaderHeight = detailView.timeStampTitle.safeAreaLayoutGuide.layoutFrame.height
-        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height - timeStampHeaderHeight)
+        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height)
         timeStampsTableView.frame = tableViewFrame
     }
     
@@ -42,7 +41,7 @@ class DetailViewController: UIViewController {
             print("ERROR: goal not passed to DetailViewController correctly")
             return
         }
-        let gesture = UISwipeGestureRecognizer()
+        let gesture = UIPanGestureRecognizer()
         let percentage = detailViewModel.calcPercent(goal: unwrappedGoal)
         navigationItem.title = unwrappedGoal.value(forKey: "title") as? String
         view.addSubview(detailView)
@@ -61,14 +60,12 @@ class DetailViewController: UIViewController {
         detailView.timeStampView.addSubview(timeStampsTableView)
     }
     
-    private func setupGesture(gesture: UISwipeGestureRecognizer) {
-        gesture.numberOfTouchesRequired = 1
-        gesture.direction = .up
+    private func setupGesture(gesture: UIPanGestureRecognizer) {
         gesture.addTarget(self, action: #selector(viewSwiped(gesture:)))
     }
     
-    @objc func viewSwiped(gesture: UISwipeGestureRecognizer) {
-        detailView.scrollUpAndDown(gesture: gesture)
+    @objc func viewSwiped(gesture: UIPanGestureRecognizer) {
+        detailView.viewDragged(gesture: gesture)
     }
     
     //TODO: find if we can also blur the navbar

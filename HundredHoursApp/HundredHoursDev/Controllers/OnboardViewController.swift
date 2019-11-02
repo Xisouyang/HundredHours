@@ -156,14 +156,15 @@ class OnboardViewController: UICollectionViewController {
         let index = collectionView.indexPathForItem(at: point)
         if let unwrappedIndex = index {
             currPageIndex = unwrappedIndex.item
-            pageControl.currentPage = currPageIndex
             showButton(index: currPageIndex)
+            pageControl.currentPage = currPageIndex
         }
     }
     
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-        if translation.x > 0 {
+        let origin = CGFloat(0)
+        if translation.x > origin {
             hideButton(index: currPageIndex)
         }
     }

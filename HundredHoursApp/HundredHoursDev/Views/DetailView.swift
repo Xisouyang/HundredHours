@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailView: UIView {
+class DetailView: UIView, UIGestureRecognizerDelegate {
         
     var timeStampView = UIView()
     var timeStampTitle = UILabel()
@@ -126,7 +126,7 @@ class DetailView: UIView {
         CATransaction.begin()
         self.percentageLabel.text = "Loading..."
         CATransaction.setCompletionBlock {
-            let percentNum = String(format: "%.2f", CGFloat(percentage * 100))
+            let percentNum = String(format: "%.1f", CGFloat(percentage * 100))
             self.percentageLabel.text = "\(percentNum)%"
         }
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
@@ -138,19 +138,20 @@ class DetailView: UIView {
         CATransaction.commit()
     }
     
-    func scrollUpAndDown(gesture: UISwipeGestureRecognizer) {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
-            var startMainViewFrame = self.timeStampView.frame
-            if startMainViewFrame.origin.y > 200 {
-                gesture.direction = .down
-                startMainViewFrame.origin.y += -startMainViewFrame.origin.y * 0.79
-                self.timeStampView.frame = startMainViewFrame
-            } else {
-                gesture.direction = .up
-                startMainViewFrame.origin.y += self.timeStampView.frame.height/1.5
-                self.timeStampView.frame = startMainViewFrame
-            }
-        })
+    func viewDragged(gesture: UIPanGestureRecognizer) {
+        let buffer: CGFloat = 135
+        let recognizer = gesture
+        let translation = recognizer.translation(in: self)
+        var frame = timeStampView.frame
+        let viewHeight = timeStampView.frame.origin.y + translation.y
+        print(viewHeight)
+        if viewHeight > buffer {
+            frame.origin.y = viewHeight
+            timeStampView.frame = frame
+            recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self)
+        } else if viewHeight == buffer {
+            timeStampView.frame = frame
+        }
     }
     
     func addBlur() {
