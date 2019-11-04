@@ -26,9 +26,8 @@ class OnboardPageCell: UICollectionViewCell {
     private func setupView(item: OnboardItem) {
         containerView = createContainerView()
         imgView = createImageView(imageName: item.imgName)
-//        imgView.contentMode = .scaleToFill
-        titleLabel = configLabel(text: item.title, font: UIFont.titleFont)
-        descriptionLabel = configLabel(text: item.description, font: UIFont.descriptionFont)
+        titleLabel = configLabel(text: item.title, font: UIFont.onboardTitleFont)
+        descriptionLabel = configLabel(text: item.description, font: UIFont.onboardDescriptionFont)
         containerView.addSubview(imgView)
         contentView.addSubview(containerView)
         contentView.addSubview(titleLabel)

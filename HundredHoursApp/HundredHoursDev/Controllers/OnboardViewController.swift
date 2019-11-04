@@ -13,7 +13,6 @@ class OnboardViewController: UICollectionViewController {
     weak var coordinator: MainCoordinator?
     let viewModel = OnboardViewModel()
     private var startButton = UIButton(frame: .zero)
-//    private var leftSwipe = UISwipeGestureRecognizer()
     private var pageControl = UIPageControl()
     private var currPageIndex = 0
 
@@ -38,7 +37,6 @@ class OnboardViewController: UICollectionViewController {
         collectionView.isPagingEnabled = true
         createButton()
         createPageControl()
-//        configLeftSwipe()
     }
     
     private func createButton() {
@@ -51,23 +49,6 @@ class OnboardViewController: UICollectionViewController {
         pageControl = configPageControl()
         view.addSubview(pageControl)
         pageControlConstraints()
-    }
-    
-    private func configLeftSwipe() {
-//        leftSwipe.delegate = self //as? UIGestureRecognizerDelegate
-//        leftSwipe.numberOfTouchesRequired = 1
-//        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
-        leftSwipe.direction = .left
-        
-        collectionView.addGestureRecognizer(leftSwipe)
-    }
-    
-    @objc func swipedLeft() {
-            startButton.isEnabled = false
-            UIView.animate(withDuration: 0.1, animations: {
-                self.startButton.alpha = 0
-            })
     }
     
     private func configStartButton() -> UIButton {

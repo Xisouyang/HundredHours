@@ -10,8 +10,9 @@ import UIKit
 
 class NewGoalFormField: UIView {
     
-    let formField = NewGoalStack()
+    let formField = NewGoalFieldStack()
     let formLine = UIView()
+    
     private var fieldString: String
     
     init(text: String, frame: CGRect) {
@@ -22,12 +23,6 @@ class NewGoalFormField: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutIfNeeded()
-        configTextFont()
     }
     
     private func commonInit() {
@@ -45,13 +40,6 @@ class NewGoalFormField: UIView {
     
     func configPlaceholder(text: String) {
         formField.textField.placeholder = text
-    }
-    
-    func configTextFont() {
-        let goalLabelFontSize = self.formField.textLabel.frame.height * 0.4
-        let goalFieldFontSize = self.formField.textField.frame.height * 0.22
-        formField.textLabel.font = UIFont(name: "HelveticaNeue", size: goalLabelFontSize)
-        formField.textField.font = UIFont(name: "HelveticaNeue", size: goalFieldFontSize)
     }
     
     private func formFieldConstraints() {

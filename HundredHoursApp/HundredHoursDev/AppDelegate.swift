@@ -9,7 +9,18 @@
 //TODO: look into a DEBUG flag to get rid of print statements
 //TODO: Fix bug that occurs when number of hours is too large
 //TODO: Maybe fix character limit
+//TODO: Add description view to app
+    /*
+        add description view (UITextView) to goal list on front page
+        create stack view for description label and description view - class component
+        add class component to the new goals page
+        change core data model to accept the description view
+    */
 //TODO: Add notification center to app
+//TODO: Fix spacing bug on list view
+//TODO: Change cards to have UI components inside stack views
+
+
 
 import UIKit
 
@@ -21,14 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        let nav = UINavigationController()
-//        let vc = HomeViewController()
-//        nav.viewControllers = [vc]
-//        setNavigation(navigationBar: nav.navigationBar)
-//        window?.rootViewController = nav
-//        window?.makeKeyAndVisible()
-//        return true
         
         let nav = UINavigationController()
         configNavigation(navigationBar: nav.navigationBar)

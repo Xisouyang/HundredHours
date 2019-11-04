@@ -47,17 +47,14 @@ class HomeViewController: UIViewController {
         if viewModel.goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: goalTableView.frame)
             goalTableView.backgroundView = noGoalsView
-            goalTableView.separatorStyle = .none
         } else {
             goalTableView.backgroundView = nil
-            goalTableView.separatorStyle = .singleLine
         }
+        goalTableView.separatorStyle = .none
     }
     
     private func setTableView() {
-        //TODO: create a custom uitableviewcell sometime
-        //TODO: change the identifier to something more descriptive
-        goalTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
+        goalTableView.register(GoalTableViewCell.self, forCellReuseIdentifier: GoalTableViewCell.identifier)
         goalTableView.dataSource = self
         goalTableView.delegate = self
         view.addSubview(goalTableView)
@@ -84,7 +81,7 @@ class HomeViewController: UIViewController {
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
     }
     
     private func tableConstraints() {
@@ -92,15 +89,13 @@ class HomeViewController: UIViewController {
         goalTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         goalTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         goalTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        goalTableView.bottomAnchor.constraint(equalTo: newGoalButton.topAnchor, constant: -10).isActive = true
+        goalTableView.bottomAnchor.constraint(equalTo: newGoalButton.topAnchor).isActive = true
     }
 }
 
 extension HomeViewController {
     
     @objc func newGoalTapped() {
-//        let vc = NewGoalViewController()
-//        navigationController?.pushViewController(vc, animated: true)
         coordinator?.createNewGoal()
     }
 }
@@ -108,13 +103,10 @@ extension HomeViewController {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = DetailViewController()
-//        vc.goal = viewModel.goalsArr[indexPath.row]
-//        navigationController?.pushViewController(vc, animated: true)
         let goalToPass = viewModel.goalsArr[indexPath.row]
         coordinator?.goToDetailScreen(goal: goalToPass)
     }
-    
+        
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // create alert controller
@@ -140,14 +132,25 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let secondsInHour = 3600
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        let goalName = viewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
-        let goalSeconds = viewModel.goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
-        let goalHours = goalSeconds / secondsInHour
-        let cellString = viewModel.getCellString(goalName: goalName, goalHours: String(goalHours))
-        cell.textLabel?.text = cellString
+        let cellString = viewModel.getCellString(indexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: GoalTableViewCell.identifier, for: indexPath) as! GoalTableViewCell
+        cell.selectionStyle = .none
+        cell.cellLabel.text = cellString
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height * 0.197
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return tableView.bounds.height * 0.01
     }
 }
 

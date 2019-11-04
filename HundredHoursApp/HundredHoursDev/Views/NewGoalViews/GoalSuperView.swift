@@ -14,6 +14,7 @@ class GoalSuperView: UIView {
     var errorLabel = UILabel()
     let goalNameField = NewGoalFormField(text: "Goal Name", frame: .zero)
     let goalHourField = NewGoalFormField(text: "Total Hours", frame: .zero)
+    let goalDescriptionField = DescriptionView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,11 +33,13 @@ class GoalSuperView: UIView {
         addSubview(defaultButton)
         addSubview(goalNameField)
         addSubview(goalHourField)
+        addSubview(goalDescriptionField)
         addSubview(errorLabel)
         goalNameConstraints()
         goalHourConstraints()
-        buttonConstraints()
         errorLabelConstraints()
+        goalDescriptionConstraints()
+        buttonConstraints()
         goalNameField.configPlaceholder(text: "Enter Goal Name")
         goalHourField.configPlaceholder(text: "Number of Hours")
     }
@@ -70,7 +73,7 @@ class GoalSuperView: UIView {
             defaultButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4),
             defaultButton.heightAnchor.constraint(equalToConstant: 50),
             defaultButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            defaultButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            defaultButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
     
@@ -80,7 +83,7 @@ class GoalSuperView: UIView {
             goalNameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
              goalNameField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
             goalNameField.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2),
-            goalNameField.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25)
+            goalNameField.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 20)
         ])
     }
     
@@ -98,9 +101,19 @@ class GoalSuperView: UIView {
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             errorLabel.widthAnchor.constraint(equalTo: goalHourField.widthAnchor),
-            errorLabel.heightAnchor.constraint(equalTo: goalHourField.heightAnchor, multiplier: 0.5),
+            errorLabel.heightAnchor.constraint(equalTo: goalHourField.heightAnchor, multiplier: 0.4),
             errorLabel.leftAnchor.constraint(equalTo: goalHourField.leftAnchor),
             errorLabel.topAnchor.constraint(equalTo: goalHourField.safeAreaLayoutGuide.bottomAnchor, constant: -35)
+        ])
+    }
+    
+    private func goalDescriptionConstraints() {
+        goalDescriptionField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            goalDescriptionField.widthAnchor.constraint(equalTo: goalHourField.widthAnchor),
+            goalDescriptionField.heightAnchor.constraint(equalTo: goalHourField.heightAnchor),
+            goalDescriptionField.leftAnchor.constraint(equalTo: goalHourField.leftAnchor),
+            goalDescriptionField.topAnchor.constraint(equalTo: errorLabel.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

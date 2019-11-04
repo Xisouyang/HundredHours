@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGoalStack: UIStackView {
+class NewGoalFieldStack: UIStackView {
     
     var textField = UITextField()
     var textLabel = UILabel()
@@ -40,11 +40,13 @@ class NewGoalStack: UIStackView {
     
     private func createFormLabel() -> UILabel {
         let label = UILabel()
+        label.font = UIFont.newGoalNameFont
         return label
     }
     
     private func createTextField() -> UITextField {
         let textField = UITextField()
+        textField.font = UIFont.newGoalFieldFont
         return textField
     }
     

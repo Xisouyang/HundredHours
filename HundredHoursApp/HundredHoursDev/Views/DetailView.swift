@@ -144,7 +144,6 @@ class DetailView: UIView, UIGestureRecognizerDelegate {
         let translation = recognizer.translation(in: self)
         var frame = timeStampView.frame
         let viewHeight = timeStampView.frame.origin.y + translation.y
-        print(viewHeight)
         if viewHeight > buffer {
             frame.origin.y = viewHeight
             timeStampView.frame = frame
