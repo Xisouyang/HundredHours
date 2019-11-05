@@ -8,11 +8,17 @@
 
 import UIKit
 
-class NewGoalViewController: UIViewController, UITextFieldDelegate {
+enum TextType {
+    case goalName
+    case goalHours
+    case goalDescription
+}
+
+class NewGoalViewController: UIViewController {
     
     weak var coordinator: Coordinator?
     private let newGoalView = NewGoalView()
-    private var isGoalName = false
+    private var textType: TextType = .goalName
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,49 +66,9 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = 15
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-        return newString.length <= maxLength
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == newGoalView.goalNameField.formField.textField {
-            newGoalView.goalNameField.formField.textField.resignFirstResponder()
-            newGoalView.goalHourField.formField.textField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == newGoalView.goalNameField.formField.textField {
-            let line = newGoalView.goalNameField.formLine
-            newGoalView.highlightLine(line: line)
-            isGoalName = true
-        } else if textField == newGoalView.goalHourField.formField.textField {
-            let line = newGoalView.goalHourField.formLine
-            newGoalView.highlightLine(line: line)
-            isGoalName = false
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == newGoalView.goalNameField.formField.textField {
-            let line = newGoalView.goalNameField.formLine
-            newGoalView.unhighlightLine(line: line)
-        } else if textField == newGoalView.goalHourField.formField.textField {
-            let line = newGoalView.goalHourField.formLine
-            newGoalView.unhighlightLine(line: line)
-        }
-    }
-    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if isGoalName == false {
+            if textType == .goalHours {
                 if self.view.frame.origin.y == 0 {
                     self.view.frame.origin.y -= (keyboardSize.height/2)
                 }
@@ -143,6 +109,49 @@ class NewGoalViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("errorVC dismissed"), object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+extension NewGoalViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 15
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == newGoalView.goalNameField.formField.textField {
+            newGoalView.goalNameField.formField.textField.resignFirstResponder()
+            newGoalView.goalHourField.formField.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == newGoalView.goalNameField.formField.textField {
+            let line = newGoalView.goalNameField.formLine
+            newGoalView.highlightLine(line: line)
+            textType = .goalName
+        } else if textField == newGoalView.goalHourField.formField.textField {
+            let line = newGoalView.goalHourField.formLine
+            newGoalView.highlightLine(line: line)
+            textType = .goalHours
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == newGoalView.goalNameField.formField.textField {
+            let line = newGoalView.goalNameField.formLine
+            newGoalView.unhighlightLine(line: line)
+        } else if textField == newGoalView.goalHourField.formField.textField {
+            let line = newGoalView.goalHourField.formLine
+            newGoalView.unhighlightLine(line: line)
+        }
     }
 }
 
