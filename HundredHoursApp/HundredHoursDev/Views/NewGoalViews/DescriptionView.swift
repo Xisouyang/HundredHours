@@ -47,6 +47,8 @@ class DescriptionView: UIStackView {
     private func createDescriptionView() -> UITextView {
         let view = UITextView()
         view.font = UIFont.newGoalFieldFont
+        view.text = "Placeholder..."
+        view.textColor = .lightGray
         return view
     }
     

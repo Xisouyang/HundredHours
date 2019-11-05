@@ -19,6 +19,7 @@
 //TODO: Add notification center to app
 //TODO: Fix spacing bug on list view
 //TODO: Change cards to have UI components inside stack views
+//TODO: Maybe change buttons to move to top right corner
 
 
 

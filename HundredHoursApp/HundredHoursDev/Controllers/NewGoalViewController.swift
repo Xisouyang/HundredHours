@@ -37,6 +37,7 @@ class NewGoalViewController: UIViewController {
         uiComponents.forEach({$0.addTarget(self, action: #selector(editingChanged), for: .editingChanged)})
         newGoalView.goalNameField.formField.textField.delegate = self
         newGoalView.goalHourField.formField.textField.delegate = self
+        newGoalView.goalDescriptionField.descriptionView.delegate = self
         newGoalView.goalHourField.formField.textField.keyboardType = .asciiCapableNumberPad
     }
     
@@ -152,6 +153,29 @@ extension NewGoalViewController: UITextFieldDelegate {
             let line = newGoalView.goalHourField.formLine
             newGoalView.unhighlightLine(line: line)
         }
+    }
+}
+
+extension NewGoalViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("Beginning")
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("Ending")
+        if textView.text.isEmpty {
+            textView.textColor = .lightGray
+            textView.text = "Placeholder..."
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print("changed")
     }
 }
 
