@@ -136,6 +136,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: GoalTableViewCell.identifier, for: indexPath) as! GoalTableViewCell
         cell.selectionStyle = .none
         cell.cellLabel.text = cellString
+        cell.cellTextView.text = viewModel.goalsArr[indexPath.row].goalDescription
         return cell
     }
     

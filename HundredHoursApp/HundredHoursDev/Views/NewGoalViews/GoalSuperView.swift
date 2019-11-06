@@ -14,7 +14,7 @@ class GoalSuperView: UIView {
     var errorLabel = UILabel()
     let goalNameField = NewGoalFormField(text: "Goal Name", frame: .zero)
     let goalHourField = NewGoalFormField(text: "Total Hours", frame: .zero)
-    let goalDescriptionField = DescriptionView(frame: .zero)
+    let goalDescriptionField = NewGoalDescriptionStack(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,7 +111,7 @@ class GoalSuperView: UIView {
         goalDescriptionField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             goalDescriptionField.widthAnchor.constraint(equalTo: goalHourField.widthAnchor),
-            goalDescriptionField.heightAnchor.constraint(equalTo: goalHourField.heightAnchor),
+            goalDescriptionField.heightAnchor.constraint(equalTo: goalHourField.heightAnchor, multiplier: 0.8),
             goalDescriptionField.leftAnchor.constraint(equalTo: goalHourField.leftAnchor),
             goalDescriptionField.topAnchor.constraint(equalTo: errorLabel.safeAreaLayoutGuide.bottomAnchor)
         ])

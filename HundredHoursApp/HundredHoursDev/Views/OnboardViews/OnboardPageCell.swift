@@ -37,7 +37,6 @@ class OnboardPageCell: UICollectionViewCell {
         descriptionLabelConstraints()
         containerViewConstraints()
         imgViewConstraints()
-        
     }
     
     private func createContainerView() -> UIView {
@@ -49,6 +48,7 @@ class OnboardPageCell: UICollectionViewCell {
     private func createImageView(imageName: String) -> UIImageView {
         let image = UIImage(named: imageName)
         let imageView = UIImageView(image: image!)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }
     

@@ -42,19 +42,20 @@ class NewGoalViewController: UIViewController {
     }
     
     private func setupNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     private func createGoal() {
         guard let goalName = newGoalView.goalNameField.formField.textField.text,
-            let goalHours = newGoalView.goalHourField.formField.textField.text else { return }
+            let goalHours = newGoalView.goalHourField.formField.textField.text,
+        let goalDescription = newGoalView.goalDescriptionField.descriptionView.text else { return }
         let shouldPresentError = newGoalView.viewModel.checkHourStringError(hourString: goalHours)
         if shouldPresentError {
             newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
             newGoalView.errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         } else {
-            newGoalView.viewModel.addGoal(name: goalName, hourString: goalHours)
+            newGoalView.viewModel.addGoal(name: goalName, description: goalDescription, hourString: goalHours)
             navigationController?.popViewController(animated: true)
         }
     }
@@ -66,20 +67,28 @@ class NewGoalViewController: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if textType == .goalHours {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= (keyboardSize.height/2)
-                }
-            }
-        }
-    }
 
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func keyboardWillChange(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if textType == .goalName {
+                self.view.frame.origin.y = 0
+            } else if textType == .goalHours {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= (keyboardSize.height/2)
+                }
+            } else if textType == .goalDescription {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                } else if self.view.frame.origin.y < 0 && self.view.frame.origin.y > -125 {
+                    self.view.frame.origin.y -= (keyboardSize.height/3)
+                }
+            }
         }
     }
     
@@ -108,8 +117,8 @@ class NewGoalViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("errorVC dismissed"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 }
 
@@ -129,6 +138,8 @@ extension NewGoalViewController: UITextFieldDelegate {
             newGoalView.goalHourField.formField.textField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
+            newGoalView.goalDescriptionField.descriptionView.becomeFirstResponder()
+            textType = .goalDescription
         }
         return true
     }
@@ -158,24 +169,30 @@ extension NewGoalViewController: UITextFieldDelegate {
 
 extension NewGoalViewController: UITextViewDelegate {
     
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textType = .goalDescription
+        return true
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("Beginning")
+        textView.becomeFirstResponder()
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numOfChars = newText.count
+        return numOfChars <= 100
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
-        print("Ending")
         if textView.text.isEmpty {
             textView.textColor = .lightGray
             textView.text = "Placeholder..."
         }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        print("changed")
     }
 }
 

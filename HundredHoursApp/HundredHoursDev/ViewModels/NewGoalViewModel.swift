@@ -16,9 +16,9 @@ class NewGoalViewModel {
         return hours <= 0 ? true : false
     }
     
-    func addGoal(name: String, hourString: String) {
+    func addGoal(name: String, description: String, hourString: String) {
         guard var goalHours = Int(hourString) else { return }
         goalHours = goalHours * 3600
-        CoreDataManager.sharedManager.createGoal(name: name, hours: goalHours)
+        CoreDataManager.sharedManager.createGoal(name: name, description: description, hours: goalHours)
     }
 }

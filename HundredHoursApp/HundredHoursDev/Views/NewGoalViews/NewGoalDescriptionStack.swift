@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DescriptionView: UIStackView {
+class NewGoalDescriptionStack: UIStackView {
     
     var descriptionLabel = UILabel()
     var descriptionView = UITextView()

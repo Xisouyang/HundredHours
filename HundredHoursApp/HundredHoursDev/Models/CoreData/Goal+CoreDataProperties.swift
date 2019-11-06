@@ -2,7 +2,7 @@
 //  Goal+CoreDataProperties.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 10/4/19.
+//  Created by Stephen Ouyang on 11/5/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Goal {
     @NSManaged public var currSeconds: Int64
     @NSManaged public var title: String?
     @NSManaged public var totalSeconds: Int64
+    @NSManaged public var goalDescription: String?
     @NSManaged public var timestamps: NSSet?
 
 }

@@ -33,6 +33,7 @@ class OnboardViewController: UICollectionViewController {
     
     private func configView() {
         collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(OnboardPageCell.self, forCellWithReuseIdentifier: OnboardPageCell.identifier)
         collectionView.isPagingEnabled = true
         createButton()
@@ -97,17 +98,13 @@ class OnboardViewController: UICollectionViewController {
         ])
     }
 
-    private func showButton(index: Int) {
+    private func toggleButton(index: Int) {
         if index == viewModel.dataSource.count - 1 {
             startButton.isEnabled = true
             UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 1
             })
-        }
-    }
-    
-    private func hideButton(index: Int) {
-        if index <= viewModel.dataSource.count - 1 {
+        } else {
             startButton.isEnabled = false
             UIView.animate(withDuration: 0.25, animations: {
                 self.startButton.alpha = 0
@@ -131,23 +128,10 @@ class OnboardViewController: UICollectionViewController {
         return cell
     }
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let rect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
-        let point = CGPoint(x: rect.midX, y: rect.midY)
-        let index = collectionView.indexPathForItem(at: point)
-        if let unwrappedIndex = index {
-            currPageIndex = unwrappedIndex.item
-            showButton(index: currPageIndex)
-            pageControl.currentPage = currPageIndex
-        }
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-        let origin = CGFloat(0)
-        if translation.x > origin {
-            hideButton(index: currPageIndex)
-        }
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        pageControl.currentPage = Int(x / view.frame.width)
+        toggleButton(index: pageControl.currentPage)
     }
 }
 

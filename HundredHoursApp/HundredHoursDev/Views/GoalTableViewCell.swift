@@ -11,7 +11,7 @@ import UIKit
 class GoalTableViewCell: UITableViewCell, UITextViewDelegate {
     
     static let identifier = "goalTableID"
-    private var cellTextView = UITextView()
+    var cellTextView = UITextView()
     var cellView = UIView()
     var cellLabel = UILabel()
     
@@ -43,8 +43,10 @@ class GoalTableViewCell: UITableViewCell, UITextViewDelegate {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.layer.cornerRadius = 25
-        view.layer.borderWidth = 1
-        view.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        view.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 3
         return view
     }
     

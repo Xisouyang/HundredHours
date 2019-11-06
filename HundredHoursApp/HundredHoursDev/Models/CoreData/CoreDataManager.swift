@@ -46,7 +46,7 @@ class CoreDataManager {
         }
     }
     
-    func createGoal(name: String, hours: Int) {
+    func createGoal(name: String, description: String, hours: Int) {
         // create storyboard entity
         let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
@@ -58,6 +58,7 @@ class CoreDataManager {
         object.setValue(name, forKey: "title")
         object.setValue(hours, forKey: "totalSeconds")
         object.setValue(0, forKey: "currSeconds")
+        object.setValue(description, forKey: "goalDescription")
         
         // save
         saveContext()
