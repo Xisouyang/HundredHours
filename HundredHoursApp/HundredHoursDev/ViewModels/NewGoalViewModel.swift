@@ -11,14 +11,17 @@ import UIKit
 
 class NewGoalViewModel {
     
-    func checkHourStringError(hourString: String) -> Bool {
-        guard let hours = Int(hourString) else { return true }
-        return hours <= 0 ? true : false
+    func getTimeString(sender: UIDatePicker) -> Int {
+        let date = sender.date
+        let minComponent = Calendar.current.component(.minute, from: date)
+        let hourComponent = Calendar.current.component(.hour, from: date)
+        let minToSecs = minComponent * 60
+        let hourToSecs = hourComponent * 3600
+        let total = minToSecs + hourToSecs
+        return total
     }
     
-    func addGoal(name: String, description: String, hourString: String) {
-        guard var goalHours = Int(hourString) else { return }
-        goalHours = goalHours * 3600
-        CoreDataManager.sharedManager.createGoal(name: name, description: description, hours: goalHours)
+    func addGoal(name: String, description: String, duration: Int) {
+        CoreDataManager.sharedManager.createGoal(name: name, description: description, duration: duration)
     }
 }

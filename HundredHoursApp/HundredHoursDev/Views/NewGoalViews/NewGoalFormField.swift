@@ -10,7 +10,7 @@ import UIKit
 
 class NewGoalFormField: UIView {
     
-    let formField = NewGoalFieldStack()
+    let formField = NameFieldStack()
     let formLine = UIView()
     
     private var fieldString: String
@@ -58,7 +58,7 @@ class NewGoalFormField: UIView {
             formLine.widthAnchor.constraint(equalTo: formField.widthAnchor),
             formLine.heightAnchor.constraint(equalToConstant: 1),
             formLine.leftAnchor.constraint(equalTo: formField.leftAnchor),
-            formLine.topAnchor.constraint(equalTo: formField.textField.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            formLine.topAnchor.constraint(equalTo: formField.textField.safeAreaLayoutGuide.bottomAnchor, constant: -25)
         ])
     }
 }

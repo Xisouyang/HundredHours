@@ -46,6 +46,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         vc.goal = goal
         navController.pushViewController(vc, animated: true)
     }
+
+
+    //Leaving this in here for future, if I need child coordinators
     
 //    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
 //        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from)

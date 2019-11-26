@@ -8,7 +8,7 @@
 
 /*
  TODO: create functionality to start timer view here
-       create functionality to stop and swipe timer down here
+ create functionality to stop and swipe timer down here
  */
 
 import Foundation

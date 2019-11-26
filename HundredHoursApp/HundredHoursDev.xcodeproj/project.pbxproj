@@ -10,7 +10,7 @@
 		5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051787232C1A1A00B94C4B /* DetailViewController.swift */; };
 		5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051789232C1AC900B94C4B /* DetailViewModel.swift */; };
 		5D05EBC5236392B500AC27BF /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */; };
-		5D0854BE236E377E0069E680 /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0854BD236E377E0069E680 /* GoalTableViewCell.swift */; };
+		5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */; };
 		5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */; };
 		5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */; };
 		5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */; };
@@ -27,7 +27,9 @@
 		5DB7350C231DFDF600F53E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350B231DFDF600F53E30 /* Assets.xcassets */; };
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
 		5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FB0B235649D20069040C /* NewGoalFormField.swift */; };
-		5DB7FB0E2356515E0069040C /* NewGoalFieldStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FB0D2356515E0069040C /* NewGoalFieldStack.swift */; };
+		5DEB41562378E75F003EEA63 /* DatePickerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41552378E75F003EEA63 /* DatePickerStack.swift */; };
+		5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41572378E851003EEA63 /* DescriptionStack.swift */; };
+		5DEB415A2378E8D0003EEA63 /* NameFieldStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */; };
 		5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF91EE923623124003ED906 /* OnboardViewController.swift */; };
 		5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC975232223D500896D64 /* NewGoalView.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
@@ -42,7 +44,6 @@
 		5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailView.swift */; };
 		5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */; };
 		5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */; };
-		5DFFC8932370AEB200FDD64D /* NewGoalDescriptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFC8922370AEB200FDD64D /* NewGoalDescriptionStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +67,7 @@
 		5D051787232C1A1A00B94C4B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5D051789232C1AC900B94C4B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
-		5D0854BD236E377E0069E680 /* GoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
+		5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionCell.swift; sourceTree = "<group>"; };
 		5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGoalsHomeView.swift; sourceTree = "<group>"; };
 		5D0863AD232084EB00CD58F5 /* HundredHoursDevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HundredHoursDevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredHoursDevTests.swift; sourceTree = "<group>"; };
@@ -89,7 +90,9 @@
 		5DB7350E231DFDF600F53E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DB7FB0B235649D20069040C /* NewGoalFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalFormField.swift; sourceTree = "<group>"; };
-		5DB7FB0D2356515E0069040C /* NewGoalFieldStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalFieldStack.swift; sourceTree = "<group>"; };
+		5DEB41552378E75F003EEA63 /* DatePickerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerStack.swift; sourceTree = "<group>"; };
+		5DEB41572378E851003EEA63 /* DescriptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionStack.swift; sourceTree = "<group>"; };
+		5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFieldStack.swift; sourceTree = "<group>"; };
 		5DF91EE923623124003ED906 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		5DFBC975232223D500896D64 /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		5DFE43DF233001DE005C9A79 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageCell.swift; sourceTree = "<group>"; };
 		5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
-		5DFFC8922370AEB200FDD64D /* NewGoalDescriptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalDescriptionStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		5D9C529C232AC08800608D6D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5DFF84CD23626A6C006AD6EE /* CoreData */,
 				5D051789232C1AC900B94C4B /* DetailViewModel.swift */,
 				5D9C529D232B05BB00608D6D /* HomeViewModel.swift */,
 				5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */,
@@ -207,7 +210,7 @@
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
 				5D4C61CE23344C53005FFD1F /* TimerView.swift */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
-				5D0854BD236E377E0069E680 /* GoalTableViewCell.swift */,
+				5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				5DFF84D023626AB3006AD6EE /* Onboarding */,
-				5DFF84CD23626A6C006AD6EE /* CoreData */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,9 +247,10 @@
 		5DFF84C823626038006AD6EE /* NewGoalViews */ = {
 			isa = PBXGroup;
 			children = (
+				5DEB41552378E75F003EEA63 /* DatePickerStack.swift */,
+				5DEB41572378E851003EEA63 /* DescriptionStack.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
-				5DFFC8922370AEB200FDD64D /* NewGoalDescriptionStack.swift */,
-				5DB7FB0D2356515E0069040C /* NewGoalFieldStack.swift */,
+				5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */,
 				5DB7FB0B235649D20069040C /* NewGoalFormField.swift */,
 				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 			);
@@ -439,19 +442,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */,
-				5DB7FB0E2356515E0069040C /* NewGoalFieldStack.swift in Sources */,
+				5DEB41562378E75F003EEA63 /* DatePickerStack.swift in Sources */,
 				5DFC763D2372285D00644420 /* Timestamps+CoreDataProperties.swift in Sources */,
 				5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
 				5D05EBC5236392B500AC27BF /* OnboardViewModel.swift in Sources */,
 				5DB73504231DFDF400F53E30 /* HomeViewController.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,
+				5DEB415A2378E8D0003EEA63 /* NameFieldStack.swift in Sources */,
 				5DFC763E2372285D00644420 /* Goal+CoreDataClass.swift in Sources */,
 				5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */,
+				5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */,
 				5DFC763C2372285D00644420 /* Timestamps+CoreDataClass.swift in Sources */,
 				5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */,
 				5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */,
-				5DFFC8932370AEB200FDD64D /* NewGoalDescriptionStack.swift in Sources */,
 				5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */,
 				5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */,
 				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
@@ -463,7 +467,7 @@
 				5DFC763F2372285D00644420 /* Goal+CoreDataProperties.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 				5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */,
-				5D0854BE236E377E0069E680 /* GoalTableViewCell.swift in Sources */,
+				5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */,
 				5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */,
 				5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */,
 				5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */,

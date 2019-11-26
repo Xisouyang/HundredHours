@@ -10,7 +10,6 @@ import UIKit
 
 enum TextType {
     case goalName
-    case goalHours
     case goalDescription
 }
 
@@ -18,27 +17,34 @@ class NewGoalViewController: UIViewController {
     
     weak var coordinator: Coordinator?
     private let newGoalView = NewGoalView()
+    // start at 1 min
+    private var goalDuration: Int = 60
     private var textType: TextType = .goalName
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNotifications()
+        setupNavbar()
         setupView()
     }
     
     private func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        let uiComponents = [newGoalView.goalNameField.formField.textField, newGoalView.goalHourField.formField.textField]
         view.addGestureRecognizer(tapGesture)
-        navigationItem.title = "New Goal"
         view.addSubview(newGoalView)
         newGoalView.frame = view.frame
         newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
-        uiComponents.forEach({$0.addTarget(self, action: #selector(editingChanged), for: .editingChanged)})
+        newGoalView.goalNameField.formField.textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        newGoalView.datePickerStack.datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         newGoalView.goalNameField.formField.textField.delegate = self
-        newGoalView.goalHourField.formField.textField.delegate = self
         newGoalView.goalDescriptionField.descriptionView.delegate = self
-        newGoalView.goalHourField.formField.textField.keyboardType = .asciiCapableNumberPad
+    }
+    
+    private func setupNavbar() {
+        navigationItem.title = "New Goal"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createTapped))
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
     private func setupNotifications() {
@@ -48,16 +54,14 @@ class NewGoalViewController: UIViewController {
     
     private func createGoal() {
         guard let goalName = newGoalView.goalNameField.formField.textField.text,
-            let goalHours = newGoalView.goalHourField.formField.textField.text,
-        let goalDescription = newGoalView.goalDescriptionField.descriptionView.text else { return }
-        let shouldPresentError = newGoalView.viewModel.checkHourStringError(hourString: goalHours)
-        if shouldPresentError {
-            newGoalView.goalHourField.formLine.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-            newGoalView.errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-        } else {
-            newGoalView.viewModel.addGoal(name: goalName, description: goalDescription, hourString: goalHours)
-            navigationController?.popViewController(animated: true)
-        }
+        let goalDescription = newGoalView.goalDescriptionField.descriptionView.text
+            else { return }
+        newGoalView.viewModel.addGoal(name: goalName, description: goalDescription, duration: goalDuration)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
+        goalDuration = newGoalView.viewModel.getTimeString(sender: sender)
     }
     
     @objc func createTapped() {
@@ -78,14 +82,10 @@ class NewGoalViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if textType == .goalName {
                 self.view.frame.origin.y = 0
-            } else if textType == .goalHours {
+            }  else if textType == .goalDescription {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= (keyboardSize.height/2)
-                }
-            } else if textType == .goalDescription {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
-                } else if self.view.frame.origin.y < 0 && self.view.frame.origin.y > -125 {
+                    self.view.frame.origin.y -= keyboardSize.height/2
+                } else if self.view.frame.origin.y < 0 {
                     self.view.frame.origin.y -= (keyboardSize.height/3)
                 }
             }
@@ -99,20 +99,20 @@ class NewGoalViewController: UIViewController {
                 return
             }
         }
-        if textField == newGoalView.goalHourField.formField.textField {
-            newGoalView.errorLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
+        validateTextFields()
+    }
+
+    private func validateTextFields() {
         guard
             let nameField = newGoalView.goalNameField.formField.textField.text,
-            let hourField = newGoalView.goalHourField.formField.textField.text,
-            !nameField.isEmpty, !hourField.isEmpty
-        else {
-            newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            newGoalView.defaultButton.isEnabled = false
-            return
+            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionField.descriptionView.text, (descriptionField != "Placeholder..." && !descriptionField.isEmpty)
+            else {
+                navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                navigationItem.rightBarButtonItem?.isEnabled = false
+                return
         }
-        newGoalView.defaultButton.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        newGoalView.defaultButton.isEnabled = true
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     deinit {
@@ -133,37 +133,29 @@ extension NewGoalViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == newGoalView.goalNameField.formField.textField {
-            newGoalView.goalNameField.formField.textField.resignFirstResponder()
-            newGoalView.goalHourField.formField.textField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-            newGoalView.goalDescriptionField.descriptionView.becomeFirstResponder()
-            textType = .goalDescription
-        }
+        textField.resignFirstResponder()
+        newGoalView.goalDescriptionField.descriptionView.becomeFirstResponder()
+        textType = .goalDescription
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == newGoalView.goalNameField.formField.textField {
-            let line = newGoalView.goalNameField.formLine
-            newGoalView.highlightLine(line: line)
-            textType = .goalName
-        } else if textField == newGoalView.goalHourField.formField.textField {
-            let line = newGoalView.goalHourField.formLine
-            newGoalView.highlightLine(line: line)
-            textType = .goalHours
-        }
+        let line = newGoalView.goalNameField.formLine
+        newGoalView.highlightLine(line: line)
+        textType = .goalName
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == newGoalView.goalNameField.formField.textField {
-            let line = newGoalView.goalNameField.formLine
-            newGoalView.unhighlightLine(line: line)
-        } else if textField == newGoalView.goalHourField.formField.textField {
-            let line = newGoalView.goalHourField.formLine
-            newGoalView.unhighlightLine(line: line)
-        }
+        let line = newGoalView.goalNameField.formLine
+        newGoalView.unhighlightLine(line: line)
     }
 }
 
@@ -175,17 +167,24 @@ extension NewGoalViewController: UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.becomeFirstResponder()
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        validateTextFields()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numOfChars = newText.count
         return numOfChars <= 100
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        return true
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

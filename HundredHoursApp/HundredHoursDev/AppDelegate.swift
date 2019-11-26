@@ -6,20 +6,28 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-//TODO: look into a DEBUG flag to get rid of print statements
-//TODO: Fix bug that occurs when number of hours is too large
-//TODO: Maybe fix character limit
-//TODO: Add description view to app
-    /*
-        add description view (UITextView) to goal list on front page
-        create stack view for description label and description view - class component
-        add class component to the new goals page
-        change core data model to accept the description view
-    */
-//TODO: Add notification center to app
-//TODO: Fix spacing bug on list view
-//TODO: Change cards to have UI components inside stack views
-//TODO: Maybe change buttons to move to top right corner
+//TODO: Fix bug that occurs when number of hours is too large - done
+//TODO: Add description view to app - done
+/*
+ add description view (UITextView) to goal list on front page
+ create stack view for description label and description view - class component
+ add class component to the new goals page
+ change core data model to accept the description view
+ */
+//TODO: Fix spacing bug on list view - done
+//TODO: Maybe change buttons to move to top right corner - done
+//TODO: Autosizing goal cells - done
+//TODO: size of UILabel in goal cell to display goal name properly - done
+
+
+// TODO: look into a DEBUG flag to get rid of print statements
+// TODO: Maybe fix character limit
+
+// TODO: Add Edit goals page to app
+// TODO: Add image to empty state view
+// TODO: Blur out cards that have been completed
+// TODO: Darken screen as you drag time stamps view up, brighten as drag down
+// TODO: Add notification center to app
 
 
 

@@ -2,13 +2,14 @@
 //  DescriptionStack.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 11/4/19.
+//  Created by Stephen Ouyang on 11/10/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+
 import UIKit
 
-class NewGoalDescriptionStack: UIStackView {
+class DescriptionStack: UIStackView {
     
     var descriptionLabel = UILabel()
     var descriptionView = UITextView()
@@ -23,14 +24,14 @@ class NewGoalDescriptionStack: UIStackView {
     }
     
     private func commonInit() {
-        createStack()
+        configStack()
         descriptionLabel = createDescriptionLabel()
         descriptionView = createDescriptionView()
         self.addArrangedSubview(descriptionLabel)
         self.addArrangedSubview(descriptionView)
     }
     
-    private func createStack() {
+    private func configStack() {
         axis = .vertical
         distribution = .fill
         alignment = .fill
@@ -59,3 +60,4 @@ class NewGoalDescriptionStack: UIStackView {
         ])
     }
 }
+

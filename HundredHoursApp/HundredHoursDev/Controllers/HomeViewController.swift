@@ -13,7 +13,8 @@ class HomeViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     private let viewModel = HomeViewModel()
-    private var goalTableView = UITableView()
+    private let flowLayout = UICollectionViewFlowLayout()
+    private var goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var newGoalButton = UIButton()
 
     override func viewDidLoad() {
@@ -26,54 +27,37 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = "Goals"
         navigationItem.hidesBackButton = true
-        updateTableView()
+        updateCollectionView()
     }
     
     private func setupView() {
-        newGoalButton = createNewGoalBtn()
-        view.addSubview(newGoalButton)
-        buttonConstraints()
-        setTableView()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(newGoalTapped))
         viewModel.goalsArr = viewModel.populateGoalList()
+        setupCollectionView()
     }
     
-    private func updateTableView() {
+    private func updateCollectionView() {
         viewModel.goalsArr = viewModel.populateGoalList()
-        goalTableView.reloadData()
-        configTableView()
+        goalCollectionView.reloadData()
+        checkEmptyState()
     }
     
-    private func configTableView() {
+    private func checkEmptyState() {
         if viewModel.goalsArr.isEmpty {
-            let noGoalsView = NoGoalsHomeView(frame: goalTableView.frame)
-            goalTableView.backgroundView = noGoalsView
+            let noGoalsView = NoGoalsHomeView(frame: goalCollectionView.frame)
+            goalCollectionView.backgroundView = noGoalsView
         } else {
-            goalTableView.backgroundView = nil
+            goalCollectionView.backgroundView = nil
         }
-        goalTableView.separatorStyle = .none
     }
     
-    private func setTableView() {
-        goalTableView.register(GoalTableViewCell.self, forCellReuseIdentifier: GoalTableViewCell.identifier)
-        goalTableView.dataSource = self
-        goalTableView.delegate = self
-        view.addSubview(goalTableView)
-        tableConstraints()
-    }
-    
-    private func createNewGoalBtn() -> UIButton {
-        let button = UIButton()
-        button.setTitle("NEW", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        button.layer.cornerRadius = 25
-        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .highlighted)
-        button.addTarget(self, action: #selector(newGoalTapped), for: .touchUpInside)
-        button.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowOpacity = 1
-        button.layer.shadowRadius = 3
-        return button
+    private func setupCollectionView() {
+        goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
+        goalCollectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        goalCollectionView.dataSource = self
+        goalCollectionView.delegate = self
+        view.addSubview(goalCollectionView)
+        collectionConstraints()
     }
     
     private func buttonConstraints() {
@@ -81,77 +65,84 @@ class HomeViewController: UIViewController {
         newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
     }
     
-    private func tableConstraints() {
-        goalTableView.translatesAutoresizingMaskIntoConstraints = false
-        goalTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        goalTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        goalTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        goalTableView.bottomAnchor.constraint(equalTo: newGoalButton.topAnchor).isActive = true
+    private func collectionConstraints() {
+        goalCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        goalCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        goalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        goalCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        goalCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
 extension HomeViewController {
+    
+    @objc func optionsButtonTapped(sender: UIButton) {
+        let index = sender.tag
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "delete", style: .destructive, handler: { action in
+            self.goalCollectionView.performBatchUpdates({
+                guard let resultList = self.viewModel.deleteGoal(index: sender.tag, goalList: self.viewModel.goalsArr) else { return }
+                self.viewModel.goalsArr = resultList
+                self.goalCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
+            }, completion: { _ in
+                self.updateCollectionView()
+            })
+        })
+        alert.addAction(deleteAction)
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
     
     @objc func newGoalTapped() {
         coordinator?.createNewGoal()
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let goalToPass = viewModel.goalsArr[indexPath.row]
-        coordinator?.goToDetailScreen(goal: goalToPass)
+extension HomeViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.goalsArr.count
     }
-        
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // create alert controller
-            let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
-            // create action
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
-                // delete story from array & Core Data
-                guard let resultList = self.viewModel.deleteGoal(indexPath: indexPath, goalList: self.viewModel.goalsArr) else { return }
-                self.viewModel.goalsArr = resultList
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            })
-            alert.addAction(okAction)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
-        }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellString = viewModel.getCellString(indexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
+        cell.setCellLabelFont(text: cellString)
+        cell.cellLabel.text = cellString
+        cell.cellTextView.text = viewModel.goalsArr[indexPath.row].goalDescription
+        cell.optionsButton.tag = indexPath.row
+        cell.optionsButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
+        return cell
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        configTableView()
-        return viewModel.goalsArr.count
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let goalToPass = viewModel.goalsArr[indexPath.row]
+        coordinator?.goToDetailScreen(goal: goalToPass)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 10)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellString = viewModel.getCellString(indexPath: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: GoalTableViewCell.identifier, for: indexPath) as! GoalTableViewCell
-        cell.selectionStyle = .none
-        cell.cellLabel.text = cellString
-        cell.cellTextView.text = viewModel.goalsArr[indexPath.row].goalDescription
-        return cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.height * 0.197
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = viewModel.resizeCell(indexPath: indexPath, view: collectionView)
+        return CGSize(width: collectionView.bounds.width, height: 60 + height)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return tableView.bounds.height * 0.01
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
     }
 }
 

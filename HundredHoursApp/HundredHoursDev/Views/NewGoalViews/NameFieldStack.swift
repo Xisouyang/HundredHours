@@ -1,14 +1,14 @@
 //
-//  NewGoalTextField.swift
+//  NameFieldStack.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 10/15/19.
+//  Created by Stephen Ouyang on 11/10/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
 import UIKit
 
-class NewGoalFieldStack: UIStackView {
+class NameFieldStack: UIStackView {
     
     var textField = UITextField()
     var textLabel = UILabel()
@@ -54,6 +54,7 @@ class NewGoalFieldStack: UIStackView {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             textLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
-        ])
+            ])
     }
 }
+
