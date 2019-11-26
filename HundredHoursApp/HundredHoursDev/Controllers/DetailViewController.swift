@@ -107,6 +107,7 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath)
+        cell.selectionStyle = .none
         cell.textLabel?.text = String(detailViewModel.timeStampsArr[indexPath.row])
         return cell
     }

@@ -82,7 +82,7 @@ extension HomeViewController {
     @objc func optionsButtonTapped(sender: UIButton) {
         let index = sender.tag
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "delete", style: .destructive, handler: { action in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             self.goalCollectionView.performBatchUpdates({
                 guard let resultList = self.viewModel.deleteGoal(index: sender.tag, goalList: self.viewModel.goalsArr) else { return }
                 self.viewModel.goalsArr = resultList
@@ -92,7 +92,7 @@ extension HomeViewController {
             })
         })
         alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     
