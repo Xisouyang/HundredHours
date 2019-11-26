@@ -14,6 +14,7 @@
 		5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */; };
 		5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */; };
 		5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */; };
+		5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */; };
 		5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */; };
 		5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */; };
 		5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CC23344C30005FFD1F /* TimerViewController.swift */; };
@@ -26,7 +27,7 @@
 		5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73508231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld */; };
 		5DB7350C231DFDF600F53E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350B231DFDF600F53E30 /* Assets.xcassets */; };
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
-		5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FB0B235649D20069040C /* NewGoalFormField.swift */; };
+		5DB7FB0C235649D20069040C /* GoalFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FB0B235649D20069040C /* GoalFormField.swift */; };
 		5DEB41562378E75F003EEA63 /* DatePickerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41552378E75F003EEA63 /* DatePickerStack.swift */; };
 		5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41572378E851003EEA63 /* DescriptionStack.swift */; };
 		5DEB415A2378E8D0003EEA63 /* NameFieldStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */; };
@@ -41,7 +42,6 @@
 		5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AD235FACAB001A295B /* Coordinator.swift */; };
 		5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AF235FACFA001A295B /* MainCoordinator.swift */; };
 		5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE2A802362CCAC006604A0 /* UIFont.swift */; };
-		5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* DetailView.swift */; };
 		5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */; };
 		5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */; };
 /* End PBXBuildFile section */
@@ -89,7 +89,7 @@
 		5DB7350B231DFDF600F53E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DB7350E231DFDF600F53E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DB7FB0B235649D20069040C /* NewGoalFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalFormField.swift; sourceTree = "<group>"; };
+		5DB7FB0B235649D20069040C /* GoalFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFormField.swift; sourceTree = "<group>"; };
 		5DEB41552378E75F003EEA63 /* DatePickerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerStack.swift; sourceTree = "<group>"; };
 		5DEB41572378E851003EEA63 /* DescriptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionStack.swift; sourceTree = "<group>"; };
 		5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFieldStack.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		5DFE02AD235FACAB001A295B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5DFE02AF235FACFA001A295B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5DFE2A802362CCAC006604A0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		5DFE43DF233001DE005C9A79 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageCell.swift; sourceTree = "<group>"; };
 		5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +150,26 @@
 				5D0863BF2320852600CD58F5 /* Info.plist */,
 			);
 			path = HundredHoursDevUITests;
+			sourceTree = "<group>";
+		};
+		5D0A32EC238CEFB700DA1546 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5DB7FB0B235649D20069040C /* GoalFormField.swift */,
+				5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */,
+				5DEB41572378E851003EEA63 /* DescriptionStack.swift */,
+				5DEB41552378E75F003EEA63 /* DatePickerStack.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5D0A32ED238CF00200DA1546 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */,
+				5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5D9C529C232AC08800608D6D /* ViewModels */ = {
@@ -204,13 +224,14 @@
 		5DF6EA002325ABB500EC64B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5DFF84CA236260BB006AD6EE /* OnboardViews */,
-				5DFF84C823626038006AD6EE /* NewGoalViews */,
-				5DFE43DF233001DE005C9A79 /* DetailView.swift */,
+				5D0A32ED238CF00200DA1546 /* Cells */,
+				5D0A32EC238CEFB700DA1546 /* Components */,
+				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
+				5DFBC975232223D500896D64 /* NewGoalView.swift */,
+				5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
 				5D4C61CE23344C53005FFD1F /* TimerView.swift */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
-				5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,19 +265,6 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		5DFF84C823626038006AD6EE /* NewGoalViews */ = {
-			isa = PBXGroup;
-			children = (
-				5DEB41552378E75F003EEA63 /* DatePickerStack.swift */,
-				5DEB41572378E851003EEA63 /* DescriptionStack.swift */,
-				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
-				5DEB41592378E8D0003EEA63 /* NameFieldStack.swift */,
-				5DB7FB0B235649D20069040C /* NewGoalFormField.swift */,
-				5DFBC975232223D500896D64 /* NewGoalView.swift */,
-			);
-			path = NewGoalViews;
-			sourceTree = "<group>";
-		};
 		5DFF84C923626070006AD6EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,14 +272,6 @@
 				5DFE2A802362CCAC006604A0 /* UIFont.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		5DFF84CA236260BB006AD6EE /* OnboardViews */ = {
-			isa = PBXGroup;
-			children = (
-				5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */,
-			);
-			path = OnboardViews;
 			sourceTree = "<group>";
 		};
 		5DFF84CD23626A6C006AD6EE /* CoreData */ = {
@@ -441,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */,
 				5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */,
 				5DEB41562378E75F003EEA63 /* DatePickerStack.swift in Sources */,
 				5DFC763D2372285D00644420 /* Timestamps+CoreDataProperties.swift in Sources */,
@@ -457,7 +458,7 @@
 				5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */,
 				5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */,
 				5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */,
-				5DB7FB0C235649D20069040C /* NewGoalFormField.swift in Sources */,
+				5DB7FB0C235649D20069040C /* GoalFormField.swift in Sources */,
 				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
 				5D9C529E232B05BB00608D6D /* HomeViewModel.swift in Sources */,
 				5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */,
@@ -470,7 +471,6 @@
 				5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */,
 				5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */,
 				5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */,
-				5DFE43E0233001DE005C9A79 /* DetailView.swift in Sources */,
 				5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */,
 				5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */,
 				5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailView: UIView, UIGestureRecognizerDelegate {
+class GoalDetailView: UIView, UIGestureRecognizerDelegate {
         
     var timeStampView = UIView()
     var timeStampTitle = UILabel()

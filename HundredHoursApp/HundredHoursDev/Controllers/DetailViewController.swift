@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     weak var goal: Goal?
     private let detailViewModel = DetailViewModel()
     private var timerViewModel = TimerViewModel()
-    private let detailView = DetailView(frame: UIScreen.main.bounds)
+    private let detailView = GoalDetailView(frame: UIScreen.main.bounds)
     private var timeStampsTableView = UITableView(frame: .zero)
 
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configTimeStampView() {
-        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height)
+        let tableViewFrame = CGRect(x: 0, y: detailView.timeStampView.frame.height * 0.08, width: detailView.timeStampView.frame.width, height: detailView.safeAreaLayoutGuide.layoutFrame.height * 0.85)
         timeStampsTableView.frame = tableViewFrame
     }
     

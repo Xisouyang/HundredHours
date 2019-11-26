@@ -6,15 +6,6 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/*
-
- User enters description and taps create.
-   When we go back to home view controller, in viewWillAppear, we
-1) Update the textView inside the cell to resize based on content inside.
-2) have to update the cell's height based on the content inside the cell.
-
- */
-
 import UIKit
 
 protocol GoalCollectionCellDelegate {

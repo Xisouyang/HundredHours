@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGoalFormField: UIView {
+class GoalFormField: UIView {
     
     let formField = NameFieldStack()
     let formLine = UIView()

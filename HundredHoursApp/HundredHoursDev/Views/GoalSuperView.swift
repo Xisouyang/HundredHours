@@ -12,7 +12,7 @@ class GoalSuperView: UIView {
     
     var defaultButton = UIButton()
     var datePickerStack = DatePickerStack()
-    let goalNameField = NewGoalFormField(text: "Goal Name", frame: .zero)
+    let goalNameField = GoalFormField(text: "Goal Name", frame: .zero)
     let goalDescriptionField = DescriptionStack(frame: .zero)
     
     override init(frame: CGRect) {
