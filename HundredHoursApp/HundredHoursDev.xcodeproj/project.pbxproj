@@ -226,12 +226,12 @@
 			children = (
 				5D0A32ED238CF00200DA1546 /* Cells */,
 				5D0A32EC238CEFB700DA1546 /* Components */,
-				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
-				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 				5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */,
+				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
+				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
+				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
 				5D4C61CE23344C53005FFD1F /* TimerView.swift */,
-				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";

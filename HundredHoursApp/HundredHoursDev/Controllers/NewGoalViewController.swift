@@ -33,7 +33,6 @@ class NewGoalViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
         view.addSubview(newGoalView)
         newGoalView.frame = view.frame
-        newGoalView.defaultButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
         newGoalView.goalNameField.formField.textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         newGoalView.datePickerStack.datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         newGoalView.goalNameField.formField.textField.delegate = self

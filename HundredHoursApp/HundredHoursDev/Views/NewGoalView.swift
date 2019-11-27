@@ -14,29 +14,12 @@ class NewGoalView: GoalSuperView {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
     }
         
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func commonInit() {
-        configButton()
-    }
-    
-    func configButton() {
-        defaultButton.setTitle("CREATE", for: .normal)
-    }
-    
-    func removeBlur() {
-        self.removeBlurEffect()
-    }
-    
-    func addBlur() {
-        self.blurScreen()
-    }
-    
+
     func highlightLine(line: UIView) {
         line.layer.borderWidth = 2
         line.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

@@ -29,8 +29,6 @@
 // TODO: Darken screen as you drag time stamps view up, brighten as drag down
 // TODO: Add notification center to app
 
-
-
 import UIKit
 
 @UIApplicationMain

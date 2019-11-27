@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(newGoalTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
         viewModel.goalsArr = viewModel.populateGoalList()
         setupCollectionView()
     }
@@ -96,7 +96,7 @@ extension HomeViewController {
         self.present(alert, animated: true)
     }
     
-    @objc func newGoalTapped() {
+    @objc func addTapped() {
         coordinator?.createNewGoal()
     }
 }
