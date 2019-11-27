@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     private func checkEmptyState() {
         if viewModel.goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: goalCollectionView.frame)
+            noGoalsView.startButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
             goalCollectionView.backgroundView = noGoalsView
         } else {
             goalCollectionView.backgroundView = nil

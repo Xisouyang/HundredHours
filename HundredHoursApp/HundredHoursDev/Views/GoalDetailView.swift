@@ -64,7 +64,7 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     
     private func createTimeStampTitle() -> UILabel {
         let label = UILabel()
-        label.text = "Time Stamps"
+        label.text = "Finished sessions"
         label.textAlignment = .left
         label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
         label.font = UIFont(name: "Avenir-Heavy", size: 25)
@@ -83,7 +83,7 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     private func createTimeButton() -> UIButton {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        button.setTitle("Timer", for: .normal)
+        button.setTitle("Start", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .highlighted)
         button.contentMode = .center
