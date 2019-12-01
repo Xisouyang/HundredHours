@@ -19,6 +19,7 @@ class NewGoalViewController: UIViewController {
     private let newGoalView = NewGoalView()
     // start at 1 min
     private var goalDuration: Int = 60
+    private var keyboardHeight: CGFloat = 0
     private var textType: TextType = .goalName
 
     override func viewDidLoad() {
@@ -83,11 +84,10 @@ class NewGoalViewController: UIViewController {
                 self.view.frame.origin.y = 0
             }  else if textType == .goalDescription {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height/2
-                } else if self.view.frame.origin.y < 0 {
-                    self.view.frame.origin.y -= (keyboardSize.height/3)
+                    self.view.frame.origin.y -= keyboardSize.height/3
                 }
             }
+            keyboardHeight = keyboardSize.height
         }
     }
     
@@ -143,6 +143,11 @@ extension NewGoalViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if self.view.frame.origin.y < 0 {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.frame.origin.y = 0
+            })
+        }
         let line = newGoalView.goalNameField.formLine
         newGoalView.highlightLine(line: line)
         textType = .goalName
@@ -166,6 +171,11 @@ extension NewGoalViewController: UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.view.frame.origin.y == 0 {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.frame.origin.y -= self.keyboardHeight / 3
+            })
+        }
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

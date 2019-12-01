@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
-            timestampString = "596511377.599327"
+            filePath = "HundredHoursDev/AppDelegate.swift"
+            timestampString = "596442007.055215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "keyboardWillChange(notification:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HundredHoursDev/AppDelegate.swift"
-            timestampString = "596442007.055215"
+            filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
+            timestampString = "596928565.047326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "textViewDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HundredHoursDev/Controllers/NewGoalViewController.swift"
+            timestampString = "596928565.047793"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/* Pan-gesture recognizer instead of swipe */
-
 import UIKit
 import CoreData
 
