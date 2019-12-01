@@ -104,7 +104,7 @@ class NewGoalViewController: UIViewController {
     private func validateTextFields() {
         guard
             let nameField = newGoalView.goalNameField.formField.textField.text,
-            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionField.descriptionView.text, (descriptionField != "Placeholder..." && !descriptionField.isEmpty)
+            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionField.descriptionView.text, (descriptionField != "Describe Goal.." && !descriptionField.isEmpty)
             else {
                 navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
                 navigationItem.rightBarButtonItem?.isEnabled = false
