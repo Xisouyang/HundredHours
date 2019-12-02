@@ -64,7 +64,7 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     
     private func createTimeStampTitle() -> UILabel {
         let label = UILabel()
-        label.text = "Finished sessions"
+        label.text = "Finished work sessions"
         label.textAlignment = .left
         label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
         label.font = UIFont(name: "Avenir-Heavy", size: 25)
@@ -209,7 +209,7 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     
     private func timeStampTitleConstraints() {
         timeStampTitle.translatesAutoresizingMaskIntoConstraints = false
-        timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.6).isActive = true
+        timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.8).isActive = true
         timeStampTitle.heightAnchor.constraint(equalToConstant: 50).isActive = true
         timeStampTitle.topAnchor.constraint(equalToSystemSpacingBelow: timeStampView.topAnchor, multiplier: 2).isActive = true
         timeStampTitle.leftAnchor.constraint(equalToSystemSpacingAfter: timeStampView.leftAnchor, multiplier: 2).isActive = true

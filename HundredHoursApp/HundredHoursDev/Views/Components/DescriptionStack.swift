@@ -53,7 +53,7 @@ class DescriptionStack: UIStackView {
         return view
     }
     
-    func textLabelConstraints() {
+    private func textLabelConstraints() {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             descriptionLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)

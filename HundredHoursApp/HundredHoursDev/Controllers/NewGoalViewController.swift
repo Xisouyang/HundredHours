@@ -21,12 +21,18 @@ class NewGoalViewController: UIViewController {
     private var goalDuration: Int = 60
     private var keyboardHeight: CGFloat = 0
     private var textType: TextType = .goalName
+    private var didSetDatePicker: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNotifications()
         setupNavbar()
         setupView()
+        // sends this task to be done on different queue, but how does this resolve the date picker bug
+        // does it really take that much time to set the date picker countdown duration?
+        DispatchQueue.main.async {
+            self.newGoalView.datePickerStack.datePicker.countDownDuration = TimeInterval(self.goalDuration)
+        }
     }
     
     private func setupView() {
@@ -61,7 +67,9 @@ class NewGoalViewController: UIViewController {
     }
     
     @objc func datePickerValueChanged(sender: UIDatePicker) {
+        didSetDatePicker = true
         goalDuration = newGoalView.viewModel.getTimeString(sender: sender)
+        validateTextFields()
     }
     
     @objc func createTapped() {
@@ -104,7 +112,7 @@ class NewGoalViewController: UIViewController {
     private func validateTextFields() {
         guard
             let nameField = newGoalView.goalNameField.formField.textField.text,
-            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionField.descriptionView.text, (descriptionField != "Describe Goal.." && !descriptionField.isEmpty)
+            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionField.descriptionView.text, (descriptionField != "Describe Goal.." && !descriptionField.isEmpty), didSetDatePicker == true
             else {
                 navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
                 navigationItem.rightBarButtonItem?.isEnabled = false
@@ -199,7 +207,7 @@ extension NewGoalViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.textColor = .lightGray
-            textView.text = "Placeholder..."
+            textView.text = "Describe Goal.."
         }
     }
 }

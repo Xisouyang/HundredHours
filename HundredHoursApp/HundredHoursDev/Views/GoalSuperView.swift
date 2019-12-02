@@ -56,7 +56,7 @@ class GoalSuperView: UIView {
     private func goalDescriptionConstraints() {
         goalDescriptionField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            goalDescriptionField.widthAnchor.constraint(equalTo: goalNameField.widthAnchor),
+            goalDescriptionField.widthAnchor.constraint(equalTo: goalNameField.widthAnchor, multiplier: 0.8),
             goalDescriptionField.heightAnchor.constraint(equalTo: goalNameField.heightAnchor, multiplier: 0.8),
             goalDescriptionField.leftAnchor.constraint(equalTo: goalNameField.leftAnchor),
             goalDescriptionField.topAnchor.constraint(equalTo: goalNameField.safeAreaLayoutGuide.bottomAnchor, constant: 50)
