@@ -19,13 +19,17 @@ class TimerViewModel {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
-    
+
     func getTimeLabel() -> String {
         let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = DateFormatter.Style.long
-        formatter.timeStyle = DateFormatter.Style.none
-        return "\(formatter.string(from: date)) - \(timeString(time: TimeInterval(seconds)))"
+        let dateFormatter = DateFormatter()
+        let sessionFormatter = DateComponentsFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        sessionFormatter.unitsStyle = .brief
+        guard let sessionString =
+            sessionFormatter.string(from: TimeInterval(seconds)) else { return "" }
+        return "\(dateFormatter.string(from: date)) - \(sessionString)"
     }
     
     func getSeconds() -> Int {

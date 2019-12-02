@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol GoalCollectionCellDelegate {
-    func getCellIndex(cell: UICollectionViewCell)
-}
-
 class GoalCollectionCell: UICollectionViewCell {
     
     static let identifier = "goalCollectionID"
@@ -20,7 +16,6 @@ class GoalCollectionCell: UICollectionViewCell {
     var cellLabel = UILabel()
     var optionsButton = UIButton()
     var cellHeightConstraint: NSLayoutConstraint?
-    var delegate: GoalCollectionCellDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
