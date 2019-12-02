@@ -100,7 +100,7 @@ class GoalCollectionCell: UICollectionViewCell {
     private func cellLabelConstraints() {
         cellLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            cellLabel.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.85),
+            cellLabel.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.8),
             cellLabel.heightAnchor.constraint(equalToConstant: 50),
             cellLabel.leftAnchor.constraint(equalToSystemSpacingAfter: cellView.leftAnchor, multiplier: 2),
             cellLabel.topAnchor.constraint(equalTo: cellView.topAnchor)
@@ -119,8 +119,8 @@ class GoalCollectionCell: UICollectionViewCell {
     private func optionButtonConstraints() {
         optionsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            optionsButton.heightAnchor.constraint(equalToConstant: 15),
-            optionsButton.widthAnchor.constraint(equalToConstant: 15),
+            optionsButton.heightAnchor.constraint(equalToConstant: 20),
+            optionsButton.widthAnchor.constraint(equalToConstant: 20),
             optionsButton.rightAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.rightAnchor, constant: -15),
             optionsButton.topAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.topAnchor, constant: 10)
         ])
