@@ -196,10 +196,8 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     
     func viewDragged(gesture: UIPanGestureRecognizer) {
         configViewFrame(gesture: gesture)
+        snapView(gesture: gesture)
         configViewBrightness()
-        if gesture.state == UIPanGestureRecognizer.State.ended {
-            
-        }
     }
 
     private func configViewFrame(gesture: UIPanGestureRecognizer) {
@@ -226,6 +224,32 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
             UIView.animate(withDuration: 0.25, animations: {
                 self.backgroundColor = UIColor.white
             })
+        }
+    }
+
+    private func snapView(gesture: UIPanGestureRecognizer) {
+        if gesture.state == UIPanGestureRecognizer.State.ended {
+            let velocity = gesture.velocity(in: self)
+            if velocity.y > 0 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.timeStampView.frame.origin.y = self.timeStampView.frame.height / 1.25
+                })
+            } else {
+                if timeStampView.frame.origin.y < timeStampView.frame.height / 2.25 {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.timeStampView.frame.origin.y = self.timeStampView.frame.height / 5
+                    })
+                } else if timeStampView.frame.origin.y <= timeStampView.frame.height / 1.3 &&
+                    timeStampView.frame.origin.y > timeStampView.frame.height / 2.25 {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.timeStampView.frame.origin.y = self.timeStampView.frame.height / 2
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.timeStampView.frame.origin.y = self.timeStampView.frame.height / 1.25
+                    })
+                }
+            }
         }
     }
     

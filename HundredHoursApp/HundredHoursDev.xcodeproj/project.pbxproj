@@ -17,6 +17,8 @@
 		5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */; };
 		5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */; };
 		5D27BBBA2321A7E100C3D623 /* GoalSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */; };
+		5D281F13239704B000E70424 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D281F12239704B000E70424 /* EditGoalView.swift */; };
+		5D281F152397054200E70424 /* EditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D281F142397054200E70424 /* EditGoalViewController.swift */; };
 		5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CC23344C30005FFD1F /* TimerViewController.swift */; };
 		5D4C61CF23344C53005FFD1F /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CE23344C53005FFD1F /* TimerView.swift */; };
 		5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61D023344CAF005FFD1F /* TimerViewModel.swift */; };
@@ -77,6 +79,8 @@
 		5D0863BF2320852600CD58F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSuperView.swift; sourceTree = "<group>"; };
+		5D281F12239704B000E70424 /* EditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
+		5D281F142397054200E70424 /* EditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewController.swift; sourceTree = "<group>"; };
 		5D4C61CC23344C30005FFD1F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		5D4C61CE23344C53005FFD1F /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		5D4C61D023344CAF005FFD1F /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
@@ -224,14 +228,15 @@
 		5DF6EA002325ABB500EC64B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5D0A32ED238CF00200DA1546 /* Cells */,
-				5D0A32EC238CEFB700DA1546 /* Components */,
+				5D281F12239704B000E70424 /* EditGoalView.swift */,
 				5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */,
 				5D27BBB92321A7E100C3D623 /* GoalSuperView.swift */,
-				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 				5DFBC975232223D500896D64 /* NewGoalView.swift */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
 				5D4C61CE23344C53005FFD1F /* TimerView.swift */,
+				5D0A32ED238CF00200DA1546 /* Cells */,
+				5D0A32EC238CEFB700DA1546 /* Components */,
+				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5D4C61CC23344C30005FFD1F /* TimerViewController.swift */,
 				5DF91EE923623124003ED906 /* OnboardViewController.swift */,
+				5D281F142397054200E70424 /* EditGoalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -460,8 +466,10 @@
 				5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */,
 				5DB7FB0C235649D20069040C /* GoalFormField.swift in Sources */,
 				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
+				5D281F152397054200E70424 /* EditGoalViewController.swift in Sources */,
 				5D9C529E232B05BB00608D6D /* HomeViewModel.swift in Sources */,
 				5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */,
+				5D281F13239704B000E70424 /* EditGoalView.swift in Sources */,
 				5D4C61CF23344C53005FFD1F /* TimerView.swift in Sources */,
 				5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */,
 				5DFBC976232223D500896D64 /* NewGoalView.swift in Sources */,

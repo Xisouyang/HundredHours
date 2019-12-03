@@ -92,6 +92,10 @@ extension HomeViewController {
                 self.updateCollectionView()
             })
         })
+        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { action in
+
+        })
+        alert.addAction(editAction)
         alert.addAction(deleteAction)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true)
