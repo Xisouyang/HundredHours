@@ -13,6 +13,7 @@ class TimerView: UIView {
     let tapGesture = UITapGestureRecognizer()
     var watchView = UIView()
     var watchLabel = UILabel()
+    private var instructionLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +28,12 @@ class TimerView: UIView {
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         watchView = createWatchView()
         watchLabel = createWatchLabel()
+        instructionLabel = createInstructionLabel()
         self.addSubview(watchView)
         watchView.addSubview(watchLabel)
+        watchView.addSubview(instructionLabel)
         watchLabelConstraints()
+        instructionLabelConstraints()
         configTapGesture()
     }
     
@@ -52,17 +56,35 @@ class TimerView: UIView {
         label.textAlignment = .center
         return label
     }
+
+    private func createInstructionLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Tap anywhere to quit"
+        label.textAlignment = .center
+        label.font = UIFont.goalDescriptionFont
+        return label
+    }
     
     private func configTapGesture() {
         tapGesture.numberOfTapsRequired = 1
         self.addGestureRecognizer(tapGesture)
     }
     
-    func watchLabelConstraints() {
+    private func watchLabelConstraints() {
         watchLabel.translatesAutoresizingMaskIntoConstraints = false
         watchLabel.centerXAnchor.constraint(equalTo: watchView.centerXAnchor).isActive = true
         watchLabel.centerYAnchor.constraint(equalTo: watchView.centerYAnchor).isActive = true
         watchLabel.widthAnchor.constraint(equalTo: watchView.widthAnchor, multiplier: 0.8).isActive = true
         watchLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+
+    private func instructionLabelConstraints() {
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            instructionLabel.topAnchor.constraint(equalTo: watchLabel.safeAreaLayoutGuide.bottomAnchor),
+            instructionLabel.centerXAnchor.constraint(equalTo: watchView.centerXAnchor),
+            instructionLabel.widthAnchor.constraint(equalTo: watchView.widthAnchor, multiplier: 0.8),
+            instructionLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }
