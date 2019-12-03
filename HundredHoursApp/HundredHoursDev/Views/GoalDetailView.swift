@@ -189,6 +189,11 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
     }
     
     func viewDragged(gesture: UIPanGestureRecognizer) {
+        configViewFrame(gesture: gesture)
+        configViewBrightness()
+    }
+
+    private func configViewFrame(gesture: UIPanGestureRecognizer) {
         let buffer: CGFloat = 135
         let recognizer = gesture
         let translation = recognizer.translation(in: self)
@@ -200,6 +205,18 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
             recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self)
         } else if viewHeight == buffer {
             timeStampView.frame = frame
+        }
+    }
+
+    private func configViewBrightness() {
+        if timeStampView.frame.origin.y < timeStampView.frame.height / 2 {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            })
+        } else {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.backgroundColor = UIColor.white
+            })
         }
     }
     
