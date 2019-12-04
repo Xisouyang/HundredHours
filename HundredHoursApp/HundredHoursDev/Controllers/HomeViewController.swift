@@ -85,7 +85,7 @@ extension HomeViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             self.goalCollectionView.performBatchUpdates({
-                guard let resultList = self.viewModel.deleteGoal(index: sender.tag, goalList: self.viewModel.goalsArr) else { return }
+                guard let resultList = self.viewModel.deleteGoal(index: index, goalList: self.viewModel.goalsArr) else { return }
                 self.viewModel.goalsArr = resultList
                 self.goalCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
             }, completion: { _ in
@@ -93,7 +93,8 @@ extension HomeViewController {
             })
         })
         let editAction = UIAlertAction(title: "Edit", style: .default, handler: { action in
-
+            let curGoal = self.viewModel.goalsArr[index]
+            self.coordinator?.editGoal(goal: curGoal)
         })
         alert.addAction(editAction)
         alert.addAction(deleteAction)
