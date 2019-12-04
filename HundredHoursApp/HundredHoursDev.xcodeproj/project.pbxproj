@@ -248,15 +248,23 @@
 		5DF6EA022325ABD400EC64B7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5DFB0E0E239871C00024876B /* GoalFieldsVC */,
 				5D051787232C1A1A00B94C4B /* DetailViewController.swift */,
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
-				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
 				5D4C61CC23344C30005FFD1F /* TimerViewController.swift */,
 				5DF91EE923623124003ED906 /* OnboardViewController.swift */,
-				5D281F18239744D600E70424 /* GoalFieldsViewController.swift */,
-				5D281F1C2397477100E70424 /* EditGoalViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5DFB0E0E239871C00024876B /* GoalFieldsVC */ = {
+			isa = PBXGroup;
+			children = (
+				5D281F1C2397477100E70424 /* EditGoalViewController.swift */,
+				5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */,
+				5D281F18239744D600E70424 /* GoalFieldsViewController.swift */,
+			);
+			path = GoalFieldsVC;
 			sourceTree = "<group>";
 		};
 		5DFE02AC235FAC94001A295B /* Coordinators */ = {

@@ -63,6 +63,18 @@ class CoreDataManager {
         // save
         saveContext()
     }
+
+    func updateGoal(goal: Goal, name: String, description: String, duration: Int) {
+        do {
+            let object = try context.existingObject(with: goal.objectID) as! Goal
+            object.title = name
+            object.goalDescription = description
+            object.totalSeconds = Int64(duration)
+            saveContext()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     func createTimestamp(time: Int, goal: Goal) {
         let entity = NSEntityDescription.entity(forEntityName: "Timestamps", in: context)

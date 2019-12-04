@@ -4,7 +4,8 @@
 //
 //  Created by Stephen Ouyang on 9/13/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
-//
+
+//TODO:  pass time to save into animate bar function to animate text percentage instead of 'loading'
 
 import UIKit
 import CoreData

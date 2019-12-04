@@ -5,7 +5,6 @@
 //  Created by Stephen Ouyang on 12/3/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
-
 import UIKit
 
 enum TextType {
@@ -18,7 +17,7 @@ class GoalFieldsViewController: UIViewController {
     weak var coordinator: Coordinator?
     let goalFieldsView = GoalFieldsView()
     // start at 1 min
-    private var goalDuration: Int = 60
+    var goalDuration: Int = 60
     private var keyboardHeight: CGFloat = 0
     private var textType: TextType = .goalName
     private var didSetDatePicker: Bool = false
@@ -26,7 +25,6 @@ class GoalFieldsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNotifications()
-        setupNavbar()
         setupView()
         // sends this task to be done on different queue, but how does this resolve the date picker bug
         // does it really take that much time to set the date picker countdown duration?
@@ -46,34 +44,15 @@ class GoalFieldsViewController: UIViewController {
         goalFieldsView.goalDescriptionField.descriptionView.delegate = self
     }
 
-    private func setupNavbar() {
-        navigationItem.title = "New Goal"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createTapped))
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-    }
-
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
-    func createGoal() {
-        guard let goalName = goalFieldsView.goalNameField.formField.textField.text,
-            let goalDescription = goalFieldsView.goalDescriptionField.descriptionView.text
-            else { return }
-        goalFieldsView.viewModel.addGoal(name: goalName, description: goalDescription, duration: goalDuration)
-        navigationController?.popViewController(animated: true)
-    }
-
     @objc func datePickerValueChanged(sender: UIDatePicker) {
         didSetDatePicker = true
-        goalDuration = goalFieldsView.viewModel.getTimeString(sender: sender)
+        goalDuration = goalFieldsView.newGoalViewModel.getTimeString(sender: sender)
         validateTextFields()
-    }
-
-    @objc func createTapped() {
-        createGoal()
     }
 
     @objc func dismissKeyboard() {
@@ -211,5 +190,3 @@ extension GoalFieldsViewController: UITextViewDelegate {
         }
     }
 }
-
-

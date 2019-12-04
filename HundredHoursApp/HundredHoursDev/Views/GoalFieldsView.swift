@@ -10,7 +10,7 @@ import UIKit
 
 class GoalFieldsView: UIView {
 
-    var viewModel = NewGoalViewModel()
+    var newGoalViewModel = NewGoalViewModel()
     var defaultButton = UIButton()
     var datePickerStack = DatePickerStack()
     let goalNameField = GoalFormField(text: "Goal Name", frame: .zero)
