@@ -40,13 +40,6 @@ class DetailViewModel {
             timeStampsArr.append(sessionString)
         }
     }
-    
-//    func timeString(time: TimeInterval) -> String {
-//        let hours = Int(time) / 3600
-//        let minutes = Int(time) / 60 % 60
-//        let seconds = Int(time) % 60
-//        return String(format: "%02i:%02i", hours, minutes)
-//    }
 
     func getTimeLabel(timeStamp: Timestamps) -> String {
         guard let day = timeStamp.day else { return "" }

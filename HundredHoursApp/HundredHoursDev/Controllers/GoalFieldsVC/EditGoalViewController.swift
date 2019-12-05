@@ -11,9 +11,12 @@ import UIKit
 class EditGoalViewController: GoalFieldsViewController {
 
     var goal: Goal?
+    private let viewModel = EditGoalViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let unwrappedGoal = goal else { return }
+        goalDuration = viewModel.editGoalDuration(goal: unwrappedGoal)
         setupNavbar()
         setupView()
     }

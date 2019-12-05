@@ -51,7 +51,7 @@ class GoalFieldsViewController: UIViewController {
 
     @objc func datePickerValueChanged(sender: UIDatePicker) {
         didSetDatePicker = true
-        goalDuration = goalFieldsView.newGoalViewModel.getTimeString(sender: sender)
+        goalDuration = goalFieldsView.goalFieldsViewModel.setGoalDuration(sender: sender)
         validateTextFields()
     }
 

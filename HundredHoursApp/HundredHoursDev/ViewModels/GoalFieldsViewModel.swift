@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class NewGoalViewModel {
+class GoalFieldsViewModel {
     
-    func getTimeString(sender: UIDatePicker) -> Int {
+    func setGoalDuration(sender: UIDatePicker) -> Int {
         let date = sender.date
         let minComponent = Calendar.current.component(.minute, from: date)
         let hourComponent = Calendar.current.component(.hour, from: date)
@@ -19,9 +19,5 @@ class NewGoalViewModel {
         let hourToSecs = hourComponent * 3600
         let total = minToSecs + hourToSecs
         return total
-    }
-    
-    func addGoal(name: String, description: String, duration: Int) {
-        CoreDataManager.sharedManager.createGoal(name: name, description: description, duration: duration)
     }
 }

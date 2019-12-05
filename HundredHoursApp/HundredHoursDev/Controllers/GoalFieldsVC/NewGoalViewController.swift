@@ -26,7 +26,7 @@ class NewGoalViewController: GoalFieldsViewController {
         guard let goalName = goalFieldsView.goalNameField.formField.textField.text,
             let goalDescription = goalFieldsView.goalDescriptionField.descriptionView.text
             else { return }
-        goalFieldsView.newGoalViewModel.addGoal(name: goalName, description: goalDescription, duration: goalDuration)
+         CoreDataManager.sharedManager.createGoal(name: goalName, description: goalDescription, duration: goalDuration)
         navigationController?.popViewController(animated: true)
     }
 
