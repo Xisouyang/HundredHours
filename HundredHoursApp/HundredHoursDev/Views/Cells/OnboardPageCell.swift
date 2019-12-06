@@ -86,8 +86,8 @@ class OnboardPageCell: UICollectionViewCell {
     private func containerViewConstraints() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            containerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
-            containerView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4),
+            containerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
+            containerView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.35),
             containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])

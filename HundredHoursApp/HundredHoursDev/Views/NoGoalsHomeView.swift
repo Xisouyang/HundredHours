@@ -11,6 +11,7 @@ import UIKit
 class NoGoalsHomeView: UIView {
     
     private var emptyStateLabel = UILabel()
+    private var emptyImageView = UIImageView()
     var startButton = UIButton()
     
     override init(frame: CGRect) {
@@ -18,10 +19,13 @@ class NoGoalsHomeView: UIView {
         backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         emptyStateLabel = createEmptyStateLabel()
         startButton = createStartButton()
+        emptyImageView = createEmptyImage()
         addSubview(emptyStateLabel)
         addSubview(startButton)
+        addSubview(emptyImageView)
         labelConstraints()
         buttonConstraints()
+        imageViewConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +55,13 @@ class NoGoalsHomeView: UIView {
         button.layer.shadowRadius = 3
         return button
     }
+
+    private func createEmptyImage() -> UIImageView {
+        let image = UIImage(named: "emptyStateIconSVG")
+        let imageView = UIImageView(image: image!)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
     
     private func labelConstraints() {
         emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +78,16 @@ class NoGoalsHomeView: UIView {
              startButton.centerXAnchor.constraint(equalTo: centerXAnchor),
              startButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
              startButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+
+    private func imageViewConstraints() {
+        emptyImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyImageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 9),
+            emptyImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45),
+            emptyImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
         ])
     }
 }
