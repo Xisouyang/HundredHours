@@ -65,10 +65,12 @@ class NoGoalsHomeView: UIView {
     
     private func labelConstraints() {
         emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyStateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        emptyStateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        emptyStateLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
-        emptyStateLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        NSLayoutConstraint.activate([
+            emptyStateLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            emptyStateLabel.topAnchor.constraint(equalTo: emptyImageView.bottomAnchor),
+            emptyStateLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            emptyStateLabel.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
 
     private func buttonConstraints() {
@@ -84,10 +86,10 @@ class NoGoalsHomeView: UIView {
     private func imageViewConstraints() {
         emptyImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emptyImageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 9),
+            emptyImageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 11),
             emptyImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45),
-            emptyImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
+            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
+            emptyImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
         ])
     }
 }
