@@ -58,6 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configNavigation(navigationBar: UINavigationBar) {
         let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8),
                                     NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 25)]
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
+            appearance.backgroundColor = UIColor.white
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+        }
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         appearance.prefersLargeTitles = true

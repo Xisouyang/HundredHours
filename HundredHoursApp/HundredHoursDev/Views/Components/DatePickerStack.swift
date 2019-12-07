@@ -49,7 +49,9 @@ class DatePickerStack: UIStackView {
     
     private func labelConstraints() {
         datePickerLabel.translatesAutoresizingMaskIntoConstraints = false
-        datePickerLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+        NSLayoutConstraint.activate([
+            datePickerLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+        ])
     }
     
     required init(coder: NSCoder) {
