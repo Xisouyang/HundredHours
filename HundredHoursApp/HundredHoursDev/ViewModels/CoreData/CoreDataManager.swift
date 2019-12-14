@@ -65,15 +65,10 @@ class CoreDataManager {
     }
 
     func updateGoal(goal: Goal, name: String, description: String, duration: Int) {
-        do {
-            let object = try context.existingObject(with: goal.objectID) as! Goal
-            object.title = name
-            object.goalDescription = description
-            object.totalSeconds = Int64(duration)
-            saveContext()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        goal.title = name
+        goal.goalDescription = description
+        goal.totalSeconds = Int64(duration)
+        saveContext()
     }
     
     func createTimestamp(time: Int, goal: Goal) {

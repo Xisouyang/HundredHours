@@ -61,7 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
-            appearance.backgroundColor = UIColor.white
             navigationBar.standardAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
         }

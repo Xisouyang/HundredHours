@@ -22,7 +22,7 @@ class GoalCollectionCell: UICollectionViewCell {
         cellView = createCellView()
         cellLabel = createCellLabel()
         cellTextView = createTextView()
-        optionsButton = createDeleteButton()
+        optionsButton = createOptionsButton()
         addSubview(cellView)
         addSubview(cellLabel)
         addSubview(cellTextView)
@@ -67,19 +67,25 @@ class GoalCollectionCell: UICollectionViewCell {
         return view
     }
     
-    private func createDeleteButton() -> UIButton {
+    private func createOptionsButton() -> UIButton {
         let image = UIImage(named: "optionsIcon")
         let button = UIButton()
         button.setImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return button
     }
-    
+        
     func setCellLabelFont(text: String) {
         if text.count > 10 {
             cellLabel.font = UIFont.smallerTitleFont
         } else {
             cellLabel.font = UIFont.goalTitleFont
         }
+    }
+    
+    @objc func optionsButtonTapped(_ sender: UITapGestureRecognizer) {
+        print("options tapped")
     }
 
     private func cellViewConstraints() {
@@ -114,10 +120,10 @@ class GoalCollectionCell: UICollectionViewCell {
     private func optionButtonConstraints() {
         optionsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            optionsButton.heightAnchor.constraint(equalToConstant: 20),
-            optionsButton.widthAnchor.constraint(equalToConstant: 20),
-            optionsButton.rightAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.rightAnchor, constant: -15),
-            optionsButton.topAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.topAnchor, constant: 10)
+            optionsButton.heightAnchor.constraint(equalToConstant: 40),
+            optionsButton.widthAnchor.constraint(equalToConstant: 50),
+            optionsButton.rightAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.rightAnchor, constant: -5),
+            optionsButton.topAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.topAnchor, constant: 5)
         ])
     }
 }

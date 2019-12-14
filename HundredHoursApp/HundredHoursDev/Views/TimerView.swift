@@ -34,7 +34,7 @@ class TimerView: UIView {
         watchView.addSubview(instructionLabel)
         watchLabelConstraints()
         instructionLabelConstraints()
-        configTapGesture()
+        self.addGestureRecognizer(tapGesture)
     }
     
     private func createWatchView() -> UIView {
@@ -65,11 +65,6 @@ class TimerView: UIView {
         return label
     }
     
-    private func configTapGesture() {
-        tapGesture.numberOfTapsRequired = 1
-        self.addGestureRecognizer(tapGesture)
-    }
-    
     private func watchLabelConstraints() {
         watchLabel.translatesAutoresizingMaskIntoConstraints = false
         watchLabel.centerXAnchor.constraint(equalTo: watchView.centerXAnchor).isActive = true
@@ -86,5 +81,9 @@ class TimerView: UIView {
             instructionLabel.widthAnchor.constraint(equalTo: watchView.widthAnchor, multiplier: 0.8),
             instructionLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc func testTap(_ sender: UITapGestureRecognizer) {
+        print("tapped")
     }
 }

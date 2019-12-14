@@ -113,7 +113,7 @@ class OnboardViewController: UICollectionViewController {
     }
     
     @objc private func startTapped() {
-//        UserDefaults.standard.set(true, forKey: "onboarded")
+        UserDefaults.standard.set(true, forKey: "onboarded")
         coordinator?.start()
     }
     

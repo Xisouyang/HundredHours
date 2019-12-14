@@ -7,11 +7,6 @@
 //
 import UIKit
 
-enum TextType {
-    case goalName
-    case goalDescription
-}
-
 class GoalFieldsViewController: UIViewController {
 
     weak var coordinator: Coordinator?
@@ -19,7 +14,6 @@ class GoalFieldsViewController: UIViewController {
     // start at 1 min
     var goalDuration: Int = 60
     private var keyboardHeight: CGFloat = 0
-    private var textType: TextType = .goalName
     private var didSetDatePicker: Bool = false
 
     override func viewDidLoad() {
@@ -64,16 +58,9 @@ class GoalFieldsViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-
+        
     @objc func keyboardWillChange(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if textType == .goalName {
-                self.view.frame.origin.y = 0
-            }  else if textType == .goalDescription {
-                if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height/3
-                }
-            }
             keyboardHeight = keyboardSize.height
         }
     }
@@ -121,7 +108,6 @@ extension GoalFieldsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         goalFieldsView.goalDescriptionField.descriptionView.becomeFirstResponder()
-        textType = .goalDescription
         return true
     }
 
@@ -137,7 +123,6 @@ extension GoalFieldsViewController: UITextFieldDelegate {
         }
         let line = goalFieldsView.goalNameField.formLine
         goalFieldsView.highlightLine(line: line)
-        textType = .goalName
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -151,11 +136,6 @@ extension GoalFieldsViewController: UITextFieldDelegate {
 }
 
 extension GoalFieldsViewController: UITextViewDelegate {
-
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        textType = .goalDescription
-        return true
-    }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.view.frame.origin.y == 0 {
