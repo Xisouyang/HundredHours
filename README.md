@@ -6,8 +6,10 @@ A productivity app to help users keep track of time spent on goals/activities by
 
 <img src="https://user-images.githubusercontent.com/42627387/70857484-12606b00-1ea4-11ea-9d1b-1be706cdf56e.png" width="250" height="450"> <img src="https://user-images.githubusercontent.com/42627387/70857485-14c2c500-1ea4-11ea-9533-822cb61c02ac.png" width="250" height="450">
 
-# Getting Started
+# Requirements
 
+* Swift 4.2+
+* XCode 10.2+
 
 
 
