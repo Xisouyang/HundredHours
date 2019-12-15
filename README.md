@@ -11,6 +11,33 @@ A productivity app to help users keep track of time spent on goals/activities by
 * Swift 4.2+
 * XCode 10.2+
 
+# Features
+
+* CRUD (Create, Read, Update, Destroy) Goals
+* Timer for when user works on a goal
+* Visually track goals through progress bar
+* See list of time sessions spent on goal
+
+# Built With
+
+* XCode
+* UIKit
+* Core Animation
+* Core Data
+* MVVM
+
+# Authors
+
+* [Stephen Ouyang](https://github.com/Xisouyang) - initial work
+
+# License
+
+This project is licensed under the GNU General Public License - see the [LICENSE.md](https://github.com/Xisouyang/HundredHours/blob/master/LICENSE.md) file for more info.
+
+# Acknowledgements
+
+* Massive thanks to [Brian Voong](https://github.com/bhlvoong) for his [tutorials](https://www.youtube.com/channel/UCuP2vJ6kRutQBfRmdcI92mA/featured) 
+
 
 
 
