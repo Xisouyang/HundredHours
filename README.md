@@ -6,7 +6,7 @@ A productivity app to help users keep track of time spent on goals/activities by
 
 <img src="https://user-images.githubusercontent.com/42627387/70857484-12606b00-1ea4-11ea-9d1b-1be706cdf56e.png" width="250" height="450"> <img src="https://user-images.githubusercontent.com/42627387/70857485-14c2c500-1ea4-11ea-9533-822cb61c02ac.png" width="250" height="450">
 
-# Table of Contents
+## Table of Contents
 
 * [Requirements](#Requirements)
 * [Features](#Features)
@@ -15,19 +15,19 @@ A productivity app to help users keep track of time spent on goals/activities by
 * [License](#License)
 * [Acknowledgements](#Acknowledgements)
 
-# Requirements
+## Requirements
 
 * Swift 4.2+
 * XCode 10.2+
 
-# Features
+## Features
 
 * CRUD (Create, Read, Update, Destroy) Goals
 * Timer for when user works on a goal
 * Visually track goals through progress bar
 * See list of time sessions spent on goal
 
-# Built With
+## Built With
 
 * XCode
 * UIKit
@@ -35,19 +35,14 @@ A productivity app to help users keep track of time spent on goals/activities by
 * Core Data
 * MVVM
 
-# Authors
+## Authors
 
 * [Stephen Ouyang](https://github.com/Xisouyang) - initial work
 
-# License
+## License
 
 This project is licensed under the GNU General Public License - see the [LICENSE.md](https://github.com/Xisouyang/HundredHours/blob/master/LICENSE.md) file for more info.
 
-# Acknowledgements
+## Acknowledgements
 
 * Massive thanks to [Brian Voong](https://github.com/bhlvoong) for his [tutorials](https://www.youtube.com/channel/UCuP2vJ6kRutQBfRmdcI92mA/featured) 
-
-
-
-
-
