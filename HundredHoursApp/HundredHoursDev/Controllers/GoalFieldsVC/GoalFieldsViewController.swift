@@ -13,8 +13,8 @@ class GoalFieldsViewController: UIViewController {
     let goalFieldsView = GoalFieldsView()
     // start at 1 min
     var goalDuration: Int = 60
+    var didSetDatePicker: Bool = false
     private var keyboardHeight: CGFloat = 0
-    private var didSetDatePicker: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
