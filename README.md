@@ -10,7 +10,7 @@ A productivity app to help users keep track of time spent on goals/activities by
 
 * [Requirements](#Requirements)
 * [Features](#Features)
-* [Built With](#Built With)
+* [Built With](#Built-With)
 * [Authors](#Authors)
 * [License](#License)
 * [Acknowledgements](#Acknowledgements)
