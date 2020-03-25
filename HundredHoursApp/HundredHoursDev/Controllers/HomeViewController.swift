@@ -19,13 +19,13 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Goals"
+        navigationItem.title = "Current Goals"
         navigationItem.hidesBackButton = true
         updateCollectionView()
     }
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
     
     private func setupCollectionView() {
         goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
-        goalCollectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         goalCollectionView.dataSource = self
         goalCollectionView.delegate = self
         view.addSubview(goalCollectionView)

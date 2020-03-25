@@ -57,13 +57,13 @@ class HomeViewModel {
         if let minutes = Int(goalMins),
             let hours = Int(goalHours) {
             if minutes == 1 && hours == 1 {
-                result = goalName + " - " + goalHours + " HR " + goalMins + " MIN"
+                result = goalName + "\n" + goalHours + " HR " + goalMins + " MIN"
             } else if (minutes > 1 || minutes < 1) && hours == 1 {
-                result = goalName + " - " + goalHours + " HR " + goalMins + " MINS"
+                result = goalName + "\n" + goalHours + " HR " + goalMins + " MINS"
             } else if minutes == 1 && (hours > 1 || hours < 1) {
-                result = goalName + " - " + goalHours + " HRS " + goalMins + " MIN"
+                result = goalName + "\n" + goalHours + " HRS " + goalMins + " MIN"
             } else if (minutes > 1 || minutes < 1) && (hours > 1 || hours < 1) {
-                 result = goalName + " - " + goalHours + " HRS " + goalMins + " MINS"
+                 result = goalName + "\n" + goalHours + " HRS " + goalMins + " MINS"
             }
         }
         return result

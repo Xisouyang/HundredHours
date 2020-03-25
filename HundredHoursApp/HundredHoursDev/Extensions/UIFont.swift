@@ -22,12 +22,12 @@ extension UIFont {
     }()
     
     static let goalTitleFont: UIFont = {
-        let font = UIFont(name: "Avenir-Medium", size: 18)
+        let font = UIFont(name: "Avenir-Heavy", size: 18)
         return font ?? UIFont.systemFont(ofSize: 18)
     }()
     
     static let smallerTitleFont: UIFont = {
-        let font = UIFont(name: "Avenir-Medium", size: 14)
+        let font = UIFont(name: "Avenir-Heavy", size: 14)
         return font ?? UIFont.systemFont(ofSize: 14)
     }()
     
@@ -44,5 +44,10 @@ extension UIFont {
     static let newGoalFieldFont: UIFont = {
         let font = UIFont(name: "Avenir-Medium", size: 18)
         return font ?? UIFont.systemFont(ofSize: 18)
+    }()
+    
+    static let emptyStateFont: UIFont = {
+        let font = UIFont(name: "Avenir-Heavy", size: 20)
+        return font ?? UIFont.systemFont(ofSize: 20)
     }()
 }

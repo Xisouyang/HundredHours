@@ -60,10 +60,6 @@ class OnboardViewController: UICollectionViewController {
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
         button.layer.cornerRadius = 25
-        button.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowOpacity = 1
-        button.layer.shadowRadius = 3
         button.alpha = 0
         button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         return button

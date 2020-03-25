@@ -40,17 +40,16 @@ class GoalCollectionCell: UICollectionViewCell {
     private func createCellView() -> UIView {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        view.layer.cornerRadius = 25
-        view.layer.shadowColor = #colorLiteral(red: 0.5105954409, green: 0.5106848478, blue: 0.5105836391, alpha: 1)
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowOpacity = 1
-        view.layer.shadowRadius = 3
+        view.layer.cornerRadius = 12
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.cgColor
         return view
     }
     
     private func createCellLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -82,10 +81,6 @@ class GoalCollectionCell: UICollectionViewCell {
         } else {
             cellLabel.font = UIFont.goalTitleFont
         }
-    }
-    
-    @objc func optionsButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("options tapped")
     }
 
     private func cellViewConstraints() {
@@ -120,7 +115,7 @@ class GoalCollectionCell: UICollectionViewCell {
     private func optionButtonConstraints() {
         optionsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            optionsButton.heightAnchor.constraint(equalToConstant: 40),
+            optionsButton.heightAnchor.constraint(equalToConstant: 44),
             optionsButton.widthAnchor.constraint(equalToConstant: 50),
             optionsButton.rightAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.rightAnchor, constant: -5),
             optionsButton.topAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.topAnchor, constant: 5)
