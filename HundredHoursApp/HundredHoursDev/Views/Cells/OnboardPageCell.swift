@@ -11,19 +11,27 @@ import UIKit
 class OnboardPageCell: UICollectionViewCell {
     
     static let identifier = "onboarding"
-    var onboardItem: OnboardItem? {
-        didSet {
-            guard let unwrappedItem = onboardItem else { return }
-            setupView(item: unwrappedItem)
-        }
-    }
+    var onboardItem: OnboardItem?
     
     private var titleLabel = UILabel()
     private var descriptionLabel = UILabel()
     private var containerView = UIView()
     private var imgView = UIImageView()
     
-    private func setupView(item: OnboardItem) {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        setupView()
+    }
+     
+    private func setupView() {
+        guard let item = onboardItem else { return }
         containerView = createContainerView()
         imgView = createImageView(imageName: item.imgName)
         titleLabel = configLabel(text: item.title, font: UIFont.onboardTitleFont)
