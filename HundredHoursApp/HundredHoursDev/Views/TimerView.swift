@@ -82,8 +82,4 @@ class TimerView: UIView {
             instructionLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    @objc func testTap(_ sender: UITapGestureRecognizer) {
-        print("tapped")
-    }
 }

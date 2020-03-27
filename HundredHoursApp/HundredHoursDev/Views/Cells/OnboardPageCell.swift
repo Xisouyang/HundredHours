@@ -54,9 +54,11 @@ class OnboardPageCell: UICollectionViewCell {
     }
     
     private func createImageView(imageName: String) -> UIImageView {
-        let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
-        imageView.contentMode = .scaleAspectFit
+        let imageView = UIImageView()
+        if let image = UIImage(named: imageName) {
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+        }
         return imageView
     }
     
