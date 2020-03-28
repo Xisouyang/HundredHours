@@ -11,31 +11,49 @@ import UIKit
 class OnboardPageCell: UICollectionViewCell {
     
     static let identifier = "onboarding"
-    var onboardItem: OnboardItem?
+    let viewModel = OnboardViewModel()
     
-    private var titleLabel = UILabel()
-    private var descriptionLabel = UILabel()
-    private var containerView = UIView()
-    private var imgView = UIImageView()
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textAlignment = .center
+        label.font = UIFont.onboardTitleFont
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textAlignment = .center
+        label.font = UIFont.onboardDescriptionFont
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private var imgView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        setupView()
-    }
      
     private func setupView() {
-        guard let item = onboardItem else { return }
-        containerView = createContainerView()
-        imgView = createImageView(imageName: item.imgName)
-        titleLabel = configLabel(text: item.title, font: UIFont.onboardTitleFont)
-        descriptionLabel = configLabel(text: item.description, font: UIFont.onboardDescriptionFont)
         containerView.addSubview(imgView)
         contentView.addSubview(containerView)
         contentView.addSubview(titleLabel)
@@ -47,36 +65,14 @@ class OnboardPageCell: UICollectionViewCell {
         imgViewConstraints()
     }
     
-    private func createContainerView() -> UIView {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        return view
+    func configureCell(with item: OnboardItem) {
+        viewModel.configureOnboardCell(item, imgView, titleLabel, descriptionLabel)
     }
-    
-    private func createImageView(imageName: String) -> UIImageView {
-        let imageView = UIImageView()
-        if let image = UIImage(named: imageName) {
-            imageView.image = image
-            imageView.contentMode = .scaleAspectFit
-        }
-        return imageView
-    }
-    
-    private func configLabel(text: String, font: UIFont) -> UILabel {
-        let label = UILabel()
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.text = text
-        label.textAlignment = .center
-        label.font = font
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        return label
-    }
-    
+        
     private func titleLabelConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75),
+            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
             titleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1),
             titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)

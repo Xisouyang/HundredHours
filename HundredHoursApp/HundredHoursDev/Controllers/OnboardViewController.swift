@@ -120,7 +120,7 @@ class OnboardViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardPageCell.identifier, for: indexPath) as! OnboardPageCell
         let onboardItem = viewModel.dataSource[indexPath.item]
-        cell.onboardItem = onboardItem
+        cell.configureCell(with: onboardItem)
         return cell
     }
     

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class OnboardViewModel {
     
@@ -16,4 +16,10 @@ class OnboardViewModel {
         OnboardItem(title: "Track Progress", description: "Visually track your progress for increased motivation", imgName: "progressIconSVG"),
         OnboardItem(title: "Turn on Notifications", description: "Receive reminders to reach your goals", imgName: "notificationsIcon")
     ]
+    
+    func configureOnboardCell(_ item: OnboardItem, _ imgView: UIImageView , _ titleLabel: UILabel, _ descriptionLabel: UILabel) {
+        imgView.image = UIImage(named: item.imgName)
+        titleLabel.text = item.title
+        descriptionLabel.text = item.description
+    }
 }
