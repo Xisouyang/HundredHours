@@ -66,7 +66,7 @@ class OnboardPageCell: UICollectionViewCell {
     }
     
     func configureCell(with item: OnboardItem) {
-        viewModel.configureOnboardCell(item, imgView, titleLabel, descriptionLabel)
+        viewModel.configure(item, imgView, titleLabel, descriptionLabel)
     }
         
     private func titleLabelConstraints() {

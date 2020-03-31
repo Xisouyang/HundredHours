@@ -19,10 +19,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func onboard() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        let notificationObj = NotificationService()
         navController.delegate = self
-        let vc = OnboardViewController(collectionViewLayout: layout)
+        let vc = OnboardViewController(notificationObj)
         vc.coordinator = self
         navController.pushViewController(vc, animated: true)
     }

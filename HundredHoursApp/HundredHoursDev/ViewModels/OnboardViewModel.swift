@@ -17,7 +17,7 @@ class OnboardViewModel {
         OnboardItem(title: "Turn on Notifications", description: "Receive reminders to reach your goals", imgName: "notificationsIcon")
     ]
     
-    func configureOnboardCell(_ item: OnboardItem, _ imgView: UIImageView , _ titleLabel: UILabel, _ descriptionLabel: UILabel) {
+    func configure(_ item: OnboardItem, _ imgView: UIImageView , _ titleLabel: UILabel, _ descriptionLabel: UILabel) {
         imgView.image = UIImage(named: item.imgName)
         titleLabel.text = item.title
         descriptionLabel.text = item.description

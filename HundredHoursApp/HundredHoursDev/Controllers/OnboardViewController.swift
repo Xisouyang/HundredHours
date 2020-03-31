@@ -15,7 +15,19 @@ class OnboardViewController: UICollectionViewController {
     private var startButton = UIButton(frame: .zero)
     private var pageControl = UIPageControl()
     private var currPageIndex = 0
-
+    private let notificationObj: NotificationService
+    
+    init(_ notificationObj: NotificationService) {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.notificationObj = notificationObj
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
@@ -110,7 +122,13 @@ class OnboardViewController: UICollectionViewController {
     
     @objc private func startTapped() {
         UserDefaults.standard.set(true, forKey: "onboarded")
-        coordinator?.start()
+        notificationObj.requestNotifications() { success in
+            if success {
+                DispatchQueue.main.async {
+                    self.coordinator?.start()
+                }
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

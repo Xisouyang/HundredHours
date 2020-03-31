@@ -15,6 +15,7 @@
 		5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */; };
 		5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */; };
 		5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */; };
+		5D0B0A1624339C200053AB4B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A1524339C200053AB4B /* NotificationService.swift */; };
 		5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */; };
 		5D281F172397444B00E70424 /* GoalFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D281F162397444B00E70424 /* GoalFieldsView.swift */; };
 		5D281F19239744D600E70424 /* GoalFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D281F18239744D600E70424 /* GoalFieldsViewController.swift */; };
@@ -77,6 +78,7 @@
 		5D0863BB2320852600CD58F5 /* HundredHoursDevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HundredHoursDevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredHoursDevUITests.swift; sourceTree = "<group>"; };
 		5D0863BF2320852600CD58F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D0B0A1524339C200053AB4B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		5D281F162397444B00E70424 /* GoalFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFieldsView.swift; sourceTree = "<group>"; };
 		5D281F18239744D600E70424 /* GoalFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFieldsViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		5D9C529C232AC08800608D6D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5D0B0A1524339C200053AB4B /* NotificationService.swift */,
 				5DFF84CD23626A6C006AD6EE /* CoreData */,
 				5D051789232C1AC900B94C4B /* DetailViewModel.swift */,
 				5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */,
@@ -459,6 +462,7 @@
 				5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */,
 				5DEB41562378E75F003EEA63 /* DatePickerStack.swift in Sources */,
 				5DFC763D2372285D00644420 /* Timestamps+CoreDataProperties.swift in Sources */,
+				5D0B0A1624339C200053AB4B /* NotificationService.swift in Sources */,
 				5D9C529B232AC08200608D6D /* GoalFieldsViewModel.swift in Sources */,
 				5DB7350A231DFDF400F53E30 /* HundredHoursDev.xcdatamodeld in Sources */,
 				5D05EBC5236392B500AC27BF /* OnboardViewModel.swift in Sources */,
