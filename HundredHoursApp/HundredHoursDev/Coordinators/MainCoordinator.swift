@@ -20,8 +20,10 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     
     func onboard() {
         let notificationObj = NotificationService()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
         navController.delegate = self
-        let vc = OnboardViewController(notificationObj)
+        let vc = OnboardViewController(notificationObj, layout)
         vc.coordinator = self
         navController.pushViewController(vc, animated: true)
     }
@@ -34,7 +36,8 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func createNewGoal() {
-        let vc = NewGoalViewController()
+        let notificationObj = NotificationService()
+        let vc = NewGoalViewController(notificationObj)
         vc.coordinator = self
         navController.pushViewController(vc, animated: true)
     }

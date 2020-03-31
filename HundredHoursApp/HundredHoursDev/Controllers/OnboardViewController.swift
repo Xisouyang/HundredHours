@@ -17,8 +17,7 @@ class OnboardViewController: UICollectionViewController {
     private var currPageIndex = 0
     private let notificationObj: NotificationService
     
-    init(_ notificationObj: NotificationService) {
-        let layout = UICollectionViewFlowLayout()
+    init(_ notificationObj: NotificationService, _ layout: UICollectionViewFlowLayout) {
         layout.scrollDirection = .horizontal
         self.notificationObj = notificationObj
         super.init(collectionViewLayout: layout)

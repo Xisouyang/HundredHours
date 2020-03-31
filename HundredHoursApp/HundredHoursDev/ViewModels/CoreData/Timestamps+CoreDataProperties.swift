@@ -2,8 +2,8 @@
 //  Timestamps+CoreDataProperties.swift
 //  HundredHoursDev
 //
-//  Created by Stephen Ouyang on 11/5/19.
-//  Copyright © 2019 Stephen Ouyang. All rights reserved.
+//  Created by Stephen Ouyang on 3/31/20.
+//  Copyright © 2020 Stephen Ouyang. All rights reserved.
 //
 //
 
@@ -17,7 +17,7 @@ extension Timestamps {
         return NSFetchRequest<Timestamps>(entityName: "Timestamps")
     }
 
-    @NSManaged public var day: NSDate?
+    @NSManaged public var day: Date?
     @NSManaged public var session: Int64
     @NSManaged public var goal: Goal?
 

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Goal" representedClassName="Goal" syncable="YES">
-        <attribute name="currSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="goalDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="totalSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="timestamps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timestamps" inverseName="goal" inverseEntity="Timestamps" syncable="YES"/>
+        <attribute name="currSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="goalDescription" optional="YES" attributeType="String"/>
+        <attribute name="notificationID" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="totalSeconds" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="timestamps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timestamps" inverseName="goal" inverseEntity="Timestamps"/>
     </entity>
     <entity name="Timestamps" representedClassName="Timestamps" syncable="YES">
-        <attribute name="day" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="session" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="timestamps" inverseEntity="Goal" syncable="YES"/>
+        <attribute name="day" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="session" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="timestamps" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Goal" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="Timestamps" positionX="-63" positionY="9" width="128" height="90"/>
     </elements>
 </model>
