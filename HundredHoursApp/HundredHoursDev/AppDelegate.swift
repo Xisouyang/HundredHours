@@ -29,13 +29,14 @@
 // TODO: Darken screen as you drag time stamps view up, brighten as drag down
 // TODO: Add notification center to app
 
-//TODO: Be able to add specific notification when user creates the goal
-//TODO: Automatically remove the notification when user completes the goal
+//TODO: Be able to add specific notification when user creates the goal - done
+//TODO: Automatically remove the notification when user completes the goal - done
     /* -Can make the notification id a part of the Core Data
        -When the percentage == 100, that's when we remove the notification request for that goal
             -Can access through the notification id property in the goal object in Core Data
     */
 //TODO: If user turns off notifications, remove all pending notifications
+//TODO: If user deletes the goal, remove the notification associated with it - done
 
 
 import UIKit

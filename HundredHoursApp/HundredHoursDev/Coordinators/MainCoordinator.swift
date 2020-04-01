@@ -29,8 +29,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func start() {
+        let notificationObj = NotificationService()
         navController.delegate = self
-        let vc = HomeViewController()
+        let vc = HomeViewController(notificationObj)
         vc.coordinator = self
         navController.pushViewController(vc, animated: true)
     }
@@ -50,7 +51,8 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     func goToDetailScreen(goal: Goal) {
-        let vc = DetailViewController()
+        let notificationObj = NotificationService()
+        let vc = DetailViewController(notificationObj)
         vc.coordinator = self
         vc.goal = goal
         navController.pushViewController(vc, animated: true)

@@ -18,7 +18,17 @@ class DetailViewController: UIViewController {
     private var timerViewModel = TimerViewModel()
     private let detailView = GoalDetailView(frame: UIScreen.main.bounds)
     private var timeStampsTableView = UITableView(frame: .zero)
-
+    private let notificationObj: NotificationService
+    
+    init(_ notificationObj: NotificationService) {
+        self.notificationObj = notificationObj
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
@@ -56,6 +66,8 @@ class DetailViewController: UIViewController {
         detailView.animateBar(percentage: percentage)
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
     }
+    
+    
     
     private func setupTableView() {
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -96,6 +108,11 @@ class DetailViewController: UIViewController {
         detailViewModel.saveTimeStamp(time: timeToSave, goal: goal)
         detailViewModel.updateCurrentTime(goal: goal, seconds: timeToSave)
         let newPercent = detailViewModel.calcPercent(goal: goal)
+        if newPercent == 1 {
+            if let id = goal.notificationID {
+                notificationObj.removeNotificationRequest(id)
+            }
+        }
         detailView.animateBar(percentage: newPercent)
         let session = timerViewModel.getTimeLabel()
         detailViewModel.timeStampsArr.insert(session, at: 0)

@@ -16,7 +16,17 @@ class HomeViewController: UIViewController {
     private let flowLayout = UICollectionViewFlowLayout()
     private var goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var newGoalButton = UIButton()
-
+    private let notificationObj: NotificationService
+    
+    init(_ notificationObj: NotificationService) {
+        self.notificationObj = notificationObj
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -85,6 +95,9 @@ extension HomeViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             self.goalCollectionView.performBatchUpdates({
+                if let id = self.viewModel.goalsArr[index].notificationID {
+                    self.viewModel.removeNotification(self.notificationObj, id)
+                }
                 guard let resultList = self.viewModel.deleteGoal(index: index, goalList: self.viewModel.goalsArr) else { return }
                 self.viewModel.goalsArr = resultList
                 self.goalCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])

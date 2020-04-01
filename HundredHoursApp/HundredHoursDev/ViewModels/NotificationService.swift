@@ -38,4 +38,8 @@ class NotificationService {
         })
         return uuidString
     }
+    
+    func removeNotificationRequest(_ id: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+    }
 }

@@ -52,6 +52,10 @@ class HomeViewModel {
         return mutableList
     }
     
+    func removeNotification(_ notificationObj: NotificationService, _ id: String) {
+        notificationObj.removeNotificationRequest(id)
+    }
+    
     func computeCellString(goalName: String, goalHours: String, goalMins: String) -> String {
         var result: String = ""
         if let minutes = Int(goalMins),
