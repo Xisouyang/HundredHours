@@ -35,8 +35,10 @@
        -When the percentage == 100, that's when we remove the notification request for that goal
             -Can access through the notification id property in the goal object in Core Data
     */
-//TODO: If user turns off notifications, remove all pending notifications
 //TODO: If user deletes the goal, remove the notification associated with it - done
+//TODO: Add sound to notification
+//TODO: Figure out how to increment badge count
+  
 
 
 import UIKit

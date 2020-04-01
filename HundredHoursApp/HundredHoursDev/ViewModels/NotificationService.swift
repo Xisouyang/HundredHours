@@ -12,7 +12,7 @@ import UIKit
 class NotificationService {
     
     func requestNotifications(completion: @escaping (_ success: Bool) -> ()) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge], completionHandler: { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { granted, error in
             if let error = error {
                 NSLog(error.localizedDescription)
                 return
@@ -27,6 +27,7 @@ class NotificationService {
         let content = UNMutableNotificationContent()
         content.title = "Daily Reminder"
         content.body = "Remember to work on your goal: \(text)"
+        content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
         
@@ -41,5 +42,13 @@ class NotificationService {
     
     func removeNotificationRequest(_ id: String) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
+    func configSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
+            guard settings.authorizationStatus == .authorized else {
+                return
+            }
+        })
     }
 }

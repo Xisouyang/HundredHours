@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = "Current Goals"
         navigationItem.hidesBackButton = true
+        notificationObj.configSettings()
         updateCollectionView()
     }
     
