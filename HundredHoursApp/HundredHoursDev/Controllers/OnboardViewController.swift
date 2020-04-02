@@ -29,6 +29,7 @@ class OnboardViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 0.6881616712, green: 0, blue: 1, alpha: 1)
         configView()
     }
     
@@ -43,7 +44,7 @@ class OnboardViewController: UICollectionViewController {
     }
     
     private func configView() {
-        collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(OnboardPageCell.self, forCellWithReuseIdentifier: OnboardPageCell.identifier)
         collectionView.isPagingEnabled = true
@@ -66,11 +67,13 @@ class OnboardViewController: UICollectionViewController {
     private func configStartButton() -> UIButton {
         let button = UIButton()
         button.isEnabled = false
-        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        button.setTitle("START", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.6509808302, green: 0.006794857327, blue: 0.9529710412, alpha: 1)
+        button.setTitle("Start", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.white.cgColor
         button.alpha = 0
         button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         return button
@@ -80,7 +83,7 @@ class OnboardViewController: UICollectionViewController {
         let control = UIPageControl()
         control.currentPage = 0
         control.numberOfPages = viewModel.dataSource.count
-        control.currentPageIndicatorTintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        control.currentPageIndicatorTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         control.pageIndicatorTintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return control
     }

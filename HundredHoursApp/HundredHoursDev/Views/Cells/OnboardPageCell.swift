@@ -15,7 +15,7 @@ class OnboardPageCell: UICollectionViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.onboardTitleFont
         label.lineBreakMode = .byWordWrapping
@@ -24,7 +24,7 @@ class OnboardPageCell: UICollectionViewCell {
     }()
     private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.onboardDescriptionFont
         label.lineBreakMode = .byWordWrapping
@@ -40,7 +40,7 @@ class OnboardPageCell: UICollectionViewCell {
     
     private var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -58,7 +58,7 @@ class OnboardPageCell: UICollectionViewCell {
         contentView.addSubview(containerView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        contentView.backgroundColor = .clear
         titleLabelConstraints()
         descriptionLabelConstraints()
         containerViewConstraints()
