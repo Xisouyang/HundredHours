@@ -46,8 +46,13 @@ extension UIFont {
         return font ?? UIFont.systemFont(ofSize: 18)
     }()
     
-    static let emptyStateFont: UIFont = {
-        let font = UIFont(name: "Avenir-Heavy", size: 20)
+    static let emptyStateTitleFont: UIFont = {
+        let font = UIFont(name: "Avenir-Heavy", size: 30)
+        return font ?? UIFont.systemFont(ofSize: 30)
+    }()
+    
+    static let emptyStateDescriptionFont: UIFont = {
+        let font = UIFont(name: "Avenir-Medium", size: 20)
         return font ?? UIFont.systemFont(ofSize: 20)
     }()
 }

@@ -66,7 +66,7 @@ class OnboardViewController: UICollectionViewController {
     private func configStartButton() -> UIButton {
         let button = UIButton()
         button.isEnabled = false
-        button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         button.setTitle("START", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
