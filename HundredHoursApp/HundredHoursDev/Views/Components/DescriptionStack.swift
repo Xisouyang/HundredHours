@@ -50,6 +50,7 @@ class DescriptionStack: UIStackView {
         view.font = UIFont.newGoalFieldFont
         view.text = "Describe Goal.."
         view.textColor = .lightGray
+        view.backgroundColor = #colorLiteral(red: 0.6853155494, green: 0, blue: 1, alpha: 1)
         return view
     }
     

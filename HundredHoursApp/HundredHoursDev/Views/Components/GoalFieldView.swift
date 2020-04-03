@@ -8,15 +8,12 @@
 
 import UIKit
 
-class GoalFormField: UIView {
+class GoalFieldView: UIView {
     
-    let formField = NameFieldStack()
+    let formField = UITextField()
     let formLine = UIView()
     
-    private var fieldString: String
-    
-    init(text: String, frame: CGRect) {
-        self.fieldString = text
+    init(_ frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
@@ -26,20 +23,20 @@ class GoalFormField: UIView {
     }
     
     private func commonInit() {
+        formField.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(formField)
         addSubview(formLine)
         formFieldConstraints()
         formLineConstraints()
         configFormLine()
-        formField.textLabel.text = fieldString
     }
     
     private func configFormLine() {
-        formLine.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        formLine.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
     }
     
     func configPlaceholder(text: String) {
-        formField.textField.placeholder = text
+        formField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any])
     }
     
     private func formFieldConstraints() {
@@ -56,9 +53,9 @@ class GoalFormField: UIView {
         formLine.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             formLine.widthAnchor.constraint(equalTo: formField.widthAnchor),
-            formLine.heightAnchor.constraint(equalToConstant: 1),
+            formLine.heightAnchor.constraint(equalToConstant: 1.5),
             formLine.leftAnchor.constraint(equalTo: formField.leftAnchor),
-            formLine.topAnchor.constraint(equalTo: formField.textField.safeAreaLayoutGuide.bottomAnchor, constant: -25)
+            formLine.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

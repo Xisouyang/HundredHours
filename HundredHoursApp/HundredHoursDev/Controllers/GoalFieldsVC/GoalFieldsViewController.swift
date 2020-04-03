@@ -10,9 +10,8 @@ import UIKit
 class GoalFieldsViewController: UIViewController {
 
     weak var coordinator: Coordinator?
-    let goalFieldsView = GoalFieldsView()
-    // start at 1 min
-    var goalDuration: Int = 60
+    let newGoalView = NewGoalView()
+    var goalDuration: Int = 0
     var didSetDatePicker: Bool = false
     private var keyboardHeight: CGFloat = 0
 
@@ -25,22 +24,18 @@ class GoalFieldsViewController: UIViewController {
     private func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-        view.addSubview(goalFieldsView)
-        goalFieldsView.frame = view.frame
-        goalFieldsView.goalNameField.formField.textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        goalFieldsView.goalNameField.formField.textField.delegate = self
-        goalFieldsView.goalDescriptionField.descriptionView.delegate = self
+        view.addSubview(newGoalView)
+        newGoalView.frame = view.frame
+        newGoalView.goalNameField.formField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        newGoalView.goalDurationField.formField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        newGoalView.goalNameField.formField.delegate = self
+        newGoalView.goalDurationField.formField.delegate = self
+        newGoalView.goalDescriptionView.delegate = self
     }
 
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-
-    @objc func datePickerValueChanged(sender: UIDatePicker) {
-        didSetDatePicker = true
-        goalDuration = goalFieldsView.goalFieldsViewModel.setGoalDuration(sender: sender)
-        validateTextFields()
     }
 
     @objc func dismissKeyboard() {
@@ -69,21 +64,23 @@ class GoalFieldsViewController: UIViewController {
         validateTextFields()
     }
 
+    //FIX
     private func validateTextFields() {
         guard
-            let nameField = goalFieldsView.goalNameField.formField.textField.text,
-            !nameField.isEmpty, let descriptionField = goalFieldsView.goalDescriptionField.descriptionView.text, (descriptionField != "Describe Goal.." && !descriptionField.isEmpty), didSetDatePicker == true
+            let nameField = newGoalView.goalNameField.formField.text,
+            !nameField.isEmpty, let descriptionField = newGoalView.goalDescriptionView.text, (descriptionField != "Describe Goal.." && !descriptionField.isEmpty), let durationField = newGoalView.goalDurationField.formField.text, !durationField.isEmpty, let _ = Int(durationField)
             else {
-                navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-                navigationItem.rightBarButtonItem?.isEnabled = false
+                newGoalView.startButton.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .normal)
+                newGoalView.startButton.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                newGoalView.startButton.isEnabled = false
                 return
         }
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        navigationItem.rightBarButtonItem?.isEnabled = true
+        newGoalView.startButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        newGoalView.startButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        newGoalView.startButton.isEnabled = true
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("errorVC dismissed"), object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
@@ -101,7 +98,7 @@ extension GoalFieldsViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        goalFieldsView.goalDescriptionField.descriptionView.becomeFirstResponder()
+        newGoalView.goalDescriptionView.becomeFirstResponder()
         return true
     }
 
@@ -115,17 +112,32 @@ extension GoalFieldsViewController: UITextFieldDelegate {
                 self.view.frame.origin.y = 0
             })
         }
-        let line = goalFieldsView.goalNameField.formLine
-        goalFieldsView.highlightLine(line: line)
+        if textField == newGoalView.goalDurationField.formField {
+            let line = newGoalView.goalDurationField.formLine
+            newGoalView.highlightLine(line: line)
+        } else if textField == newGoalView.goalNameField.formField {
+            let line = newGoalView.goalNameField.formLine
+            newGoalView.highlightLine(line: line)
+        }
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == newGoalView.goalDurationField.formField {
+            if let string = textField.text, let num = Int(string) {
+                goalDuration = num
+            }
+        }
         return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let line = goalFieldsView.goalNameField.formLine
-        goalFieldsView.unhighlightLine(line: line)
+        if textField == newGoalView.goalDurationField.formField {
+            let line = newGoalView.goalDurationField.formLine
+            newGoalView.unhighlightLine(line: line)
+        } else if textField == newGoalView.goalNameField.formField {
+            let line = newGoalView.goalNameField.formLine
+            newGoalView.unhighlightLine(line: line)
+        }
     }
 }
 
@@ -139,7 +151,7 @@ extension GoalFieldsViewController: UITextViewDelegate {
         }
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            textView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
 

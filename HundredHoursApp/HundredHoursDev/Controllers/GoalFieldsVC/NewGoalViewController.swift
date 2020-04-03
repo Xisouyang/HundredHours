@@ -11,6 +11,7 @@ import UIKit
 class NewGoalViewController: GoalFieldsViewController {
     
     private let notificationObj: NotificationService
+    let viewModel = NewGoalViewModel()
     
     init(_ notificationObj: NotificationService) {
         self.notificationObj = notificationObj
@@ -24,25 +25,30 @@ class NewGoalViewController: GoalFieldsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavbar()
+        newGoalView.delegate = self
     }
 
     private func setupNavbar() {
         navigationItem.title = "New Goal"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createTapped))
         navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
 
     private func createGoal() {
-        guard let goalName = goalFieldsView.goalNameField.formField.textField.text,
-            let goalDescription = goalFieldsView.goalDescriptionField.descriptionView.text
+        guard let goalName = newGoalView.goalNameField.formField.text,
+            let goalDescription = newGoalView.goalDescriptionView.text
             else { return }
         let notificationID = notificationObj.createNotificationRequest(goalName)
         CoreDataManager.sharedManager.createGoal(name: goalName, description: goalDescription, duration: goalDuration, notificationID: notificationID)
         navigationController?.popViewController(animated: true)
     }
+}
 
-    @objc func createTapped() {
+extension NewGoalViewController: NewGoalViewDelegate {
+    func startButtonDidPress() {
+        
+        goalDuration = viewModel.setGoalDuration(hours: goalDuration)
+        print(goalDuration)
         createGoal()
     }
 }

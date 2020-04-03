@@ -36,7 +36,7 @@
             -Can access through the notification id property in the goal object in Core Data
     */
 //TODO: If user deletes the goal, remove the notification associated with it - done
-//TODO: Add sound to notification
+//TODO: Add sound to notification - done
 //TODO: Figure out how to increment badge count
   
 

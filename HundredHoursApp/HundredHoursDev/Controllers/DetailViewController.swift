@@ -98,7 +98,7 @@ class DetailViewController: UIViewController {
     @objc func resetScreen() {
         guard let unwrappedGoal = goal else { return }
         navigationController?.navigationBar.isUserInteractionEnabled = true
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         detailView.removeBlur()
         updateData(goal: unwrappedGoal)
     }
