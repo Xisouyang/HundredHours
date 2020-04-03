@@ -40,6 +40,10 @@
 //TODO: Figure out how to increment badge count
   
 
+//TODO: Fix GoalCollectionCell to look like the mocks
+    //TODO: Update UI - remove the card format, delete the options button - done
+    //TODO: Delete DetailVC, Detail View and Edit VC
+    //TOOD: Move the progress bar circle over to the GoalCollectionCell
 
 import UIKit
 

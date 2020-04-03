@@ -13,18 +13,6 @@ import UIKit
 class HomeViewModel {
     
     var goalsArr: [Goal] = []
-    
-    func getCellString(indexPath: IndexPath) -> String {
-        let secondsInHour = 3600
-        let secondsInMin = 60
-        let goalName = goalsArr[indexPath.row].value(forKey: "title") as! String
-        let goalSeconds = goalsArr[indexPath.row].value(forKey: "totalSeconds") as! Int
-        let goalHours = goalSeconds / secondsInHour
-        let remainder = goalSeconds % secondsInHour
-        let goalMin = remainder / secondsInMin
-        let cellString = computeCellString(goalName: goalName, goalHours: String(goalHours), goalMins: String(goalMin))
-        return cellString
-    }
 
     func resizeCell(indexPath: IndexPath, view: UICollectionView) -> CGFloat {
         // returns height to resize cell based on goal description text
@@ -54,22 +42,5 @@ class HomeViewModel {
     
     func removeNotification(_ notificationObj: NotificationService, _ id: String) {
         notificationObj.removeNotificationRequest(id)
-    }
-    
-    func computeCellString(goalName: String, goalHours: String, goalMins: String) -> String {
-        var result: String = ""
-        if let minutes = Int(goalMins),
-            let hours = Int(goalHours) {
-            if minutes == 1 && hours == 1 {
-                result = goalName + "\n" + goalHours + " HR " + goalMins + " MIN"
-            } else if (minutes > 1 || minutes < 1) && hours == 1 {
-                result = goalName + "\n" + goalHours + " HR " + goalMins + " MINS"
-            } else if minutes == 1 && (hours > 1 || hours < 1) {
-                result = goalName + "\n" + goalHours + " HRS " + goalMins + " MIN"
-            } else if (minutes > 1 || minutes < 1) && (hours > 1 || hours < 1) {
-                 result = goalName + "\n" + goalHours + " HRS " + goalMins + " MINS"
-            }
-        }
-        return result
     }
 }

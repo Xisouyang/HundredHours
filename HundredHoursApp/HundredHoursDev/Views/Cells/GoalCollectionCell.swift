@@ -14,7 +14,6 @@ class GoalCollectionCell: UICollectionViewCell {
     var cellTextView = UITextView()
     var cellView = UIView()
     var cellLabel = UILabel()
-    var optionsButton = UIButton()
     var cellHeightConstraint: NSLayoutConstraint?
 
     override init(frame: CGRect) {
@@ -22,15 +21,12 @@ class GoalCollectionCell: UICollectionViewCell {
         cellView = createCellView()
         cellLabel = createCellLabel()
         cellTextView = createTextView()
-        optionsButton = createOptionsButton()
         addSubview(cellView)
         addSubview(cellLabel)
         addSubview(cellTextView)
-        addSubview(optionsButton)
         cellViewConstraints()
         cellLabelConstraints()
         cellTextViewConstraints()
-        optionButtonConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,16 +35,14 @@ class GoalCollectionCell: UICollectionViewCell {
     
     private func createCellView() -> UIView {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        view.layer.cornerRadius = 12
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
+        view.backgroundColor = .clear
         return view
     }
     
     private func createCellLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .left
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -59,20 +53,12 @@ class GoalCollectionCell: UICollectionViewCell {
         let view = UITextView()
         view.text = "Placeholder"
         view.textAlignment = .left
-        view.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        view.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = .clear
         view.font = UIFont.goalDescriptionFont
         view.isScrollEnabled = false
         view.isUserInteractionEnabled = false
         return view
-    }
-    
-    private func createOptionsButton() -> UIButton {
-        let image = UIImage(named: "optionsIcon")
-        let button = UIButton()
-        button.setImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        return button
     }
         
     func setCellLabelFont(text: String) {
@@ -88,7 +74,7 @@ class GoalCollectionCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             cellView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.9),
             cellView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
-            cellView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            cellView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
             cellView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
     }
@@ -108,17 +94,7 @@ class GoalCollectionCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             cellTextView.topAnchor.constraint(equalToSystemSpacingBelow: cellView.topAnchor, multiplier: 5),
             cellTextView.leftAnchor.constraint(equalTo: cellLabel.leftAnchor),
-            cellTextView.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.9)
-        ])
-    }
-    
-    private func optionButtonConstraints() {
-        optionsButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            optionsButton.heightAnchor.constraint(equalToConstant: 44),
-            optionsButton.widthAnchor.constraint(equalToConstant: 50),
-            optionsButton.rightAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.rightAnchor, constant: -5),
-            optionsButton.topAnchor.constraint(equalTo: cellView.safeAreaLayoutGuide.topAnchor, constant: 5)
+            cellTextView.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.7)
         ])
     }
 }

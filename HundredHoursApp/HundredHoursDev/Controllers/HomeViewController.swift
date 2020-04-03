@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     
     private func setupCollectionView() {
        goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
-       goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+       goalCollectionView.backgroundColor = #colorLiteral(red: 0.6599579453, green: 0.003643606091, blue: 0.9897441268, alpha: 1)
        goalCollectionView.dataSource = self
        goalCollectionView.delegate = self
        view.addSubview(goalCollectionView)
@@ -110,31 +110,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     
-    @objc func optionsButtonTapped(sender: UIButton) {
-        let index = sender.tag
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            self.goalCollectionView.performBatchUpdates({
-                if let id = self.viewModel.goalsArr[index].notificationID {
-                    self.viewModel.removeNotification(self.notificationObj, id)
-                }
-                guard let resultList = self.viewModel.deleteGoal(index: index, goalList: self.viewModel.goalsArr) else { return }
-                self.viewModel.goalsArr = resultList
-                self.goalCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
-            }, completion: { _ in
-                self.updateCollectionView()
-            })
-        })
-        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { action in
-            let curGoal = self.viewModel.goalsArr[index]
-            self.coordinator?.editGoal(goal: curGoal)
-        })
-        alert.addAction(editAction)
-        alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
     @objc func addTapped() {
         coordinator?.createNewGoal()
     }
@@ -147,13 +122,12 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellString = viewModel.getCellString(indexPath: indexPath)
+        let title = viewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
+        let description = viewModel.goalsArr[indexPath.row].goalDescription
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
-        cell.setCellLabelFont(text: cellString)
-        cell.cellLabel.text = cellString
-        cell.cellTextView.text = viewModel.goalsArr[indexPath.row].goalDescription
-        cell.optionsButton.tag = indexPath.row
-        cell.optionsButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
+        cell.setCellLabelFont(text: title)
+        cell.cellLabel.text = title
+        cell.cellTextView.text = description
         return cell
     }
 }
