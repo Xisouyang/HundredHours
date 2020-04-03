@@ -11,8 +11,6 @@ import UIKit
 class GoalFieldsView: UIView {
 
     var goalFieldsViewModel = GoalFieldsViewModel()
-    var defaultButton = UIButton()
-    var datePickerStack = DatePickerStack()
     let goalNameField = GoalFormField(text: "Goal Name", frame: .zero)
     let goalDescriptionField = DescriptionStack(frame: .zero)
 
@@ -30,18 +28,9 @@ class GoalFieldsView: UIView {
     private func configView() {
         addSubview(goalNameField)
         addSubview(goalDescriptionField)
-        addSubview(datePickerStack)
         goalNameConstraints()
         goalDescriptionConstraints()
-        datePickerConstraints()
         goalNameField.configPlaceholder(text: "Enter Goal Name")
-    }
-
-    private func createDatePicker() -> UIDatePicker {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .countDownTimer
-        datePicker.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        return datePicker
     }
 
     func highlightLine(line: UIView) {
@@ -71,16 +60,6 @@ class GoalFieldsView: UIView {
             goalDescriptionField.heightAnchor.constraint(equalTo: goalNameField.heightAnchor, multiplier: 0.8),
             goalDescriptionField.leftAnchor.constraint(equalTo: goalNameField.leftAnchor),
             goalDescriptionField.topAnchor.constraint(equalTo: goalNameField.safeAreaLayoutGuide.bottomAnchor, constant: 50)
-            ])
-    }
-
-    private func datePickerConstraints() {
-        datePickerStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            datePickerStack.widthAnchor.constraint(equalTo: self.widthAnchor),
-            datePickerStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
-            datePickerStack.leftAnchor.constraint(equalTo: goalDescriptionField.leftAnchor),
-            datePickerStack.topAnchor.constraint(equalTo: goalDescriptionField.safeAreaLayoutGuide.bottomAnchor)
             ])
     }
 }

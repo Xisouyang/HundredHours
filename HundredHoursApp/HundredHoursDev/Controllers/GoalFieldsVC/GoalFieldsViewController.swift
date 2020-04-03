@@ -20,11 +20,6 @@ class GoalFieldsViewController: UIViewController {
         super.viewDidLoad()
         setupNotifications()
         setupView()
-        // sends this task to be done on different queue, but how does this resolve the date picker bug
-        // does it really take that much time to set the date picker countdown duration?
-        DispatchQueue.main.async {
-            self.goalFieldsView.datePickerStack.datePicker.countDownDuration = TimeInterval(self.goalDuration)
-        }
     }
 
     private func setupView() {
@@ -33,7 +28,6 @@ class GoalFieldsViewController: UIViewController {
         view.addSubview(goalFieldsView)
         goalFieldsView.frame = view.frame
         goalFieldsView.goalNameField.formField.textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        goalFieldsView.datePickerStack.datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         goalFieldsView.goalNameField.formField.textField.delegate = self
         goalFieldsView.goalDescriptionField.descriptionView.delegate = self
     }
@@ -84,7 +78,7 @@ class GoalFieldsViewController: UIViewController {
                 navigationItem.rightBarButtonItem?.isEnabled = false
                 return
         }
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 

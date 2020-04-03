@@ -64,13 +64,13 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-           goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
-           goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-           goalCollectionView.dataSource = self
-           goalCollectionView.delegate = self
-           view.addSubview(goalCollectionView)
-           collectionConstraints()
-       }
+       goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
+       goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+       goalCollectionView.dataSource = self
+       goalCollectionView.delegate = self
+       view.addSubview(goalCollectionView)
+       collectionConstraints()
+    }
     
     private func updateCollectionView() {
         viewModel.goalsArr = viewModel.populateGoalList()
