@@ -22,17 +22,17 @@ extension UIFont {
     }()
     
     static let goalTitleFont: UIFont = {
-        let font = UIFont(name: "Avenir-Heavy", size: 26)
+        let font = UIFont(name: "Avenir-Black", size: 26)
         return font ?? UIFont.systemFont(ofSize: 26)
     }()
     
     static let smallerTitleFont: UIFont = {
-        let font = UIFont(name: "Avenir-Heavy", size: 22)
+        let font = UIFont(name: "Avenir-Black", size: 22)
         return font ?? UIFont.systemFont(ofSize: 22)
     }()
     
     static let goalDescriptionFont: UIFont = {
-        let font = UIFont(name: "Avenir", size: 15)
+        let font = UIFont(name: "Avenir-Medium", size: 15)
         return font ?? UIFont.systemFont(ofSize: 15)
     }()
     

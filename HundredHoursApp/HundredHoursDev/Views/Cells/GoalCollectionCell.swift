@@ -93,7 +93,7 @@ class GoalCollectionCell: UICollectionViewCell {
         cellTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             cellTextView.topAnchor.constraint(equalToSystemSpacingBelow: cellView.topAnchor, multiplier: 5),
-            cellTextView.leftAnchor.constraint(equalTo: cellLabel.leftAnchor),
+            cellTextView.leftAnchor.constraint(equalToSystemSpacingAfter: cellView.leftAnchor, multiplier: 1.5),
             cellTextView.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.7)
         ])
     }

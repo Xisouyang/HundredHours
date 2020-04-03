@@ -44,6 +44,7 @@
     //TODO: Update UI - remove the card format, delete the options button - done
     //TODO: Delete DetailVC, Detail View and Edit VC
     //TOOD: Move the progress bar circle over to the GoalCollectionCell
+    //TODO: Move timer functionality to GoalCollectionCell
 
 import UIKit
 

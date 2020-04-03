@@ -31,7 +31,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
          NotificationCenter.default.addObserver(self, selector: #selector(resetScreen), name: Notification.Name("timerVC dismissed"), object: nil)
     }
     
@@ -115,11 +114,6 @@ class DetailViewController: UIViewController {
         let session = timerViewModel.getTimeLabel()
         detailViewModel.timeStampsArr.insert(session, at: 0)
         timeStampsTableView.reloadData()
-    }
-    
-    @objc func editTapped() {
-        guard let unwrappedGoal = goal else { return }
-        coordinator?.editGoal(goal: unwrappedGoal)
     }
     
     deinit {
