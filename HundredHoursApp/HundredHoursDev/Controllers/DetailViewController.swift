@@ -67,8 +67,6 @@ class DetailViewController: UIViewController {
         detailView.timeButton.addTarget(self, action: #selector(timeButtonTapped), for: .touchUpInside)
     }
     
-    
-    
     private func setupTableView() {
         timeStampsTableView.separatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         timeStampsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
