@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let nav = UINavigationController()
-        configNavigation(navigationBar: nav.navigationBar)
+        configNavigation(nav)
         coordinator = MainCoordinator(navigationController: nav)
         if UserDefaults.standard.object(forKey: "onboarded") as? Bool == true {
             coordinator?.start()
@@ -67,18 +67,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // navigation bar UI
-    func configNavigation(navigationBar: UINavigationBar) {
-        let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8), NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 25)]
+    func configNavigation(_ nav: UINavigationController) {
+        let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 32)]
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = #colorLiteral(red: 0.6728389859, green: 0, blue: 1, alpha: 1)
+            appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
             appearance.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
-            navigationBar.standardAppearance = appearance
-            navigationBar.scrollEdgeAppearance = appearance
+            nav.navigationBar.standardAppearance = appearance
+            nav.navigationBar.scrollEdgeAppearance = appearance
+            nav.navigationBar.prefersLargeTitles = true
+            nav.navigationBar.tintColor = .white
+        } else {
+            let appearance = UINavigationBar.appearance()
+            appearance.barTintColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
+            appearance.prefersLargeTitles = true
+            appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
         }
-        let appearance = UINavigationBar.appearance()
-        appearance.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        appearance.prefersLargeTitles = true
-        appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -47,7 +47,7 @@ extension UIFont {
     }()
     
     static let emptyStateTitleFont: UIFont = {
-        let font = UIFont(name: "Avenir-Heavy", size: 30)
+        let font = UIFont(name: "Avenir-Black", size: 30)
         return font ?? UIFont.systemFont(ofSize: 30)
     }()
     

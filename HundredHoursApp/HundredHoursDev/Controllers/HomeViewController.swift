@@ -29,23 +29,48 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.6601266861, green: 0, blue: 0.9897789359, alpha: 1)
         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Current Goals"
+        navigationItem.title = "Goals To Crush"
         navigationItem.hidesBackButton = true
         notificationObj.configSettings()
         updateCollectionView()
     }
     
-    private func setupView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-        viewModel.goalsArr = viewModel.populateGoalList()
-        setupCollectionView()
+   private func createNewGoalButton() -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
+        button.setTitle("New Goal", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2
+        button.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+        return button
     }
+    
+    private func setupView() {
+        setupCollectionView()
+        viewModel.goalsArr = viewModel.populateGoalList()
+        newGoalButton = createNewGoalButton()
+        view.addSubview(newGoalButton)
+        buttonConstraints()
+    }
+    
+    private func setupCollectionView() {
+           goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
+           goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+           goalCollectionView.dataSource = self
+           goalCollectionView.delegate = self
+           view.addSubview(goalCollectionView)
+           collectionConstraints()
+       }
     
     private func updateCollectionView() {
         viewModel.goalsArr = viewModel.populateGoalList()
@@ -56,36 +81,30 @@ class HomeViewController: UIViewController {
     private func checkEmptyState() {
         if viewModel.goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: goalCollectionView.frame)
-            noGoalsView.startButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
             goalCollectionView.backgroundView = noGoalsView
         } else {
             goalCollectionView.backgroundView = nil
         }
     }
     
-    private func setupCollectionView() {
-        goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
-        goalCollectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        goalCollectionView.dataSource = self
-        goalCollectionView.delegate = self
-        view.addSubview(goalCollectionView)
-        collectionConstraints()
-    }
-    
     private func buttonConstraints() {
         newGoalButton.translatesAutoresizingMaskIntoConstraints = false
-        newGoalButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
-        newGoalButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newGoalButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
+        NSLayoutConstraint.activate([
+            newGoalButton.topAnchor.constraint(equalTo: goalCollectionView.safeAreaLayoutGuide.bottomAnchor),
+            newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            newGoalButton.widthAnchor.constraint(equalTo: goalCollectionView.widthAnchor, multiplier: 0.4),
+            newGoalButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func collectionConstraints() {
         goalCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        goalCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        goalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        goalCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        goalCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            goalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            goalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            goalCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            goalCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7)
+        ])
     }
 }
 

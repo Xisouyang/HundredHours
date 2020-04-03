@@ -11,20 +11,21 @@ import UIKit
 class NoGoalsHomeView: UIView {
     
     private var titleLabel = UILabel()
+    private var descriptionLabel = UILabel()
     private var emptyImageView = UIImageView()
     var startButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        backgroundColor = #colorLiteral(red: 0.6666713357, green: 0, blue: 1, alpha: 1)
         titleLabel = createTitleLabel()
-        startButton = createStartButton()
+        descriptionLabel = createDescriptionLabel()
         emptyImageView = createEmptyImage()
         addSubview(titleLabel)
-        addSubview(startButton)
+        addSubview(descriptionLabel)
         addSubview(emptyImageView)
         titleLabelConstraints()
-        buttonConstraints()
+        descriptionLabelConstraints()
         imageViewConstraints()
     }
     
@@ -34,7 +35,8 @@ class NoGoalsHomeView: UIView {
                                                 
     private func createTitleLabel() -> UILabel {
         let label = UILabel()
-        label.text = "Let's get it"
+        label.text = "Let's Do It"
+        label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.emptyStateTitleFont
         label.lineBreakMode = .byWordWrapping
@@ -42,14 +44,27 @@ class NoGoalsHomeView: UIView {
         return label
     }
     
+    private func createDescriptionLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Once you create a goal it will show up here"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.emptyStateDescriptionFont
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }
+    
     private func createStartButton() -> UIButton {
         let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        button.setTitle("Create", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
+        button.setTitle("New Goal", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
-        button.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 20)
-        button.layer.cornerRadius = 25
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2
         return button
     }
 
@@ -64,29 +79,29 @@ class NoGoalsHomeView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: emptyImageView.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: emptyImageView.safeAreaLayoutGuide.bottomAnchor, multiplier: 3),
             titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             titleLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-
-    private func buttonConstraints() {
-        startButton.translatesAutoresizingMaskIntoConstraints = false
+    
+    private func descriptionLabelConstraints() {
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-             startButton.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.safeAreaLayoutGuide.bottomAnchor, multiplier: 5),
-             startButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-             startButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
-             startButton.heightAnchor.constraint(equalToConstant: 48)
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.bottomAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 
     private func imageViewConstraints() {
         emptyImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emptyImageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 11),
+            emptyImageView.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 7),
             emptyImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.35),
-            emptyImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
+            emptyImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45),
+            emptyImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35)
         ])
     }
 }
