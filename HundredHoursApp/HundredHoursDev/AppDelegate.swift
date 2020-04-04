@@ -45,6 +45,8 @@
     //TODO: Delete DetailVC, Detail View and Edit VC
     //TOOD: Move the progress bar circle over to the GoalCollectionCell
     //TODO: Move timer functionality to GoalCollectionCell
+        //TODO: Move functionality to start timer in feed view - done
+        //TODO: move functionality to update once timer ends to feed view
 
 import UIKit
 

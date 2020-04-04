@@ -21,6 +21,7 @@
 		5D0B0A1C243407600053AB4B /* Timestamps+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A18243407600053AB4B /* Timestamps+CoreDataProperties.swift */; };
 		5D0B0A1D243407600053AB4B /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A19243407600053AB4B /* Goal+CoreDataClass.swift */; };
 		5D0B0A1E243407600053AB4B /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A1A243407600053AB4B /* Goal+CoreDataProperties.swift */; };
+		5D1CBB422438FBB900438A99 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CBB412438FBB900438A99 /* ProgressBarView.swift */; };
 		5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */; };
 		5D281F19239744D600E70424 /* GoalFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D281F18239744D600E70424 /* GoalFieldsViewController.swift */; };
 		5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4C61CC23344C30005FFD1F /* TimerViewController.swift */; };
@@ -80,6 +81,7 @@
 		5D0B0A18243407600053AB4B /* Timestamps+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamps+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D0B0A19243407600053AB4B /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5D0B0A1A243407600053AB4B /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D1CBB412438FBB900438A99 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		5D27BBB72321A6F600C3D623 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
 		5D281F18239744D600E70424 /* GoalFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFieldsViewController.swift; sourceTree = "<group>"; };
 		5D4C61CC23344C30005FFD1F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				5D0A32ED238CF00200DA1546 /* Cells */,
 				5D0A32EC238CEFB700DA1546 /* Components */,
 				5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */,
+				5D1CBB412438FBB900438A99 /* ProgressBarView.swift */,
 				5D0A25842436D787000CE841 /* NewGoalView.swift */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
 				5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */,
@@ -473,6 +476,7 @@
 				5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 				5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */,
+				5D1CBB422438FBB900438A99 /* ProgressBarView.swift in Sources */,
 				5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */,
 				5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */,
 				5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */,

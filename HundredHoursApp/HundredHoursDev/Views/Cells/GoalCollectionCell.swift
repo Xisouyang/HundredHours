@@ -11,6 +11,7 @@ import UIKit
 class GoalCollectionCell: UICollectionViewCell {
     
     static let identifier = "goalCollectionID"
+    private let progressBar = ProgressBarView()
     var cellTextView = UITextView()
     var cellView = UIView()
     var cellLabel = UILabel()
@@ -22,11 +23,13 @@ class GoalCollectionCell: UICollectionViewCell {
         cellLabel = createCellLabel()
         cellTextView = createTextView()
         addSubview(cellView)
-        addSubview(cellLabel)
-        addSubview(cellTextView)
+        cellView.addSubview(cellLabel)
+        cellView.addSubview(cellTextView)
+        cellView.addSubview(progressBar)
         cellViewConstraints()
         cellLabelConstraints()
         cellTextViewConstraints()
+        progressBarViewConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,6 +98,16 @@ class GoalCollectionCell: UICollectionViewCell {
             cellTextView.topAnchor.constraint(equalToSystemSpacingBelow: cellView.topAnchor, multiplier: 5),
             cellTextView.leftAnchor.constraint(equalToSystemSpacingAfter: cellView.leftAnchor, multiplier: 1.5),
             cellTextView.widthAnchor.constraint(equalTo: cellView.widthAnchor, multiplier: 0.7)
+        ])
+    }
+    
+    private func progressBarViewConstraints() {
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            progressBar.topAnchor.constraint(equalTo: cellView.topAnchor),
+            progressBar.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -15),
+            progressBar.widthAnchor.constraint(equalToConstant: 60),
+            progressBar.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }

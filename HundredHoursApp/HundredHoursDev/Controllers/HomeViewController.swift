@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     private let homeViewModel = HomeViewModel()
     private let timerViewModel = TimerViewModel()
     private let flowLayout = UICollectionViewFlowLayout()
+    private let containerView = UIView()
     private var goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var newGoalButton = UIButton()
     private let notificationObj: NotificationService
@@ -66,6 +67,8 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCollectionView() {
+        view.addSubview(containerView)
+        containerViewConstraints()
        goalCollectionView.register(GoalCollectionCell.self, forCellWithReuseIdentifier: GoalCollectionCell.identifier)
        goalCollectionView.backgroundColor = #colorLiteral(red: 0.6599579453, green: 0.003643606091, blue: 0.9897441268, alpha: 1)
        goalCollectionView.dataSource = self
@@ -89,27 +92,50 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func startTimer() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        navigationController?.navigationBar.isUserInteractionEnabled = false
+        let timerVC = TimerViewController()
+        timerVC.modalPresentationStyle = .overFullScreen
+        present(timerVC, animated: true, completion: nil)
+    }
+    
+    func resetHomeView() {
+        navigationController?.navigationBar.isUserInteractionEnabled = true
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
     @objc private func timerViewTappedToQuit() {
-        homeViewModel.resetHomeView(self, navigationController)
+        resetHomeView()
     }
     
     private func buttonConstraints() {
         newGoalButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            newGoalButton.topAnchor.constraint(equalTo: goalCollectionView.safeAreaLayoutGuide.bottomAnchor),
+            newGoalButton.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: 10),
             newGoalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newGoalButton.widthAnchor.constraint(equalTo: goalCollectionView.widthAnchor, multiplier: 0.4),
+            newGoalButton.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.4),
             newGoalButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func containerViewConstraints() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
+            containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65)
         ])
     }
     
     private func collectionConstraints() {
         goalCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            goalCollectionView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
-            goalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            goalCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            goalCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65)
+            goalCollectionView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            goalCollectionView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            goalCollectionView.widthAnchor.constraint(equalTo: containerView.widthAnchor),
+            goalCollectionView.heightAnchor.constraint(equalTo: containerView.heightAnchor)
         ])
     }
 }
@@ -144,7 +170,7 @@ extension HomeViewController: UICollectionViewDelegate {
 //        coordinator?.goToDetailScreen(goal: goalToPass)
         
         // add functionality to trigger timer here
-        homeViewModel.startTimer(self, navigationController)
+        startTimer()
     }
 }
 
@@ -159,8 +185,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = homeViewModel.resizeCell(indexPath: indexPath, view: collectionView)
-        return CGSize(width: collectionView.bounds.width, height: 60 + height)
+        return CGSize(width: collectionView.bounds.width, height: 130)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
