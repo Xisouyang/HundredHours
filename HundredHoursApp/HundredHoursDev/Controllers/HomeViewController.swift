@@ -12,7 +12,8 @@ import CoreData
 class HomeViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
-    private let viewModel = HomeViewModel()
+    private let homeViewModel = HomeViewModel()
+    private let timerViewModel = TimerViewModel()
     private let flowLayout = UICollectionViewFlowLayout()
     private var goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var newGoalButton = UIButton()
@@ -41,7 +42,7 @@ class HomeViewController: UIViewController {
         updateCollectionView()
     }
     
-   private func createNewGoalButton() -> UIButton {
+    private func createNewGoalButton() -> UIButton {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
         button.setTitle("New Goal", for: .normal)
@@ -56,8 +57,9 @@ class HomeViewController: UIViewController {
     }
     
     private func setupView() {
+        NotificationCenter.default.addObserver(self, selector: #selector(timerViewTappedToQuit), name: Notification.Name("timerVC dismissed"), object: nil)
         setupCollectionView()
-        viewModel.goalsArr = viewModel.populateGoalList()
+        homeViewModel.goalsArr = homeViewModel.populateGoalList()
         newGoalButton = createNewGoalButton()
         view.addSubview(newGoalButton)
         buttonConstraints()
@@ -73,18 +75,22 @@ class HomeViewController: UIViewController {
     }
     
     private func updateCollectionView() {
-        viewModel.goalsArr = viewModel.populateGoalList()
+        homeViewModel.goalsArr = homeViewModel.populateGoalList()
         goalCollectionView.reloadData()
         checkEmptyState()
     }
     
     private func checkEmptyState() {
-        if viewModel.goalsArr.isEmpty {
+        if homeViewModel.goalsArr.isEmpty {
             let noGoalsView = NoGoalsHomeView(frame: goalCollectionView.frame)
             goalCollectionView.backgroundView = noGoalsView
         } else {
             goalCollectionView.backgroundView = nil
         }
+    }
+    
+    @objc private func timerViewTappedToQuit() {
+        homeViewModel.resetHomeView(self, navigationController)
     }
     
     private func buttonConstraints() {
@@ -100,10 +106,10 @@ class HomeViewController: UIViewController {
     private func collectionConstraints() {
         goalCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            goalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            goalCollectionView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
             goalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             goalCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            goalCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7)
+            goalCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65)
         ])
     }
 }
@@ -118,12 +124,12 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.goalsArr.count
+        return homeViewModel.goalsArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let title = viewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
-        let description = viewModel.goalsArr[indexPath.row].goalDescription
+        let title = homeViewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
+        let description = homeViewModel.goalsArr[indexPath.row].goalDescription
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
         cell.setCellLabelFont(text: title)
         cell.cellLabel.text = title
@@ -134,8 +140,11 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let goalToPass = viewModel.goalsArr[indexPath.row]
-        coordinator?.goToDetailScreen(goal: goalToPass)
+//        let goalToPass = viewModel.goalsArr[indexPath.row]
+//        coordinator?.goToDetailScreen(goal: goalToPass)
+        
+        // add functionality to trigger timer here
+        homeViewModel.startTimer(self, navigationController)
     }
 }
 
@@ -150,7 +159,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = viewModel.resizeCell(indexPath: indexPath, view: collectionView)
+        let height = homeViewModel.resizeCell(indexPath: indexPath, view: collectionView)
         return CGSize(width: collectionView.bounds.width, height: 60 + height)
     }
     

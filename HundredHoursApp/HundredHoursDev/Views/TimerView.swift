@@ -39,29 +39,28 @@ class TimerView: UIView {
     
     private func createWatchView() -> UIView {
         let view = UIView()
-        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 1.75, height: UIScreen.main.bounds.height / 4)
+        let viewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.frame = viewFrame
         view.center = self.center
-        view.layer.cornerRadius = 20
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.6726701856, green: 0.005906813312, blue: 1, alpha: 1)
         return view
     }
     
     private func createWatchLabel() -> UILabel {
         let label = UILabel()
         label.text = "00:00:00"
-        label.font = UIFont(name: "CourierNewPS-BoldMT", size: 30)
+        label.textColor = .white
+        label.font = UIFont.timerFont
         label.textAlignment = .center
         return label
     }
 
     private func createInstructionLabel() -> UILabel {
         let label = UILabel()
-        label.text = "Tap anywhere to quit"
+        label.text = "Tap to quit"
         label.textAlignment = .center
-        label.font = UIFont.goalDescriptionFont
+        label.font = UIFont.timerLabelFont
+        label.textColor = .white
         return label
     }
     

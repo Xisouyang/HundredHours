@@ -33,7 +33,7 @@ class TimerViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        timerViewModel.seconds += 1
+        timerViewModel.incrementSeconds()
         timerView.watchLabel.text = timerViewModel.timeString(time: TimeInterval(timerViewModel.seconds))
     }
 }

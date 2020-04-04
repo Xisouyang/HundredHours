@@ -55,4 +55,14 @@ extension UIFont {
         let font = UIFont(name: "Avenir-Medium", size: 20)
         return font ?? UIFont.systemFont(ofSize: 20)
     }()
+    
+    static let timerFont: UIFont = {
+        let font = UIFont(name: "CourierNewPS-BoldMT", size: 60)
+        return font ?? UIFont.systemFont(ofSize: 60)
+    }()
+    
+    static let timerLabelFont: UIFont = {
+        let font = UIFont(name: "Avenir-Black", size: 30)
+        return font ?? UIFont.systemFont(ofSize: 30)
+    }()
 }

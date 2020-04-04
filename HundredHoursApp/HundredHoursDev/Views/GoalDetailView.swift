@@ -253,14 +253,6 @@ class GoalDetailView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func addBlur() {
-        self.blurScreen()
-    }
-    
-    func removeBlur() {
-        self.removeBlurEffect()
-    }
-    
     private func timeStampTitleConstraints() {
         timeStampTitle.translatesAutoresizingMaskIntoConstraints = false
         timeStampTitle.widthAnchor.constraint(equalTo: timeStampView.widthAnchor, multiplier: 0.8).isActive = true

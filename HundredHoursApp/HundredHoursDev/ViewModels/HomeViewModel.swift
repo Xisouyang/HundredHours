@@ -40,6 +40,19 @@ class HomeViewModel {
         return mutableList
     }
     
+    func startTimer(_ vc: HomeViewController, _ nav: UINavigationController?) {
+        nav?.navigationBar.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        nav?.navigationBar.isUserInteractionEnabled = false
+        let timerVC = TimerViewController()
+        timerVC.modalPresentationStyle = .overFullScreen
+        vc.present(timerVC, animated: true, completion: nil)
+    }
+    
+    func resetHomeView(_ vc: HomeViewController, _ nav: UINavigationController?) {
+        nav?.navigationBar.isUserInteractionEnabled = true
+        nav?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
     func removeNotification(_ notificationObj: NotificationService, _ id: String) {
         notificationObj.removeNotificationRequest(id)
     }

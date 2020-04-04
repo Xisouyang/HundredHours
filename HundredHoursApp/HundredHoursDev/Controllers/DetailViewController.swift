@@ -81,11 +81,9 @@ class DetailViewController: UIViewController {
         detailView.viewDragged(gesture: gesture)
     }
     
-    //TODO: find if we can also blur the navbar
     @objc func timeButtonTapped() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         navigationController?.navigationBar.isUserInteractionEnabled = false
-        detailView.addBlur()
         let timerVC = TimerViewController()
         timerVC.modalPresentationStyle = .overFullScreen
         timerViewModel = timerVC.timerViewModel
@@ -96,7 +94,6 @@ class DetailViewController: UIViewController {
         guard let unwrappedGoal = goal else { return }
         navigationController?.navigationBar.isUserInteractionEnabled = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        detailView.removeBlur()
         updateData(goal: unwrappedGoal)
     }
     

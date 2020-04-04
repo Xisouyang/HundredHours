@@ -13,13 +13,14 @@ class TimerViewModel {
     
     var seconds = 0
     
+    // DON'T NEED
     func timeString(time: TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
-
+    // DON'T NEED
     func getTimeLabel() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -29,10 +30,16 @@ class TimerViewModel {
         sessionFormatter.unitsStyle = .brief
         guard let sessionString =
             sessionFormatter.string(from: TimeInterval(seconds)) else { return "" }
+        print(sessionString)
+        print("\(dateFormatter.string(from: date)) - \(sessionString)")
         return "\(dateFormatter.string(from: date)) - \(sessionString)"
     }
     
     func getSeconds() -> Int {
         return seconds
+    }
+    
+    func incrementSeconds() {
+        seconds += 1
     }
 }

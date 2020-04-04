@@ -38,7 +38,6 @@
 		5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF91EE923623124003ED906 /* OnboardViewController.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
 		5DFCFB092399AB1A00FE6B14 /* EditGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */; };
-		5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD92F8233B06F700397CF1 /* UIView.swift */; };
 		5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AD235FACAB001A295B /* Coordinator.swift */; };
 		5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AF235FACFA001A295B /* MainCoordinator.swift */; };
 		5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE2A802362CCAC006604A0 /* UIFont.swift */; };
@@ -100,7 +99,6 @@
 		5DF91EE923623124003ED906 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewModel.swift; sourceTree = "<group>"; };
-		5DFD92F8233B06F700397CF1 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5DFE02AD235FACAB001A295B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5DFE02AF235FACFA001A295B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5DFE2A802362CCAC006604A0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 		5DFF84C923626070006AD6EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5DFD92F8233B06F700397CF1 /* UIView.swift */,
 				5DFE2A802362CCAC006604A0 /* UIFont.swift */,
 			);
 			path = Extensions;
@@ -468,7 +465,6 @@
 				5D0A25852436D787000CE841 /* NewGoalView.swift in Sources */,
 				5DFF84CF23626A93006AD6EE /* OnboardingItem.swift in Sources */,
 				5DB7FB0C235649D20069040C /* GoalFieldView.swift in Sources */,
-				5DFD92F9233B06F700397CF1 /* UIView.swift in Sources */,
 				5D0B0A1B243407600053AB4B /* Timestamps+CoreDataClass.swift in Sources */,
 				5D9C529E232B05BB00608D6D /* HomeViewModel.swift in Sources */,
 				5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */,
