@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051787232C1A1A00B94C4B /* DetailViewController.swift */; };
 		5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051789232C1AC900B94C4B /* DetailViewModel.swift */; };
 		5D05EBC5236392B500AC27BF /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */; };
 		5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */; };
@@ -15,7 +14,6 @@
 		5D0863B0232084EB00CD58F5 /* HundredHoursDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863AF232084EB00CD58F5 /* HundredHoursDevTests.swift */; };
 		5D0863BE2320852600CD58F5 /* HundredHoursDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0863BD2320852600CD58F5 /* HundredHoursDevUITests.swift */; };
 		5D0A25852436D787000CE841 /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A25842436D787000CE841 /* NewGoalView.swift */; };
-		5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */; };
 		5D0B0A1624339C200053AB4B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A1524339C200053AB4B /* NotificationService.swift */; };
 		5D0B0A1B243407600053AB4B /* Timestamps+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A17243407600053AB4B /* Timestamps+CoreDataClass.swift */; };
 		5D0B0A1C243407600053AB4B /* Timestamps+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0A18243407600053AB4B /* Timestamps+CoreDataProperties.swift */; };
@@ -64,7 +62,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5D051787232C1A1A00B94C4B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5D051789232C1AC900B94C4B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
 		5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionCell.swift; sourceTree = "<group>"; };
@@ -104,7 +101,6 @@
 		5DFE02AD235FACAB001A295B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5DFE02AF235FACFA001A295B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5DFE2A802362CCAC006604A0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		5DFF84CB236260FE006AD6EE /* OnboardPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageCell.swift; sourceTree = "<group>"; };
 		5DFF84CE23626A93006AD6EE /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +222,6 @@
 			children = (
 				5D0A32ED238CF00200DA1546 /* Cells */,
 				5D0A32EC238CEFB700DA1546 /* Components */,
-				5DFE43DF233001DE005C9A79 /* GoalDetailView.swift */,
 				5D1CBB412438FBB900438A99 /* ProgressBarView.swift */,
 				5D0A25842436D787000CE841 /* NewGoalView.swift */,
 				5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */,
@@ -248,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				5DFB0E0E239871C00024876B /* GoalFieldsVC */,
-				5D051787232C1A1A00B94C4B /* DetailViewController.swift */,
 				5DB73503231DFDF400F53E30 /* HomeViewController.swift */,
 				5D4C61CC23344C30005FFD1F /* TimerViewController.swift */,
 				5DF91EE923623124003ED906 /* OnboardViewController.swift */,
@@ -449,7 +443,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D0A32EB238CEC7800DA1546 /* GoalDetailView.swift in Sources */,
 				5D4C61D123344CAF005FFD1F /* TimerViewModel.swift in Sources */,
 				5D0B0A1624339C200053AB4B /* NotificationService.swift in Sources */,
 				5D9C529B232AC08200608D6D /* NewGoalViewModel.swift in Sources */,
@@ -475,7 +468,6 @@
 				5DFCFB092399AB1A00FE6B14 /* EditGoalViewModel.swift in Sources */,
 				5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
-				5D051788232C1A1A00B94C4B /* DetailViewController.swift in Sources */,
 				5D1CBB422438FBB900438A99 /* ProgressBarView.swift in Sources */,
 				5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */,
 				5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */,

@@ -116,8 +116,6 @@ class HomeViewController: UIViewController {
            }
         }
         goalCollectionView.reloadData()
-        // need to keep track of which goal is being updated
-        // update goal with new time
     }
     
     @objc private func timerViewTappedToQuit() {

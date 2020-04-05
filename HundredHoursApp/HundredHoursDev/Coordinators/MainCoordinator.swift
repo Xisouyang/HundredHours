@@ -42,14 +42,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         vc.coordinator = self
         navController.pushViewController(vc, animated: true)
     }
-    
-    func goToDetailScreen(goal: Goal) {
-        let notificationObj = NotificationService()
-        let vc = DetailViewController(notificationObj)
-        vc.coordinator = self
-        vc.goal = goal
-        navController.pushViewController(vc, animated: true)
-    }
 
 
     //Leaving this in here for future, if I need child coordinators
