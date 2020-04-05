@@ -11,7 +11,7 @@ import UIKit
 class GoalCollectionCell: UICollectionViewCell {
     
     static let identifier = "goalCollectionID"
-    private let progressBar = ProgressBarView()
+    let progressBar = ProgressBarView()
     var cellTextView = UITextView()
     var cellView = UIView()
     var cellLabel = UILabel()
@@ -62,14 +62,6 @@ class GoalCollectionCell: UICollectionViewCell {
         view.isScrollEnabled = false
         view.isUserInteractionEnabled = false
         return view
-    }
-        
-    func setCellLabelFont(text: String) {
-        if text.count > 10 {
-            cellLabel.font = UIFont.smallerTitleFont
-        } else {
-            cellLabel.font = UIFont.goalTitleFont
-        }
     }
 
     private func cellViewConstraints() {

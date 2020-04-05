@@ -10,7 +10,7 @@ import UIKit
 
 class ProgressBarView: UIView {
     
-    private let shapeLayer = CAShapeLayer()
+    let shapeLayer = CAShapeLayer()
     private let trackLayer = CAShapeLayer()
     
     override init(frame: CGRect) {

@@ -38,6 +38,34 @@ class HomeViewModel {
         return percentage
     }
     
+    func setCellLabelFont(_ cell: GoalCollectionCell, _ text: String?) {
+        guard let text = text else { return }
+        if text.count > 10 {
+            cell.cellLabel.font = UIFont.smallerTitleFont
+        } else {
+            cell.cellLabel.font = UIFont.goalTitleFont
+        }
+    }
+    
+    func configure(_ cell: GoalCollectionCell, _ goal: Goal) {
+        guard let title = goal.title, let description = goal.goalDescription else { return }
+        setCellLabelFont(cell, title)
+        cell.cellLabel.text = title
+        cell.cellTextView.text = description
+    }
+    
+    func animateBar(_ goal: Goal, _ cell: GoalCollectionCell) {
+        let percentage = calcPercent(goal: goal)
+        let layer = cell.progressBar.shapeLayer
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 3
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        basicAnimation.setValue(layer, forKey: "stroke")
+        layer.add(basicAnimation, forKey: nil)
+    }
+    
     func removeNotification(_ notificationObj: NotificationService, _ id: String) {
         notificationObj.removeNotificationRequest(id)
     }

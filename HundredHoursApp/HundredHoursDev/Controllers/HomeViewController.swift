@@ -154,22 +154,18 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let title = homeViewModel.goalsArr[indexPath.row].value(forKey: "title") as! String
-        let description = homeViewModel.goalsArr[indexPath.row].goalDescription
+        let goal = homeViewModel.goalsArr[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
-        cell.setCellLabelFont(text: title)
-        cell.cellLabel.text = title
-        cell.cellTextView.text = description
+        // need a configure method here
+        // animate bar here too
+        homeViewModel.configure(cell, goal)
+        homeViewModel.animateBar(goal, cell)
         return cell
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let goalToPass = viewModel.goalsArr[indexPath.row]
-//        coordinator?.goToDetailScreen(goal: goalToPass)
-        
-        // add functionality to trigger timer here
         startTimer()
     }
 }
