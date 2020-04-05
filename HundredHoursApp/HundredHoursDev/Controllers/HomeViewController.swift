@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
     private let homeViewModel = HomeViewModel()
-    private let timerViewModel = TimerViewModel()
+    private var timerViewModel = TimerViewModel()
     private let flowLayout = UICollectionViewFlowLayout()
     private let containerView = UIView()
     private var goalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -92,10 +92,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func startTimer() {
+    func startTimer(with goal: Goal) {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         navigationController?.navigationBar.isUserInteractionEnabled = false
         let timerVC = TimerViewController()
+        timerViewModel = timerVC.timerViewModel
+        timerViewModel.goal = goal
         timerVC.modalPresentationStyle = .overFullScreen
         present(timerVC, animated: true, completion: nil)
     }
@@ -103,6 +105,19 @@ class HomeViewController: UIViewController {
     func resetHomeView() {
         navigationController?.navigationBar.isUserInteractionEnabled = true
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        guard let goal = timerViewModel.getGoal() else { return }
+        let seconds = timerViewModel.getSeconds()
+        homeViewModel.updateCurrentTime(goal: goal, seconds: seconds)
+        let percent = homeViewModel.calcPercent(goal: goal)
+        // also remove goal from collection view
+        if percent == 1 {
+           if let id = goal.notificationID {
+               notificationObj.removeNotificationRequest(id)
+           }
+        }
+        goalCollectionView.reloadData()
+        // need to keep track of which goal is being updated
+        // update goal with new time
     }
     
     @objc private func timerViewTappedToQuit() {
@@ -156,8 +171,6 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let goal = homeViewModel.goalsArr[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
-        // need a configure method here
-        // animate bar here too
         homeViewModel.configure(cell, goal)
         homeViewModel.animateBar(goal, cell)
         return cell
@@ -166,7 +179,8 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        startTimer()
+        let goal = homeViewModel.goalsArr[indexPath.item]
+        startTimer(with: goal)
     }
 }
 

@@ -12,6 +12,7 @@ import UIKit
 class TimerViewModel {
     
     var seconds = 0
+    weak var goal: Goal?
     
     // DON'T NEED
     func timeString(time: TimeInterval) -> String {
@@ -37,6 +38,10 @@ class TimerViewModel {
     
     func getSeconds() -> Int {
         return seconds
+    }
+    
+    func getGoal() -> Goal? {
+        return goal
     }
     
     func incrementSeconds() {

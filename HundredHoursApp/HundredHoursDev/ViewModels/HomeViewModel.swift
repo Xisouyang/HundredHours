@@ -58,12 +58,17 @@ class HomeViewModel {
         let percentage = calcPercent(goal: goal)
         let layer = cell.progressBar.shapeLayer
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.toValue = 1
+        basicAnimation.toValue = percentage
         basicAnimation.duration = 3
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
         basicAnimation.setValue(layer, forKey: "stroke")
         layer.add(basicAnimation, forKey: nil)
+    }
+    
+    func updateCurrentTime(goal: Goal, seconds: Int) {
+        goal.currSeconds = goal.currSeconds + Int64(seconds)
+        CoreDataManager.sharedManager.saveContext()
     }
     
     func removeNotification(_ notificationObj: NotificationService, _ id: String) {
