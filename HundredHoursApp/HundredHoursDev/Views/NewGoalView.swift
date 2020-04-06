@@ -86,7 +86,7 @@ class NewGoalView: UIView {
             goalNameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             goalNameField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.04),
             goalNameField.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2),
-            goalNameField.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 30)
+            goalNameField.topAnchor.constraint(equalToSystemSpacingBelow: self.safeAreaLayoutGuide.topAnchor, multiplier: 12)
         ])
     }
     
@@ -103,10 +103,10 @@ class NewGoalView: UIView {
     private func goalDescriptionConstraints() {
         goalDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            goalDescriptionView.topAnchor.constraint(equalToSystemSpacingBelow: goalDurationField.safeAreaLayoutGuide.bottomAnchor, multiplier: 12),
+            goalDescriptionView.topAnchor.constraint(equalToSystemSpacingBelow: goalDurationField.safeAreaLayoutGuide.bottomAnchor, multiplier: 10),
             goalDescriptionView.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2),
             goalDescriptionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
-            goalDescriptionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3)
+            goalDescriptionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2)
         ])
     }
     

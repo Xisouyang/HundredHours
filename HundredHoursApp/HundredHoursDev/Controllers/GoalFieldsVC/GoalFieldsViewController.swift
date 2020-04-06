@@ -146,7 +146,7 @@ extension GoalFieldsViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.view.frame.origin.y == 0 {
             UIView.animate(withDuration: 0.3, animations: {
-                self.view.frame.origin.y -= self.keyboardHeight / 3
+                self.view.frame.origin.y -= self.keyboardHeight / 2
             })
         }
         if textView.textColor == UIColor.lightGray {

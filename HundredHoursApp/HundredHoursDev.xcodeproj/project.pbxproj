@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051789232C1AC900B94C4B /* DetailViewModel.swift */; };
 		5D05EBC5236392B500AC27BF /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */; };
 		5D0854BE236E377E0069E680 /* GoalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */; };
 		5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */; };
@@ -36,7 +35,6 @@
 		5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41572378E851003EEA63 /* DescriptionStack.swift */; };
 		5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF91EE923623124003ED906 /* OnboardViewController.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
-		5DFCFB092399AB1A00FE6B14 /* EditGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */; };
 		5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AD235FACAB001A295B /* Coordinator.swift */; };
 		5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AF235FACFA001A295B /* MainCoordinator.swift */; };
 		5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE2A802362CCAC006604A0 /* UIFont.swift */; };
@@ -62,7 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5D051789232C1AC900B94C4B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
 		5D0854BD236E377E0069E680 /* GoalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCollectionCell.swift; sourceTree = "<group>"; };
 		5D08638B232054FE00CD58F5 /* NoGoalsHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGoalsHomeView.swift; sourceTree = "<group>"; };
@@ -97,7 +94,6 @@
 		5DEB41572378E851003EEA63 /* DescriptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionStack.swift; sourceTree = "<group>"; };
 		5DF91EE923623124003ED906 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalViewModel.swift; sourceTree = "<group>"; };
 		5DFE02AD235FACAB001A295B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5DFE02AF235FACFA001A295B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5DFE2A802362CCAC006604A0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -171,8 +167,6 @@
 			children = (
 				5D0B0A1524339C200053AB4B /* NotificationService.swift */,
 				5DFF84CD23626A6C006AD6EE /* CoreData */,
-				5D051789232C1AC900B94C4B /* DetailViewModel.swift */,
-				5DFCFB082399AB1A00FE6B14 /* EditGoalViewModel.swift */,
 				5D9C529A232AC08200608D6D /* NewGoalViewModel.swift */,
 				5D9C529D232B05BB00608D6D /* HomeViewModel.swift */,
 				5D05EBC4236392B500AC27BF /* OnboardViewModel.swift */,
@@ -465,7 +459,6 @@
 				5D9C529E232B05BB00608D6D /* HomeViewModel.swift in Sources */,
 				5DFE02B0235FACFA001A295B /* MainCoordinator.swift in Sources */,
 				5D4C61CF23344C53005FFD1F /* TimerView.swift in Sources */,
-				5DFCFB092399AB1A00FE6B14 /* EditGoalViewModel.swift in Sources */,
 				5D4C61CD23344C30005FFD1F /* TimerViewController.swift in Sources */,
 				5DB73502231DFDF400F53E30 /* AppDelegate.swift in Sources */,
 				5D1CBB422438FBB900438A99 /* ProgressBarView.swift in Sources */,
@@ -473,7 +466,6 @@
 				5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */,
 				5DFE2A812362CCAC006604A0 /* UIFont.swift in Sources */,
 				5D27BBB82321A6F600C3D623 /* NewGoalViewController.swift in Sources */,
-				5D05178A232C1AC900B94C4B /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

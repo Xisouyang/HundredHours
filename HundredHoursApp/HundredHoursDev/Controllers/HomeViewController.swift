@@ -107,14 +107,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         guard let goal = timerViewModel.getGoal() else { return }
         let seconds = timerViewModel.getSeconds()
-        homeViewModel.updateCurrentTime(goal: goal, seconds: seconds)
-        let percent = homeViewModel.calcPercent(goal: goal)
-        // also remove goal from collection view
-        if percent == 1 {
-           if let id = goal.notificationID {
-               notificationObj.removeNotificationRequest(id)
-           }
-        }
+        homeViewModel.updateGoal(goal, seconds, notificationObj)
         goalCollectionView.reloadData()
     }
     
@@ -135,7 +128,7 @@ class HomeViewController: UIViewController {
     private func containerViewConstraints() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
+            containerView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
             containerView.leftAnchor.constraint(equalTo: view.leftAnchor),
             containerView.widthAnchor.constraint(equalTo: view.widthAnchor),
             containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65)

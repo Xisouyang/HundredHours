@@ -28,6 +28,17 @@ class HomeViewModel {
         return mutableList
     }
     
+    func updateGoal(_ goal: Goal, _ seconds: Int, _ notificationObj: NotificationService) {
+        self.updateCurrentTime(goal: goal, seconds: seconds)
+        let percent = self.calcPercent(goal: goal)
+        // also remove goal from collection view
+        if percent == 1 {
+           if let id = goal.notificationID {
+               notificationObj.removeNotificationRequest(id)
+           }
+        }
+    }
+    
     func calcPercent(goal: NSManagedObject) -> CGFloat {
         let curHours = goal.value(forKey: "currSeconds") as! CGFloat
         let totHours = goal.value(forKey: "totalSeconds") as! CGFloat

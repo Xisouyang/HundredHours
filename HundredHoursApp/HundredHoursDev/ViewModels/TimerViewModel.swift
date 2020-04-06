@@ -12,28 +12,14 @@ import UIKit
 class TimerViewModel {
     
     var seconds = 0
-    weak var goal: Goal?
+    var goal: Goal?
     
-    // DON'T NEED
+    
     func timeString(time: TimeInterval) -> String {
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-    }
-    // DON'T NEED
-    func getTimeLabel() -> String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        let sessionFormatter = DateComponentsFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.long
-        dateFormatter.timeStyle = DateFormatter.Style.none
-        sessionFormatter.unitsStyle = .brief
-        guard let sessionString =
-            sessionFormatter.string(from: TimeInterval(seconds)) else { return "" }
-        print(sessionString)
-        print("\(dateFormatter.string(from: date)) - \(sessionString)")
-        return "\(dateFormatter.string(from: date)) - \(sessionString)"
     }
     
     func getSeconds() -> Int {
