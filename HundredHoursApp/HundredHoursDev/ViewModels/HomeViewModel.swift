@@ -19,23 +19,20 @@ class HomeViewModel {
         return unwrappedGoalObjs 
     }
     
-    func deleteGoal(index: Int, goalList: [Goal]) -> [Goal]? {
-        var mutableList = goalList
-        let goal = goalList[index]
+    func deleteGoal(_ collectionView: UICollectionView, _ indexPath: IndexPath, _ notificationObj: NotificationService) {
+        let goal = goalsArr[indexPath.item]
+        if let id = goal.notificationID {
+            notificationObj.removeNotificationRequest(id)
+        }
         CoreDataManager.sharedManager.removeItem(objectID: goal.objectID)
         CoreDataManager.sharedManager.saveContext()
-        mutableList.remove(at: index)
-        return mutableList
-    }
-    
-    func updateGoal(_ goal: Goal, _ seconds: Int, _ notificationObj: NotificationService) {
-        self.updateCurrentTime(goal: goal, seconds: seconds)
-        let percent = self.calcPercent(goal: goal)
-        // also remove goal from collection view
-        if percent == 1 {
-           if let id = goal.notificationID {
-               notificationObj.removeNotificationRequest(id)
-           }
+        self.goalsArr.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+        if self.goalsArr.isEmpty {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let backgroundView = NoGoalsHomeView()
+                collectionView.backgroundView = backgroundView
+            }
         }
     }
     
@@ -65,19 +62,28 @@ class HomeViewModel {
         cell.cellTextView.text = description
     }
     
-    func animateBar(_ goal: Goal, _ cell: GoalCollectionCell) {
+    func animateBar(_ collectionView: UICollectionView, _ cell: GoalCollectionCell, _ indexPath: IndexPath, _ notificationObj: NotificationService) {
+        let goal = goalsArr[indexPath.item]
         let percentage = calcPercent(goal: goal)
         let layer = cell.progressBar.shapeLayer
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            if percentage == 1 {
+                print(indexPath.item)
+                self.deleteGoal(collectionView, indexPath, notificationObj)
+            }
+        }
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = percentage
-        basicAnimation.duration = 3
+        basicAnimation.duration = 2
         basicAnimation.fillMode = .forwards
         basicAnimation.isRemovedOnCompletion = false
         basicAnimation.setValue(layer, forKey: "stroke")
         layer.add(basicAnimation, forKey: nil)
+        CATransaction.commit()
     }
     
-    func updateCurrentTime(goal: Goal, seconds: Int) {
+    func updateGoalProgress(goal: Goal, seconds: Int) {
         goal.currSeconds = goal.currSeconds + Int64(seconds)
         CoreDataManager.sharedManager.saveContext()
     }

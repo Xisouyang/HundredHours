@@ -107,7 +107,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         guard let goal = timerViewModel.getGoal() else { return }
         let seconds = timerViewModel.getSeconds()
-        homeViewModel.updateGoal(goal, seconds, notificationObj)
+        homeViewModel.updateGoalProgress(goal: goal, seconds: seconds)
         goalCollectionView.reloadData()
     }
     
@@ -163,7 +163,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let goal = homeViewModel.goalsArr[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoalCollectionCell.identifier, for: indexPath) as! GoalCollectionCell
         homeViewModel.configure(cell, goal)
-        homeViewModel.animateBar(goal, cell)
+        homeViewModel.animateBar(collectionView, cell, indexPath, notificationObj)
         return cell
     }
 }
