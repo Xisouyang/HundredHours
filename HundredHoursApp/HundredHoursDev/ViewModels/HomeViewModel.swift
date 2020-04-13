@@ -74,6 +74,7 @@ class HomeViewModel {
             }
         }
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fromValue = 0
         basicAnimation.toValue = percentage
         basicAnimation.duration = 2
         basicAnimation.fillMode = .forwards
