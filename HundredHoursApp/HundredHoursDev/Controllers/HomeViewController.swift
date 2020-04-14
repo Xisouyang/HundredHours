@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
         button.setTitle("New Goal", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7), for: .highlighted)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.white.cgColor

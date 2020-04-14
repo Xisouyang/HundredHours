@@ -32,11 +32,11 @@ class GoalFieldView: UIView {
     }
     
     private func configFormLine() {
-        formLine.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        formLine.backgroundColor = #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 0.6957526408)
     }
     
     func configPlaceholder(text: String) {
-        formField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any])
+        formField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7), NSAttributedString.Key.font: UIFont(name: "Avenir", size: 20) as Any])
     }
     
     private func formFieldConstraints() {

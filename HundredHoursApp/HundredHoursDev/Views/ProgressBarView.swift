@@ -37,7 +37,7 @@ class ProgressBarView: UIView {
     
     private func configTrackLayer(path: UIBezierPath) {
         trackLayer.path = path.cgPath
-        trackLayer.strokeColor = #colorLiteral(red: 0.6712530255, green: 0.4371850491, blue: 0.8846895695, alpha: 1)
+        trackLayer.strokeColor = #colorLiteral(red: 0.8162947297, green: 0.4984353781, blue: 1, alpha: 1)
         trackLayer.lineWidth = 7
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = CAShapeLayerLineCap.round

@@ -64,7 +64,6 @@ class GoalFieldsViewController: UIViewController {
         validateTextFields()
     }
 
-    //FIX
     private func validateTextFields() {
         guard
             let nameField = newGoalView.goalNameField.formField.text,
@@ -97,8 +96,13 @@ extension GoalFieldsViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        newGoalView.goalDescriptionView.becomeFirstResponder()
+        if textField == newGoalView.goalNameField.formField {
+            textField.resignFirstResponder()
+            newGoalView.goalDurationField.formField.becomeFirstResponder()
+        } else if textField == newGoalView.goalDurationField.formField {
+            textField.resignFirstResponder()
+            newGoalView.goalDescriptionView.becomeFirstResponder()
+        }
         return true
     }
 
@@ -149,7 +153,7 @@ extension GoalFieldsViewController: UITextViewDelegate {
                 self.view.frame.origin.y -= self.keyboardHeight / 2
             })
         }
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7) {
             textView.text = nil
             textView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
@@ -166,13 +170,10 @@ extension GoalFieldsViewController: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        return true
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.textColor = .lightGray
-            textView.text = "Describe Goal.."
+           textView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7)
+           textView.text = "Describe Goal.."
         }
+        return true
     }
 }

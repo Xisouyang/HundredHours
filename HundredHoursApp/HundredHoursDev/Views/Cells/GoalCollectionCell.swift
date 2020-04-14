@@ -96,7 +96,7 @@ class GoalCollectionCell: UICollectionViewCell {
     private func progressBarViewConstraints() {
         progressBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            progressBar.topAnchor.constraint(equalTo: cellLabel.centerYAnchor),
+            progressBar.topAnchor.constraint(equalToSystemSpacingBelow: cellLabel.safeAreaLayoutGuide.topAnchor, multiplier: 2.5),
             progressBar.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -20),
             progressBar.widthAnchor.constraint(equalToConstant: 60),
             progressBar.heightAnchor.constraint(equalToConstant: 60)

@@ -21,7 +21,7 @@ class NewGoalView: UIView {
         let view = UITextView()
         view.font = UIFont.newGoalFieldFont
         view.text = "Describe Goal.."
-        view.textColor = .lightGray
+        view.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7)
         view.backgroundColor = #colorLiteral(red: 0.6853155494, green: 0, blue: 1, alpha: 1)
         return view
     }()
@@ -29,11 +29,11 @@ class NewGoalView: UIView {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.668626368, green: 0, blue: 1, alpha: 1)
         button.setTitle("Let's Go", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.5990509987, green: 0.6041648984, blue: 0.599606812, alpha: 1), for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), for: .highlighted)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7), for: .highlighted)
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
         button.layer.cornerRadius = 10
-        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7).cgColor
         button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         button.isEnabled = false
@@ -73,7 +73,7 @@ class NewGoalView: UIView {
 
     func unhighlightLine(line: UIView) {
         line.layer.borderWidth = 0
-        line.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        line.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6994113116)
     }
     
     @objc private func startTapped() {

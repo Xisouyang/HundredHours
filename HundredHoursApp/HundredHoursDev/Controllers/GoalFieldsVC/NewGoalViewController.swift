@@ -46,9 +46,7 @@ class NewGoalViewController: GoalFieldsViewController {
 
 extension NewGoalViewController: NewGoalViewDelegate {
     func startButtonDidPress() {
-        
         goalDuration = viewModel.setGoalDuration(hours: goalDuration)
-        print(goalDuration)
         createGoal()
     }
 }

@@ -32,7 +32,6 @@
 		5DB7350C231DFDF600F53E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350B231DFDF600F53E30 /* Assets.xcassets */; };
 		5DB7350F231DFDF600F53E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7350D231DFDF600F53E30 /* LaunchScreen.storyboard */; };
 		5DB7FB0C235649D20069040C /* GoalFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7FB0B235649D20069040C /* GoalFieldView.swift */; };
-		5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB41572378E851003EEA63 /* DescriptionStack.swift */; };
 		5DF91EEA23623124003ED906 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF91EE923623124003ED906 /* OnboardViewController.swift */; };
 		5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBD9E02326BF8500573139 /* CoreDataManager.swift */; };
 		5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE02AD235FACAB001A295B /* Coordinator.swift */; };
@@ -91,7 +90,6 @@
 		5DB7350E231DFDF600F53E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DB73510231DFDF600F53E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DB7FB0B235649D20069040C /* GoalFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalFieldView.swift; sourceTree = "<group>"; };
-		5DEB41572378E851003EEA63 /* DescriptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionStack.swift; sourceTree = "<group>"; };
 		5DF91EE923623124003ED906 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		5DFBD9E02326BF8500573139 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5DFE02AD235FACAB001A295B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				5DB7FB0B235649D20069040C /* GoalFieldView.swift */,
-				5DEB41572378E851003EEA63 /* DescriptionStack.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 				5D0B0A1C243407600053AB4B /* Timestamps+CoreDataProperties.swift in Sources */,
 				5D08638C232054FE00CD58F5 /* NoGoalsHomeView.swift in Sources */,
 				5DFBD9E12326BF8500573139 /* CoreDataManager.swift in Sources */,
-				5DEB41582378E851003EEA63 /* DescriptionStack.swift in Sources */,
 				5DFE02AE235FACAB001A295B /* Coordinator.swift in Sources */,
 				5D0B0A1E243407600053AB4B /* Goal+CoreDataProperties.swift in Sources */,
 				5DFF84CC236260FE006AD6EE /* OnboardPageCell.swift in Sources */,

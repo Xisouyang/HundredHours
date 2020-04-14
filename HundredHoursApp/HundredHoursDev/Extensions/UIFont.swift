@@ -42,8 +42,8 @@ extension UIFont {
     }()
     
     static let newGoalFieldFont: UIFont = {
-        let font = UIFont(name: "Avenir-Medium", size: 18)
-        return font ?? UIFont.systemFont(ofSize: 18)
+        let font = UIFont(name: "Avenir", size: 20)
+        return font ?? UIFont.systemFont(ofSize: 20)
     }()
     
     static let emptyStateTitleFont: UIFont = {
