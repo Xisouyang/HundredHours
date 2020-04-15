@@ -38,6 +38,7 @@ A productivity app to help users keep track of time spent on goals/activities by
 ## Authors
 
 * [Stephen Ouyang](https://github.com/Xisouyang) - initial work
+xiouyang@gmail.com
 
 ## License
 
